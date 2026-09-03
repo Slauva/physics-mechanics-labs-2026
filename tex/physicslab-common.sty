@@ -1,0 +1,88 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{physicslab-common}[2026/09/03 Shared physics materials style]
+
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{russian}
+
+\IfFontExistsTF{PT Astra Serif}
+  {\setmainfont{PT Astra Serif}}
+  {\IfFontExistsTF{Noto Serif}
+    {\setmainfont{Noto Serif}}
+    {\setmainfont{DejaVu Serif}}}
+\IfFontExistsTF{PT Astra Sans}
+  {\setsansfont{PT Astra Sans}}
+  {\IfFontExistsTF{Noto Sans}
+    {\setsansfont{Noto Sans}}
+    {\setsansfont{DejaVu Sans}}}
+\IfFontExistsTF{JetBrains Mono}
+  {\setmonofont{JetBrains Mono}}
+  {\setmonofont{DejaVu Sans Mono}}
+
+\RequirePackage{microtype}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{siunitx}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,angles,quotes,calc,decorations.pathmorphing,patterns,positioning}
+\RequirePackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+
+% A neutral 60/30/10 presentation palette: white and near-black carry the
+% content, teal is the primary accent, and coral/gold are reserved for
+% contrasts and warnings.
+\definecolor{PhysicsNavy}{HTML}{181A1B}
+\definecolor{PhysicsBlue}{HTML}{0F766E}
+\definecolor{PhysicsCyan}{HTML}{9FD8D2}
+\definecolor{PhysicsGold}{HTML}{D9A441}
+\definecolor{PhysicsRed}{HTML}{D95D45}
+\definecolor{PhysicsInk}{HTML}{181A1B}
+\definecolor{PhysicsMuted}{HTML}{60686C}
+\definecolor{PhysicsPaper}{HTML}{F4F5F3}
+\definecolor{PhysicsCanvas}{HTML}{FFFFFF}
+\definecolor{PhysicsWarm}{HTML}{FFF1ED}
+\definecolor{PhysicsLine}{HTML}{D9DEDC}
+
+\sisetup{
+  locale = US,
+  per-mode = symbol,
+  range-phrase = {--},
+  range-units = single,
+  exponent-product = \cdot,
+  detect-all
+}
+
+\DeclareSIUnit\revolution{rev}
+
+\graphicspath{{figures/}{./}}
+\setlength{\emergencystretch}{2em}
+
+\AtBeginDocument{
+  \@ifclassloaded{beamer}
+    {\hypersetup{
+      linkcolor=PhysicsNavy,
+      urlcolor=PhysicsBlue,
+      citecolor=PhysicsBlue
+    }}
+    {\hypersetup{
+      colorlinks=true,
+      linkcolor=PhysicsNavy,
+      urlcolor=PhysicsBlue,
+      citecolor=PhysicsBlue,
+      pdfborder={0 0 0}
+    }}
+}
+
+\tikzset{
+  physics line/.style={PhysicsNavy, line width=1.1pt},
+  physics accent/.style={PhysicsBlue, line width=1.4pt},
+  physics force/.style={-{Latex[length=3mm]}, PhysicsRed, line width=1.2pt},
+  physics dimension/.style={{Latex[length=2mm]}-{Latex[length=2mm]}, PhysicsMuted, thin},
+  physics label/.style={font=\small\sffamily, text=PhysicsInk, fill=PhysicsCanvas, inner sep=1.5pt}
+}

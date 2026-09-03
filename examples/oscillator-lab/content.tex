@@ -1,0 +1,169 @@
+\title[Mass--Spring Oscillator]{Mass--Spring Oscillator}
+\subtitle{Determining the spring constant dynamically · \labversionlabel}
+\author{Mechanics Course}
+\institute{Demonstration Material}
+\date{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Experimental Question}
+  \slidetag{OBJECTIVE}
+  \vspace{0.7em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      {\Large How does the period $T$ of vertical oscillations depend on the suspended mass $m$?}
+      \vspace{0.9em}
+      \begin{block}{Testable hypothesis}
+        The squared period $T^2$ depends linearly on the mass.
+      \end{block}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \resultcard{Result}{Spring constant $k$}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Equipment and Safety}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.43\textwidth}
+      \slidetag{EQUIPMENT}
+      \vspace{0.55em}
+      \begin{itemize}
+        \item retort stand and spring;
+        \item set of slotted masses;
+        \item stopwatch;
+        \item ruler.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \begin{alertblock}{Before you begin}
+        Check that the stand is secure. Support each mass while changing it,
+        and do not stretch the spring beyond its elastic limit.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Physical Model}
+  \keyformula{$m\ddot{x}+kx=0 \qquad T=2\pi\sqrt{\dfrac{m}{k}}$}
+  \vspace{0.8em}
+  \begin{itemize}
+    \item oscillations have small amplitude;
+    \item air resistance is negligible;
+    \item the spring remains within its elastic range.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Apparatus Diagram}
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.42\textwidth}
+      \centering
+      \resizebox{0.72\linewidth}{!}{\input{figures/oscillator.tikz}}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+      \begin{block}{Coordinate system}
+        The positive $x$-axis points downward from the equilibrium position.
+      \end{block}
+      \vspace{0.5em}
+      At equilibrium, the weight and spring force balance. After a
+      displacement, the net force restores the mass toward equilibrium.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Measurement Procedure}
+  \begin{enumerate}
+    \item Attach a mass and wait until it reaches equilibrium.
+    \item Displace the mass downward by no more than \SI{2}{\centi\metre}.
+    \item Measure the time $t_N$ for $N=20$ complete oscillations.
+    \item Repeat the measurement for five different masses.
+    \item For each trial, calculate $T=t_N/N$ and $T^2$.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Raw-Data Table}
+  \centering
+  \renewcommand{\arraystretch}{1.22}
+  \begin{tabular}{@{}ccccc@{}}
+    \toprule
+    $m$, \si{\kilo\gram} & $N$ & $t_N$, \si{\second} & $T$, \si{\second} & $T^2$, \si{\second\squared} \\
+    \midrule
+    \phantom{0.000} & 20 & \phantom{00.00} & \phantom{0.000} & \phantom{0.000} \\
+    & 20 & & & \\
+    & 20 & & & \\
+    & 20 & & & \\
+    & 20 & & & \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.9em}
+  {\color{PhysicsMuted}\small Record raw measurements before performing any intermediate rounding.}
+\end{frame}
+
+\begin{frame}{Data Analysis}
+  \keyformula{$T^2=am+b \qquad k=\dfrac{4\pi^2}{a}$}
+  \vspace{0.8em}
+  \begin{enumerate}
+    \item Plot $T^2$ against $m$.
+    \item Determine the slope $a$ of the linear fit.
+    \item Calculate $k$ and discuss the physical meaning of the intercept $b$.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Check-for-Understanding Tasks}
+  \slidetag{SELF-CHECK}
+  \vspace{0.6em}
+  \begin{block}{1 · Units}
+    Determine the SI unit of the slope $a$ on a graph of $T^2$ against $m$.
+  \end{block}
+  \begin{block}{2 · Calculation}
+    An experiment gives $a=\SI{0.80}{\second\squared\per\kilo\gram}$.
+    Determine the spring constant.
+  \end{block}
+\end{frame}
+
+\begin{solutionframe}[Solution · Units of the Slope]
+  From $T^2=am+b$,
+  \[
+    a=\frac{T^2}{m},
+    \qquad
+    [a]=\si{\second\squared\per\kilo\gram}.
+  \]
+  \answer{$\si{\second\squared\per\kilo\gram}$.}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution · Spring Constant]
+  \[
+    k=\frac{4\pi^2}{a}
+     =\frac{4\pi^2}{\SI{0.80}{\second\squared\per\kilo\gram}}
+     \approx\SI{49}{\newton\per\metre}.
+  \]
+  \answer{$k\approx\SI{49}{\newton\per\metre}$.}
+  \vspace{0.5em}
+  \teacheronly{This illustrative value is not the result of an actual experiment.}
+\end{solutionframe}
+
+\begin{frame}{Report Requirements}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item objective and apparatus diagram;
+        \item raw-data table;
+        \item graph of $T^2$ against $m$;
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item fitted coefficients $a$ and $b$;
+        \item value of $k$ with its unit;
+        \item conclusion addressing the hypothesis.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,737 @@
+\title[Position, Velocity, and Acceleration]{Position, Velocity, and Acceleration}
+\subtitle{Physics I · Mechanics Practice Session · \labversionlabel}
+\author{}
+\institute{}
+\date{Week 1}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at (current page.north west) {
+      \includegraphics[width=\paperwidth,height=0.58\paperheight]
+        {assets/innopolis-campus.jpg}%
+    };
+    \fill[white]
+      (current page.south west) rectangle
+      ([yshift=-0.58\paperheight]current page.north east);
+    \fill[PhysicsBlue]
+      (current page.south west) rectangle
+      ([xshift=0.012\paperwidth,yshift=-0.58\paperheight]current page.north west);
+    \node[anchor=north west,text width=0.86\paperwidth,align=left]
+      at ([xshift=0.055\paperwidth,yshift=-0.64\paperheight]current page.north west) {
+        {\color{PhysicsBlue}\small\bfseries PHYSICS I · MECHANICS PRACTICE SESSION\par}
+        \vspace{0.45em}
+        {\color{PhysicsInk}\fontsize{17}{20}\selectfont\bfseries
+          Position, Velocity, and Acceleration\par}
+        \vspace{0.55em}
+        {\color{PhysicsMuted}\small Week 1 · \labversionlabel\par}
+      };
+    \node[anchor=east,inner sep=0pt]
+      at ([xshift=-0.055\paperwidth,yshift=0.16\paperheight]current page.south east) {
+        \includegraphics[width=0.20\paperwidth]
+          {assets/innopolis-university-logo.png}%
+      };
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Brief Review: One-Dimensional Motion}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Average velocity and acceleration}
+        \[
+          \bar v=\frac{\Delta x}{\Delta t},
+          \qquad
+          \bar a=\frac{\Delta v}{\Delta t}
+        \]
+      \end{block}
+      \begin{block}{Instantaneous velocity and acceleration}
+        \[
+          v=\frac{\mathrm{d}x}{\mathrm{d}t},
+          \qquad
+          a=\frac{\mathrm{d}v}{\mathrm{d}t}
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Distance covered in one-directional motion}
+        \[
+          S=\int v(t)\,\mathrm{d}t
+        \]
+      \end{block}
+      \footnotesize
+      \textbf{Symbols:}
+      $x$ — position; $S$ — distance; $t$ — time;
+      $v$ — velocity; $a$ — acceleration;
+      $\Delta$ — change in a quantity.
+    \end{column}
+  \end{columns}
+  \vspace{0.35em}
+  \begin{beamercolorbox}[rounded=true,sep=0.55em,wd=\linewidth]{block body}
+    \footnotesize
+    \textbf{Units:}
+    \texttt{m} — metre; \texttt{km} — kilometre;
+    \texttt{cm} — centimetre; \texttt{s} — second; \texttt{h} — hour;
+    \texttt{m/s} — metres per second;
+    \texttt{m/s\textsuperscript{2}} — metres per second squared;
+    \texttt{m/s\textsuperscript{3}} — metres per second cubed;
+    \texttt{km/h} — kilometres per hour;
+    \texttt{cm/s} — centimetres per second.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}{Position and Velocity from Integration}
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.62\textwidth}
+      \begin{align*}
+        x(T)&=x_i+\int_0^T v(t)\,\mathrm{d}t,\\
+        v(T)&=v_i+\int_0^T a(t)\,\mathrm{d}t,\\
+        x(T)&=x_i+v_iT+\int_0^T\!\mathrm{d}t
+          \int_0^t a(h)\,\mathrm{d}h.
+      \end{align*}
+    \end{column}
+    \begin{column}{0.34\textwidth}
+      \begin{block}{Notation}
+        \footnotesize
+        $x_i$ — initial position
+
+        $v_i$ — initial velocity
+
+        $T$ — current time
+
+        $t,h$ — time variables
+
+        $a(t)$ — arbitrary acceleration
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.35em}
+  \begin{block}{For constant acceleration $a$}
+    \[
+      x(T)=x_i+v_iT+\frac{aT^2}{2}
+    \]
+  \end{block}
+\end{frame}
+
+\begin{frame}{Problem 1 — Trains and a Bird}
+  \slidetag{PROBLEM 1}
+  \vspace{0.15em}
+  \scriptsize
+  Model the two trains as \textbf{black material points (black MPs)}, each
+  moving at $V_b=\SI{30}{\kilo\metre\per\hour}$, and the bird as a
+  \textbf{white material point (white MP)} moving at
+  $V_w=\SI{60}{\kilo\metre\per\hour}$. The black MPs approach each other on
+  the same straight track. When they are \SI{60}{\kilo\metre} apart, the white
+  MP starts at one black MP and moves back and forth between them until they
+  collide.
+  \vspace{0.2em}
+  \begin{block}{Find}
+    What total distance does the white MP travel before the black MPs collide?
+  \end{block}
+  \vspace{-0.2em}
+  \centering
+  \resizebox{0.76\textwidth}{!}{\input{figures/trains-bird.tikz}}
+\end{frame}
+
+\begin{solutionframe}[Solution 1 — Collision Time]
+  \footnotesize
+  Let $S$ be the initial separation. Because the black MPs have opposite
+  velocities, their closing speed is
+  \[
+    V_{\mathrm{close}}=V_b-(-V_b)=2V_b.
+  \]
+  The collision time and the distance traveled by the white MP are therefore
+  \[
+    t_c=\frac{S}{V_{\mathrm{close}}}=\frac{S}{2V_b},
+    \qquad
+    S_w=V_wt_c=\frac{V_wS}{2V_b}.
+  \]
+  \begin{block}{Why the repeated flights need not be added separately}
+    Every flight occurs during the same total interval $t_c$; only the white
+    MP's constant speed and the collision time are needed.
+  \end{block}
+  \answer{\(\displaystyle
+    t_c=\frac{\SI{60}{\kilo\metre}}
+      {2(\SI{30}{\kilo\metre\per\hour})}=\SI{1}{\hour},\qquad
+    S_w=(\SI{60}{\kilo\metre\per\hour})(\SI{1}{\hour})
+      =\SI{60}{\kilo\metre}\)}
+\end{solutionframe}
+
+\begin{frame}{Problem 2(a) — Cheetah Pursuit}
+  \slidetag{PROBLEM 2A}
+  \vspace{0.35em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \small
+      A cheetah can run at about
+      \SI{101}{\kilo\metre\per\hour} for perhaps \SI{20}{\second}. An
+      antelope can run at about \SI{88}{\kilo\metre\per\hour} for much
+      longer. Both animals run in the same direction at top speed, and the
+      antelope has a \SI{40}{\metre} head start.
+      \vspace{0.55em}
+      \begin{block}{Find}
+        How long does the cheetah take to catch the antelope, and how far does
+        the cheetah travel in that time?
+      \end{block}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \centering
+      \begingroup
+        \def\cheetahparta{1}
+        \resizebox{\textwidth}{!}{\input{figures/cheetah-pursuit.tikz}}
+      \endgroup
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 2(a) — Catch Time and Distance]
+  \footnotesize
+  Let $h$ be the antelope's head start. Choose $x_C(0)=0$ for the cheetah:
+  \[
+    x_C(t)=v_Ct,
+    \qquad
+    x_A(t)=h+v_At.
+  \]
+  At capture, $x_C=x_A$. Solve before inserting the data:
+  \[
+    \begin{aligned}
+      v_Ct&=h+v_At,\\
+      (v_C-v_A)t&=h,\\
+      t_c&=\frac{h}{v_C-v_A},
+      \qquad
+      x_C(t_c)=\frac{v_Ch}{v_C-v_A}.
+    \end{aligned}
+  \]
+  \answer{\scriptsize\(\begin{aligned}
+    v_C&=101/3.6=\SI{28.06}{\metre\per\second},&
+    v_A&=88/3.6=\SI{24.44}{\metre\per\second},\\
+    v_C-v_A&=\frac{101-88}{3.6}
+      =\SI{3.611}{\metre\per\second},\\
+    t_c&=\frac{\SI{40}{\metre}}
+      {(13/3.6)\,\si{\metre\per\second}}
+      =\SI{11.08}{\second},&
+    x_C&=\frac{(101/3.6)(40)}{13/3.6}\,\si{\metre}
+      \approx\SI{310.8}{\metre}.
+  \end{aligned}\)}
+  \teacheronly{The professor's answer slide gives the time but not the second
+    requested quantity. The distance follows directly from the stated data.}
+\end{solutionframe}
+
+\begin{frame}{Problem 2(b) — Maximum Head Start}
+  \slidetag{PROBLEM 2B}
+  \vspace{0.35em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      \small
+      Use the same top speeds:
+      \[
+        v_C=\SI{101}{\kilo\metre\per\hour},
+        \qquad
+        v_A=\SI{88}{\kilo\metre\per\hour}.
+      \]
+      The cheetah can maintain its maximum speed for only about
+      \SI{20}{\second}.
+      \vspace{0.55em}
+      \begin{block}{Find}
+        What is the maximum head start the antelope can have if the cheetah is
+        to catch it within \SI{20}{\second}?
+      \end{block}
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \begingroup
+        \def\cheetahpartb{1}
+        \resizebox{\textwidth}{!}{\input{figures/cheetah-pursuit.tikz}}
+      \endgroup
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 2(b) — Maximum Head Start]
+  Let $T$ be the maximum time for which the cheetah can maintain its top
+  speed. From part (a),
+  \[
+    t_c=\frac{h}{v_C-v_A}.
+  \]
+  The largest possible head start corresponds to $t_c=T$:
+  \[
+    T=\frac{h_{\max}}{v_C-v_A},
+    \qquad
+    h_{\max}=(v_C-v_A)T.
+  \]
+  \answer{\(\begin{aligned}
+    v_C-v_A&=\frac{101-88}{3.6}
+      =\SI{3.61}{\metre\per\second},\\
+    h_{\max}&=(\SI{3.61}{\metre\per\second})(\SI{20}{\second})
+      =\SI{72.2}{\metre}\approx\SI{72}{\metre}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{frame}{Problem 3 — Police Pursuit}
+  \slidetag{PROBLEM 3}
+  \vspace{0.2em}
+  \footnotesize
+  A motorist traveling at \SI{31}{\metre\per\second} passes a stationary
+  motorcycle police officer. \SI{2.5}{\second} later, the officer starts to
+  move with constant acceleration
+  \SI{3.6}{\metre\per\second\squared} in pursuit.
+  \begin{block}{Find}
+    How fast is the officer traveling when the motorcycle overtakes the car?
+    Draw $x(t)$ for both objects, taking $t=0$ when the car passes the
+    stationary officer.
+  \end{block}
+  \centering
+  \resizebox{0.74\textwidth}{!}{\input{figures/police-pursuit-timeline.tikz}}
+\end{frame}
+
+\begin{solutionframe}[Solution 3 — Motion Laws]
+  Set $x=0$ at the officer and $t=0$ when the car passes. The car moves at
+  constant velocity:
+  \[
+    x_c(t)=v_ct.
+  \]
+  Let $t_d$ be the delay and $a_m$ the motorcycle's constant acceleration. The
+  motorcycle is stationary until $t_d$, then starts from rest:
+  \[
+    x_m(t)=
+    \begin{cases}
+      0, & 0\le t<t_d,\\[2pt]
+      \dfrac12a_m(t-t_d)^2, & t\ge t_d.
+    \end{cases}
+  \]
+  These equations are now ready for the event condition $x_m=x_c$.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 3 — Overtaking Time]
+  \footnotesize
+  \setlength{\abovedisplayskip}{3pt}
+  \setlength{\belowdisplayskip}{3pt}
+  At the overtake, $x_m=x_c$:
+  \[
+    \begin{aligned}
+      \frac12a_m(t-t_d)^2&=v_ct,\\
+      a_mt^2-2(a_mt_d+v_c)t+a_mt_d^2&=0.
+    \end{aligned}
+  \]
+  The quadratic formula gives
+  \[
+    t_{1,2}=\frac{a_mt_d+v_c
+      \mp\sqrt{v_c^2+2a_mt_dv_c}}{a_m}.
+  \]
+  Only a root satisfying $t\ge t_d$ belongs to the motorcycle's moving branch.
+  \answer{\scriptsize\(\begin{aligned}
+    3.6t^2-2\!\left[3.6(2.5)+31\right]t+3.6(2.5)^2&=0,\\
+    3.6t^2-80t+22.5&=0,\\
+    t_{1,2}&=\frac{80\mp\sqrt{80^2-4(3.6)(22.5)}}{2(3.6)},\\
+    t_1&=\SI{0.28}{\second}<t_d\ \text{(reject)},\qquad
+    t_2=\SI{21.9}{\second}>t_d\ \text{(overtake)}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 3 — Position–Time Curves]
+  \centering
+  \resizebox{0.78\textwidth}{!}{\input{figures/police-pursuit-plot.tikz}}
+  \vspace{0.1em}
+
+  \footnotesize
+  The car is represented by a straight line. The motorcycle remains at
+  $x=0$ until $t_d$, then follows a parabola. Their physical intersection is
+  the accepted root $t_2$.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 3 — Overtaking Speed]
+  The motorcycle starts from rest at $t=t_d$. At the overtake time $t_2$, its
+  acceleration has acted for
+  \[
+    \Delta t=t_2-t_d.
+  \]
+  Therefore
+  \[
+    v_m(t_2)=0+a_m(t_2-t_d).
+  \]
+  \answer{\(\begin{aligned}
+    \Delta t&=\SI{21.9}{\second}-\SI{2.5}{\second}
+      =\SI{19.4}{\second},\\
+    v_m&=(\SI{3.6}{\metre\per\second\squared})
+      (\SI{19.4}{\second})
+      \approx\SI{69.8}{\metre\per\second}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{frame}{Problem 4 — Non-Constant Acceleration}
+  \slidetag{PROBLEM 4}
+  \vspace{0.8em}
+  A particle moves for $t\in[0,\infty)$ with acceleration
+  \[
+    a(t)=a_0\exp\!\left(-\frac{t}{\tau}\right),
+    \qquad v(0)=0.
+  \]
+  \vspace{0.5em}
+  \begin{block}{Find}
+    The maximum speed $v_{\max}$ and the distance dependence $x(t)$.
+  \end{block}
+\end{frame}
+
+\begin{solutionframe}[Solution 4 — Velocity]
+  \footnotesize
+  Since $a=\mathrm{d}v/\mathrm{d}t$, integrate from the initial time to $t$:
+  \begin{align*}
+    v(t)-v(0)
+      &=\int_0^t a_0e^{-h/\tau}\,\mathrm{d}h\\
+      &=\left[-a_0\tau e^{-h/\tau}\right]_0^t\\
+      &=a_0\tau\left(1-e^{-t/\tau}\right).
+  \end{align*}
+  With $v(0)=0$,
+  \[
+    v(t)=a_0\tau\left(1-e^{-t/\tau}\right).
+  \]
+  \centering
+  \resizebox{0.47\textwidth}{!}{\input{figures/decaying-acceleration-plots.tikz}}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 4 — Distance Dependence]
+  \footnotesize
+  The source solution uses $x(0)=0$. Since $v=\mathrm{d}x/\mathrm{d}t$,
+  \begin{align*}
+    x(t)-x(0)
+      &=\int_0^t a_0\tau\left(1-e^{-h/\tau}\right)\,\mathrm{d}h\\
+      &=a_0\tau\int_0^t 1\,\mathrm{d}h
+        -a_0\tau\int_0^t e^{-h/\tau}\,\mathrm{d}h\\
+      &=a_0\tau t
+        +a_0\tau^2\left[e^{-h/\tau}\right]_0^t\\
+      &=a_0\tau t+a_0\tau^2\left(e^{-t/\tau}-1\right).
+  \end{align*}
+  \answer{$x(t)=a_0\tau t+a_0\tau^2(e^{-t/\tau}-1)$}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 4 — Maximum Speed]
+  From the velocity found above,
+  \[
+    v_{\max}=\lim_{t\to\infty}
+      a_0\tau\left(1-e^{-t/\tau}\right).
+  \]
+  Since $e^{-t/\tau}\to0$,
+  \[
+    v_{\max}=a_0\tau.
+  \]
+  When $t\gg\tau$, the exponential term becomes negligible:
+  \[
+    x(t)\approx a_0\tau(t-\tau)\approx a_0\tau t=v_{\max}t.
+  \]
+  \answer{$v_{\max}=a_0\tau$}
+\end{solutionframe}
+
+\begin{frame}{Problem 5 — Distance–Time Graph}
+  \slidetag{PROBLEM 5}
+  \vspace{0.15em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.62\textwidth}
+      \centering
+      \resizebox{\textwidth}{!}{\input{figures/distance-time-source-graph.tikz}}
+    \end{column}
+    \begin{column}{0.34\textwidth}
+      \scriptsize
+      A point moves rectilinearly in one direction. The graph shows the
+      distance $S$ traversed as a function of time $t$.
+      \vspace{0.45em}
+      \textbf{Using the graph, find:}
+      \begin{enumerate}
+        \item the average velocity during the motion;
+        \item the maximum velocity;
+        \item the time $t_0$ when the instantaneous velocity equals the mean
+          velocity over the first $t_0$ seconds.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 5(a) — Average Velocity]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \centering
+      \begingroup
+        \def\showaveragesecant{1}
+        \resizebox{\textwidth}{!}{\input{figures/distance-time-source-graph.tikz}}
+      \endgroup
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \footnotesize
+      Let $T$ be the time at which the motion shown on the graph ends. For
+      one-directional motion,
+      \[
+        \bar v=\frac{S(T)-S(0)}{T-0}.
+      \]
+      The secant drawn from the initial to the final point represents this
+      ratio.
+      \answer{\(\displaystyle
+        \bar v=\frac{\SI{2.0}{\metre}-0}{\SI{20}{\second}-0}
+        =\SI{0.10}{\metre\per\second}
+        =\SI{10}{\centi\metre\per\second}\)}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5(b) — Maximum Velocity]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \centering
+      \begingroup
+        \def\showmaxtangent{1}
+        \resizebox{\textwidth}{!}{\input{figures/distance-time-source-graph.tikz}}
+      \endgroup
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \footnotesize
+      Instantaneous velocity is the tangent slope:
+      \[
+        v(t)=\frac{\mathrm{d}S}{\mathrm{d}t}.
+      \]
+      The maximum velocity is obtained where this tangent is steepest. Use two
+      convenient grid points on the drawn tangent to evaluate its rise over
+      run.
+      \answer{\(\displaystyle
+        v_{\max}\approx\frac{\Delta S}{\Delta t}
+        =\frac{\SI{1.0}{\metre}}{\SI{4}{\second}}
+        =\SI{0.25}{\metre\per\second}\)}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5(c) — Equal Velocities]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \centering
+      \begingroup
+        \def\showequaltangent{1}
+        \resizebox{\textwidth}{!}{\input{figures/distance-time-source-graph.tikz}}
+      \endgroup
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \footnotesize
+      The required equality is
+      \[
+        \left.\frac{\mathrm{d}S}{\mathrm{d}t}\right|_{t_0}
+        =\frac{S(t_0)-S(0)}{t_0}.
+      \]
+      Thus the line from the origin to $(t_0,S(t_0))$ must also be tangent to
+      the curve.
+      \answer{$t_0\approx\SI{16}{\second}$}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{frame}{Problem 6 — A Falling Bolt in an Elevator}
+  \slidetag{PROBLEM 6}
+  \vspace{0.25em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      \footnotesize
+      An elevator car with a floor-to-ceiling distance of
+      \SI{2.7}{\metre} starts ascending with constant acceleration
+      \SI{1.2}{\metre\per\second\squared}. At \SI{2.0}{\second} after the
+      start, a bolt begins falling from the ceiling.
+      \vspace{0.45em}
+      \begin{block}{Find}
+        \begin{enumerate}
+          \item the bolt's free-fall time;
+          \item its displacement and the distance covered during the fall in
+            the reference frame fixed to the elevator shaft.
+        \end{enumerate}
+      \end{block}
+    \end{column}
+    \begin{column}{0.39\textwidth}
+      \centering
+      \resizebox{0.86\textwidth}{!}{\input{figures/elevator-bolt.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 6(a) — Free-Fall Time]
+  \footnotesize
+  Let $h$ be the cabin height and $a_e$ the upward cabin acceleration. In the
+  elevator frame, the bolt starts from rest. Taking upward as positive, its
+  relative acceleration is
+  \[
+    a_{\mathrm{rel}}=-(g+a_e).
+  \]
+  Its relative displacement to the floor is $-h$, so
+  \[
+    -h=0\cdot t_f-\frac12(g+a_e)t_f^2.
+  \]
+  Solving for the positive time gives
+  \[
+    t_f=\sqrt{\frac{2h}{g+a_e}}.
+  \]
+  \answer{\(\displaystyle
+    t_f=\sqrt{\frac{2(\SI{2.7}{\metre})}
+      {\SI{9.8}{\metre\per\second\squared}
+       +\SI{1.2}{\metre\per\second\squared}}}
+    =\SI{0.70}{\second}\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6(b) — Shaft Reference Frame]
+  \footnotesize
+  \setlength{\abovedisplayskip}{3pt}
+  \setlength{\belowdisplayskip}{3pt}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      Let $t_r$ be the release time. At release, the bolt shares the cabin's
+      upward speed:
+      \[
+        v_0=a_et_r.
+      \]
+      In the shaft frame, the bolt then has acceleration $-g$. Its displacement
+      by the impact time is
+      \[
+        \Delta y=v_0t_f-\frac12gt_f^2.
+      \]
+      \answer{\scriptsize\(\begin{aligned}
+        v_0&=(\SI{1.2}{\metre\per\second\squared})
+          (\SI{2.0}{\second})=\SI{2.4}{\metre\per\second},\\
+        \Delta y&=(\SI{2.4}{\metre\per\second})(\SI{0.70}{\second})
+          -\tfrac12(\SI{9.8}{\metre\per\second\squared})
+          (\SI{0.70}{\second})^2\\
+          &=\SI{1.68}{\metre}-\SI{2.40}{\metre}
+          \approx-\SI{0.72}{\metre}.
+      \end{aligned}\)}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      The bolt first moves upward until $v=0$:
+      \[
+        0=v_0-gt_{\uparrow},
+        \qquad
+        d_{\uparrow}=\frac{v_0^2}{2g}.
+      \]
+      The downward part is $d_{\uparrow}+|\Delta y|$, hence
+      \[
+        S=2d_{\uparrow}+|\Delta y|.
+      \]
+      \answer{\scriptsize\(\begin{aligned}
+        d_{\uparrow}&=\frac{(\SI{2.4}{\metre\per\second})^2}
+          {2(\SI{9.8}{\metre\per\second\squared})}
+          =\SI{0.294}{\metre},\\
+        S&=2(\SI{0.294}{\metre})+\SI{0.72}{\metre}
+          =\SI{1.308}{\metre}\approx\SI{1.31}{\metre}.
+      \end{aligned}\)}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{frame}{Problem 7 — Motion from Position}
+  \slidetag{PROBLEM 7}
+  \vspace{0.15em}
+  \keyformula{$x(t)=12t^2-2t^3$, where $x$ is in metres and $t$ in seconds}
+  \vspace{0.1em}
+  \scriptsize
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{At $t=\SI{3.0}{\second}$, determine:}
+      \begin{enumerate}
+        \item[(a)] position;
+        \item[(b)] velocity;
+        \item[(c)] acceleration.
+      \end{enumerate}
+      \textbf{For position, determine:}
+      \begin{enumerate}
+        \item[(d)] the maximum positive coordinate;
+        \item[(e)] when it is reached.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{For velocity, determine:}
+      \begin{enumerate}
+        \item[(f)] the maximum positive velocity;
+        \item[(g)] when it is reached;
+        \item[(h)] the acceleration at the nonzero time when the particle is
+          not moving.
+      \end{enumerate}
+      \textbf{Over $0\le t\le\SI{3}{\second}$:}
+      \begin{enumerate}
+        \item[(i)] determine the average velocity.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 7(a–c) — Values at 3 s]
+  \footnotesize
+  Differentiate the given position function directly, keeping its original
+  coefficients:
+  \begin{align*}
+    v(t)&=\frac{\mathrm{d}}{\mathrm{d}t}\left(12t^2-2t^3\right)
+      =24t-6t^2,\\
+    a(t)&=\frac{\mathrm{d}}{\mathrm{d}t}\left(24t-6t^2\right)
+      =24-12t.
+  \end{align*}
+  Evaluate the three expressions at $t=\SI{3}{\second}$:
+  \answer{\(\begin{aligned}
+    x(3)&=12(3)^2-2(3)^3=108-54=\SI{54}{\metre},\\
+    v(3)&=24(3)-6(3)^2=72-54=\SI{18}{\metre\per\second},\\
+    a(3)&=24-12(3)=24-36=-\SI{12}{\metre\per\second\squared}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 7(f–g) — Maximum Positive Velocity]
+  For $x(t)=12t^2-2t^3$, the velocity and acceleration are
+  \[
+    v(t)=24t-6t^2,
+    \qquad
+    a(t)=24-12t.
+  \]
+  Velocity is maximal when $a(t_v)=0$:
+  \[
+    24-12t_v=0,
+    \qquad
+    t_v=\frac{24}{12}=\SI{2}{\second}.
+  \]
+  \answer{\(\begin{aligned}
+    t_v&=\SI{2}{\second},\\
+    v_{\max}&=v(2)=24(2)-6(2)^2=48-24
+      =\SI{24}{\metre\per\second}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 7(d–e, h) — Maximum Position and Stop]
+  \footnotesize
+  The particle is not moving when
+  \[
+    v(t)=24t-6t^2=6t(4-t)=0.
+  \]
+  Thus $t=0$ or $t=\SI{4}{\second}$. The nonzero stopping time is
+  \[
+    t_x=\SI{4}{\second}.
+  \]
+  Since the velocity changes from positive to negative there, the position is
+  maximal at $t_x$.
+  \answer{\(\begin{aligned}
+    x_{\max}=x(4)&=12(4)^2-2(4)^3=192-128=\SI{64}{\metre},\\
+    a(4)&=24-12(4)=24-48=-\SI{24}{\metre\per\second\squared}.
+  \end{aligned}\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 7(i) — Average Velocity]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      For the interval from $0$ to \SI{3}{\second},
+      \[
+        \bar v=\frac{x(3)-x(0)}{3-0}.
+      \]
+      The endpoint positions are
+      \[
+        x(0)=0,
+        \qquad
+        x(3)=12(3)^2-2(3)^3=\SI{54}{\metre}.
+      \]
+      \answer{\(\displaystyle
+        \bar v=\frac{\SI{54}{\metre}-0}{\SI{3}{\second}-0}
+          =\SI{18}{\metre\per\second}\)}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \centering
+      \resizebox{\textwidth}{!}{\input{figures/polynomial-motion-plots.tikz}}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\end{document}

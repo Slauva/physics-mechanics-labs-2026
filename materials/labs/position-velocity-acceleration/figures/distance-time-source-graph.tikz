@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    width=10.6cm,
+    height=6.05cm,
+    axis lines=left,
+    axis line style={PhysicsNavy,-{Latex[length=2.1mm]}},
+    xmin=0,xmax=26,
+    ymin=0,ymax=2.2,
+    xtick={0,5,...,25},
+    ytick={0,0.5,...,2.0},
+    minor x tick num=4,
+    minor y tick num=4,
+    xlabel={$t$ (\si{\second})},
+    ylabel={$S$ (\si{\metre})},
+    tick label style={font=\scriptsize\sffamily},
+    label style={font=\small\sffamily},
+    grid=both,
+    major grid style={PhysicsMuted!48},
+    minor grid style={PhysicsLine}
+  ]
+    \addplot[PhysicsNavy,line width=1.6pt,smooth]
+      coordinates {(0,0) (3,0.015) (6,0.07) (8,0.18) (10,0.42)
+        (12,0.82) (14,1.32) (16,1.72) (18,1.94) (20,2.00) (26,2.00)};
+    \ifdefined\showaveragesecant
+      \addplot[PhysicsBlue,line width=1.4pt,domain=0:20,samples=2] {0.10*x};
+      \node[anchor=north west,font=\scriptsize\sffamily,text=PhysicsBlue,
+        fill=white,inner sep=1.5pt]
+        at (axis cs:2.2,0.63) {average secant};
+    \fi
+    \ifdefined\showmaxtangent
+      \addplot[PhysicsRed,line width=1.4pt,domain=10:17,samples=2] {0.25*(x-10)+0.32};
+      \node[anchor=south east,font=\scriptsize\sffamily,text=PhysicsRed,
+        fill=white,inner sep=1.5pt]
+        at (axis cs:16.3,1.95) {steepest tangent};
+    \fi
+    \ifdefined\showequaltangent
+      \addplot[PhysicsGold,line width=1.5pt,domain=0:16,samples=2] {0.1075*x};
+      \addplot[only marks,mark=*,mark size=2.2pt,PhysicsGold]
+        coordinates {(16,1.72)};
+      \node[anchor=south east,font=\scriptsize\sffamily,text=PhysicsGold!70!black,
+        fill=white,inner sep=1.5pt]
+        at (axis cs:15.2,1.56) {tangent through the origin};
+    \fi
+  \end{axis}
+\end{tikzpicture}

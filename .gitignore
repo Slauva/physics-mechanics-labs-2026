@@ -1,0 +1,14 @@
+/output/
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.xdv
+.DS_Store
+

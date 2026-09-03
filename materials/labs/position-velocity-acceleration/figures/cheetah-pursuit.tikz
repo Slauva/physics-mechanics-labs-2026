@@ -1,0 +1,35 @@
+\begin{tikzpicture}[
+  x=1cm,
+  y=0.85cm,
+  axis arrow/.style={-{Latex[length=2.5mm]},PhysicsNavy,line width=1pt}
+]
+  \draw[axis arrow] (0,0) -- (7.2,0) node[right,font=\small\sffamily] {$t$};
+  \draw[axis arrow] (0,0) -- (0,5.8) node[above,font=\small\sffamily] {$x$};
+  \draw[PhysicsRed,line width=1.5pt] (0,0) -- (6,5);
+  \draw[PhysicsBlue,line width=1.5pt] (0,1.3) -- (6,5);
+  \fill[PhysicsNavy] (6,5) circle[radius=2.8pt];
+  \node[above left,font=\small\sffamily] at (6,5) {capture};
+  \node[rotate=39,font=\scriptsize\sffamily,text=PhysicsRed,
+    fill=white,inner sep=1pt] at (3.6,3.0)
+    {cheetah: \SI{101}{\kilo\metre\per\hour}};
+  \node[rotate=31,font=\scriptsize\sffamily,text=PhysicsBlue,
+    fill=white,inner sep=1pt] at (3.7,3.7)
+    {antelope: \SI{88}{\kilo\metre\per\hour}};
+
+  \ifdefined\cheetahparta
+    \draw[physics dimension] (-0.45,0.05) --
+      node[left,font=\scriptsize\sffamily,align=right] {head start\\\SI{40}{\metre}}
+      (-0.45,1.25);
+    \draw[PhysicsMuted,dashed] (6,0) -- (6,4.85);
+    \node[below,font=\scriptsize\sffamily,text=PhysicsMuted] at (6,0) {$t=?$};
+  \fi
+
+  \ifdefined\cheetahpartb
+    \draw[physics dimension] (-0.45,0.05) --
+      node[left,font=\scriptsize\sffamily,align=right] {head start\\$?$}
+      (-0.45,1.25);
+    \draw[PhysicsMuted,dashed] (6,0) -- (6,4.85);
+    \node[below,font=\scriptsize\sffamily,text=PhysicsMuted] at (6,0)
+      {$t=\SI{20}{\second}$};
+  \fi
+\end{tikzpicture}

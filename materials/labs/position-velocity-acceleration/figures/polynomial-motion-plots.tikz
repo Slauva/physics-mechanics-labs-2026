@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={group size=3 by 1,horizontal sep=1.0cm},
+    width=4.35cm,
+    height=4.75cm,
+    axis lines=middle,
+    axis line style={PhysicsNavy,-{Latex[length=1.8mm]}},
+    xmin=0,xmax=5.1,
+    xlabel={$t$ (\si{\second})},
+    tick label style={font=\tiny\sffamily},
+    label style={font=\scriptsize\sffamily},
+    grid=major,
+    grid style={PhysicsLine},
+    samples=120,
+    domain=0:5
+  ]
+    \nextgroupplot[ymin=0,ymax=72,ylabel={$x$ (\si{\metre})}]
+      \addplot[PhysicsBlue,line width=1.5pt] {12*x^2-2*x^3};
+      \draw[PhysicsMuted,dotted] (axis cs:4,0) -- (axis cs:4,64);
+      \addplot[only marks,mark=*,mark size=2pt,PhysicsBlue]
+        coordinates {(3,54) (4,64)};
+    \nextgroupplot[ymin=-35,ymax=30,ylabel={$v$ (\si{\metre\per\second})}]
+      \addplot[PhysicsRed,line width=1.5pt] {24*x-6*x^2};
+      \draw[PhysicsMuted,dotted] (axis cs:2,-35) -- (axis cs:2,24);
+      \addplot[only marks,mark=*,mark size=2pt,PhysicsRed]
+        coordinates {(2,24) (3,18) (4,0)};
+    \nextgroupplot[ymin=-38,ymax=28,ylabel={$a$ (\si{\metre\per\second\squared})}]
+      \addplot[PhysicsGold!75!black,line width=1.5pt] {24-12*x};
+      \addplot[only marks,mark=*,mark size=2pt,PhysicsGold!75!black]
+        coordinates {(2,0) (3,-12) (4,-24)};
+  \end{groupplot}
+\end{tikzpicture}

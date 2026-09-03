@@ -1,0 +1,21 @@
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  motion/.style={-{Latex[length=2.6mm]},PhysicsBlue,line width=1.4pt},
+  return motion/.style={-{Latex[length=2.6mm]},PhysicsRed,line width=1.4pt}
+]
+  \draw[PhysicsNavy,line width=1pt,-{Latex[length=2.4mm]}]
+    (0,0) -- (9,0) node[right,font=\small\sffamily] {$+x$};
+  \foreach \x/\label in {1/x_i,5/x_f,8/{\text{turning point}}} {
+    \draw[PhysicsMuted] (\x,0.10) -- (\x,-0.10);
+    \fill[PhysicsNavy] (\x,0) circle[radius=2.2pt];
+    \node[below=4pt,font=\small\sffamily] at (\x,0) {$\label$};
+  }
+
+  \draw[motion] (1,0.65) -- node[above,font=\small\sffamily] {outward path} (8,0.65);
+  \draw[return motion] (8,1.20) -- node[above,font=\small\sffamily] {return path} (5,1.20);
+  \draw[physics dimension] (1,-0.85) -- node[below=2pt,font=\small\sffamily]
+    {displacement $\Delta x=x_f-x_i$} (5,-0.85);
+  \node[anchor=west,font=\scriptsize\sffamily,text=PhysicsMuted]
+    at (0,1.75) {schematic};
+\end{tikzpicture}

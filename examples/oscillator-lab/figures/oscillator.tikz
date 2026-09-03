@@ -1,0 +1,20 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \fill[PhysicsPaper] (-2.0,-0.5) rectangle (2.4,5.0);
+  \draw[physics line,line width=2pt] (-1.6,4.65) -- (1.6,4.65);
+  \foreach \x in {-1.5,-1.2,...,1.5}
+    \draw[PhysicsMuted,thin] (\x,4.65) -- ++(-0.22,0.22);
+  \draw[physics accent,decorate,decoration={coil,aspect=0.45,segment length=5mm,amplitude=4mm}]
+    (0,4.65) -- (0,1.75);
+  \filldraw[fill=PhysicsBlue!18,draw=PhysicsNavy,line width=1.1pt,rounded corners=1mm]
+    (-0.78,0.75) rectangle (0.78,1.75);
+  \node[font=\bfseries\sffamily,text=PhysicsNavy] at (0,1.25) {$m$};
+
+  \draw[physics force] (0.95,1.25) -- ++(0,1.25)
+    node[right,physics label] {$\vec F_{\text{spring}}$};
+  \draw[physics force] (-0.95,1.25) -- ++(0,-1.15)
+    node[left,physics label] {$m\vec g$};
+  \draw[-{Latex[length=3mm]},PhysicsBlue,line width=1.2pt]
+    (1.8,2.2) -- (1.8,0.45) node[below,physics label] {$x$};
+  \draw[PhysicsMuted,dashed] (-1.35,1.75) -- (1.55,1.75)
+    node[right,physics label] {equilibrium};
+\end{tikzpicture}

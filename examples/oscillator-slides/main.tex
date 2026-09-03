@@ -1,0 +1,72 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+\usetheme{PhysicsLab}
+
+\title[Mass--Spring Oscillator]{Mass--Spring Oscillator}
+\subtitle{Using the oscillation period to determine the spring constant}
+\author{Mechanics Course}
+\institute{Demonstration Material}
+\date{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Experimental Question}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \Large How does the period $T$ change as the suspended mass $m$ increases?
+
+      \vspace{1em}
+      \begin{block}{Testable hypothesis}
+        The squared period depends linearly on the mass.
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \centering
+      \resizebox{0.72\linewidth}{!}{\input{../oscillator-lab/figures/oscillator.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{From Model to Graph}
+  \keyformula{$m\ddot{x}+kx=0 \quad\Longrightarrow\quad T^2=\dfrac{4\pi^2}{k}\,m$}
+
+  \vspace{1.2em}
+  \begin{itemize}
+    \item horizontal axis: $m$ in \si{\kilo\gram};
+    \item vertical axis: $T^2$ in \si{\second\squared};
+    \item slope: $a=4\pi^2/k$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Measurement Strategy}
+  \begin{enumerate}
+    \item Measure the time for twenty oscillations, not one.
+    \item Repeat the experiment for five masses.
+    \item Plot $T^2$ against $m$ and estimate the slope.
+  \end{enumerate}
+
+  \vspace{1em}
+  \begin{block}{Why is this more precise?}
+    Timing a longer interval reduces the relative contribution of human reaction time.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+      \keyformula{$k=\dfrac{4\pi^2}{a}$}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{itemize}
+        \item test linearity;
+        \item determine the spring constant;
+        \item interpret the intercept.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

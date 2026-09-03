@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={group size=3 by 1,horizontal sep=1.0cm},
+    width=4.35cm,
+    height=4.65cm,
+    axis lines=left,
+    axis line style={PhysicsNavy,-{Latex[length=1.8mm]}},
+    xmin=0,xmax=5,
+    xlabel={$u=t/\tau$},
+    tick label style={font=\tiny\sffamily},
+    label style={font=\scriptsize\sffamily},
+    grid=major,
+    grid style={PhysicsLine},
+    samples=100,
+    domain=0:5
+  ]
+    \nextgroupplot[ymin=0,ymax=1.08,ylabel={$a/a_0$}]
+      \addplot[PhysicsRed,line width=1.5pt] {exp(-x)};
+    \nextgroupplot[ymin=0,ymax=1.08,ylabel={$v/(a_0\tau)$}]
+      \addplot[PhysicsBlue,line width=1.5pt] {1-exp(-x)};
+      \addplot[PhysicsMuted,dashed,domain=0:5,samples=2] {1};
+    \nextgroupplot[ymin=0,ymax=4.2,ylabel={$x/(a_0\tau^2)$}]
+      \addplot[PhysicsNavy,line width=1.5pt] {x+exp(-x)-1};
+  \end{groupplot}
+\end{tikzpicture}

@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  box/.style={
+    draw=PhysicsBlue,
+    line width=1.2pt,
+    rounded corners=3pt,
+    fill=white,
+    minimum width=2.25cm,
+    minimum height=1.25cm,
+    align=center,
+    font=\sffamily
+  },
+  derivative/.style={-{Latex[length=2.7mm]},PhysicsRed,line width=1.3pt},
+  integral/.style={-{Latex[length=2.7mm]},PhysicsBlue,line width=1.3pt}
+]
+  \node[box] (x) at (0,0) {\Large $x(t)$\\[-1pt]\scriptsize position};
+  \node[box] (v) at (4.2,0) {\Large $v(t)$\\[-1pt]\scriptsize velocity};
+  \node[box] (a) at (8.4,0) {\Large $a(t)$\\[-1pt]\scriptsize acceleration};
+
+  \draw[derivative] ([yshift=0.28cm]x.east) --
+    node[above,font=\small\sffamily] {$\mathrm{d}/\mathrm{d}t$}
+    ([yshift=0.28cm]v.west);
+  \draw[derivative] ([yshift=0.28cm]v.east) --
+    node[above,font=\small\sffamily] {$\mathrm{d}/\mathrm{d}t$}
+    ([yshift=0.28cm]a.west);
+  \draw[integral] ([yshift=-0.28cm]v.west) --
+    node[below,font=\small\sffamily] {$\int\!\mathrm{d}t+x_0$}
+    ([yshift=-0.28cm]x.east);
+  \draw[integral] ([yshift=-0.28cm]a.west) --
+    node[below,font=\small\sffamily] {$\int\!\mathrm{d}t+v_0$}
+    ([yshift=-0.28cm]v.east);
+\end{tikzpicture}

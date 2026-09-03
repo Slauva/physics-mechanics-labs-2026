@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[PhysicsInk,line width=1.2pt] (0.15,0.35) -- (10.15,0.35);
+
+  \node[anchor=south] at (2.1,0.4)
+    {\includegraphics[width=3.0cm,height=2.0cm,keepaspectratio]{assets/problem3-motorcycle.png}};
+  \node[anchor=south] at (7.55,0.4)
+    {\includegraphics[width=3.1cm,height=2.0cm,keepaspectratio]{assets/problem3-car.png}};
+
+  \node[font=\small\sffamily] at (2.1,2.72) {$v_m=0$};
+  \node[font=\small\sffamily] at (7.55,2.72)
+    {$v_c=\SI{31}{\metre\per\second}$};
+
+  \draw[{Latex[length=2.2mm]}-{Latex[length=2.2mm]},PhysicsInk,line width=0.9pt]
+    (3.7,1.35) -- node[above=3pt,font=\small\sffamily]
+    {$t=\SI{2.5}{\second}$} (5.95,1.35);
+  \draw[-{Latex[length=2.5mm]},PhysicsInk,line width=1pt]
+    (9.2,1.35) -- (10.15,1.35);
+
+  \node[font=\small\sffamily] at (2.1,0.03) {$x_m$};
+  \node[font=\small\sffamily] at (7.55,0.03) {$x_c$};
+\end{tikzpicture}

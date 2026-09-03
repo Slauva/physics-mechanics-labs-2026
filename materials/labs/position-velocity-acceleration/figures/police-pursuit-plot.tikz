@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    width=11.3cm,
+    height=5.7cm,
+    axis lines=left,
+    axis line style={PhysicsNavy,-{Latex[length=2.2mm]}},
+    xmin=0,xmax=23,
+    ymin=0,ymax=740,
+    xlabel={$t$ (\si{\second})},
+    ylabel={$x$ (\si{\metre})},
+    tick label style={font=\scriptsize\sffamily},
+    label style={font=\small\sffamily},
+    grid=major,
+    grid style={PhysicsLine},
+    legend style={at={(0.03,0.97)},anchor=north west,draw=none,
+      fill=white,font=\scriptsize\sffamily}
+  ]
+    \addplot[PhysicsBlue,line width=1.5pt,domain=0:22.5,samples=2] {31*x};
+    \addlegendentry{car: $x_c=31t$}
+    \addplot[PhysicsRed,line width=1.5pt] coordinates {(0,0) (2.5,0)};
+    \addplot[PhysicsRed,line width=1.5pt,domain=2.5:22.5,samples=80]
+      {1.8*(x-2.5)^2};
+    \addlegendentry{motorcycle}
+
+    \draw[PhysicsMuted,dotted] (axis cs:2.5,0) -- (axis cs:2.5,115);
+    \addplot[only marks,mark=*,mark size=2.1pt,PhysicsRed,forget plot]
+      coordinates {(2.5,0)};
+    \node[anchor=south west,font=\scriptsize\sffamily,text=PhysicsMuted,
+      fill=white,inner sep=1.5pt]
+      at (axis cs:2.8,72) {starts at \SI{2.5}{\second}};
+
+    \addplot[only marks,mark=*,mark size=2.3pt,PhysicsNavy,forget plot]
+      coordinates {(21.94,680.1)};
+    \node[anchor=north east,font=\scriptsize\sffamily,fill=white,inner sep=1.5pt]
+      at (axis cs:21.5,664) {overtake};
+  \end{axis}
+\end{tikzpicture}

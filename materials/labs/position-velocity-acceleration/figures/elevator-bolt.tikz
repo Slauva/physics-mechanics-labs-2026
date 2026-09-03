@@ -1,0 +1,27 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % Cabin and cable follow the professor's original schematic.
+  \fill[PhysicsPaper] (2.15,0.55) rectangle (4.55,4.15);
+  \draw[PhysicsInk,line width=1pt] (2.15,0.55) rectangle (4.55,4.15);
+  \draw[PhysicsInk,line width=1pt] (2.15,0.72) -- (4.55,0.72);
+  \draw[PhysicsInk,line width=1pt] (2.15,3.98) -- (4.55,3.98);
+  \draw[PhysicsInk,line width=0.9pt] (3.35,0.72) -- (3.35,3.98);
+
+  \draw[PhysicsInk,line width=0.85pt] (3.35,4.15) -- (3.35,6.05);
+  \fill[PhysicsCyan] (3.65,6.05) circle[radius=0.30];
+  \draw[PhysicsInk,line width=0.85pt] (3.65,6.05) circle[radius=0.30];
+  \draw[PhysicsInk,line width=0.85pt] (3.92,6.19) -- (5.75,5.92);
+
+  \draw[-{Latex[length=2.5mm]},PhysicsInk,line width=1pt]
+    (0.72,1.9) -- (0.72,3.25);
+  \node[anchor=east,font=\small\sffamily] at (1.78,1.55)
+    {$w=\SI{1.2}{\metre\per\second\squared}$};
+
+  \draw[{Latex[length=2mm]}-{Latex[length=2mm]},PhysicsInk,line width=0.85pt]
+    (4.80,0.55) -- node[right=4pt,font=\small\sffamily]
+    {$\SI{2.7}{\metre}$} (4.80,4.15);
+
+  \draw[-{Latex[length=2.7mm]},PhysicsInk,line width=1pt]
+    (6.45,0.55) -- (6.45,5.18);
+  \node[above,font=\small\sffamily] at (6.45,5.18) {$y$};
+  \node[below,font=\small\itshape\sffamily] at (3.35,0.42) {lift cabin};
+\end{tikzpicture}

@@ -1,0 +1,143 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemePhysicsLab}[2026/09/03 Physics presentation theme]
+
+\mode<presentation>
+\RequirePackage{physicslab-common}
+\RequirePackage{hyperref}
+
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\fontsize{18}{21},series=\bfseries}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{frametitle}{size=\fontsize{16}{19},series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamercolor{normal text}{fg=PhysicsInk,bg=PhysicsCanvas}
+\setbeamercolor{background canvas}{bg=PhysicsCanvas}
+\setbeamercolor{structure}{fg=PhysicsBlue}
+\setbeamercolor{title}{fg=PhysicsInk}
+\setbeamercolor{subtitle}{fg=PhysicsMuted}
+\setbeamercolor{frametitle}{fg=PhysicsInk,bg=PhysicsCanvas}
+\setbeamercolor{block title}{fg=PhysicsBlue,bg=PhysicsPaper}
+\setbeamercolor{block body}{fg=PhysicsInk,bg=PhysicsPaper}
+\setbeamercolor{block title alerted}{fg=PhysicsRed,bg=PhysicsWarm}
+\setbeamercolor{block body alerted}{fg=PhysicsInk,bg=PhysicsWarm}
+\setbeamercolor{block title example}{fg=PhysicsBlue,bg=PhysicsCyan!16}
+\setbeamercolor{block body example}{fg=PhysicsInk,bg=PhysicsCyan!16}
+\setbeamercolor{formula}{fg=PhysicsNavy,bg=white}
+\setbeamercolor{alerted text}{fg=PhysicsRed}
+
+\setbeamersize{text margin left=0.055\paperwidth,text margin right=0.055\paperwidth}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{itemize item}{\color{PhysicsBlue}\raise0.15ex\hbox{\small$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\color{PhysicsBlue}\raise0.15ex\hbox{\scriptsize$\bullet$}}
+\setbeamertemplate{enumerate item}{%
+  \tikz[baseline=(number.base)]\node[
+    circle,
+    fill=PhysicsBlue,
+    text=white,
+    inner sep=1.6pt,
+    font=\scriptsize\bfseries
+  ] (number) {\insertenumlabel};%
+}
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[PhysicsCanvas] (current page.south west) rectangle (current page.north east);
+    \fill[PhysicsBlue]
+      (current page.south west) rectangle
+      ([xshift=0.012\paperwidth]current page.north west);
+    \fill[PhysicsPaper]
+      ([xshift=0.78\paperwidth]current page.south west) rectangle
+      (current page.north east);
+    \draw[PhysicsBlue!32,line width=1.1pt]
+      ([xshift=0.88\paperwidth,yshift=-0.15\paperheight]current page.north west)
+      circle[radius=0.19\paperheight];
+    \fill[PhysicsRed]
+      ([xshift=0.96\paperwidth,yshift=-0.15\paperheight]current page.north west)
+      circle[radius=3pt];
+  \end{tikzpicture}
+  \vspace{0.21\paperheight}
+  \begin{beamercolorbox}[wd=\textwidth,leftskip=0pt,rightskip=0pt]{title}
+    {\usebeamerfont{title}\inserttitle\par}
+    \ifx\insertsubtitle\empty\else
+      \vspace{0.55em}{\usebeamerfont{subtitle}\insertsubtitle\par}
+    \fi
+  \end{beamercolorbox}
+  \vfill
+  {\color{PhysicsInk}\small\insertauthor\par}
+  {\color{PhysicsMuted}\small\insertinstitute\par}
+  \vspace{0.35em}
+  {\color{PhysicsMuted}\scriptsize\insertdate\par}
+  \vspace{0.055\paperheight}
+}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=0.092\paperheight,
+    dp=0.022\paperheight,
+    leftskip=0.055\paperwidth,
+    rightskip=0.055\paperwidth
+  ]{frametitle}
+    {\color{PhysicsBlue}\rule{3pt}{1.25em}}\hspace{0.65em}%
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}
+  \nointerlineskip
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=0.5pt,
+    dp=0pt,
+    leftskip=0.055\paperwidth
+  ]{normal text}
+    {\color{PhysicsLine}\rule{0.89\paperwidth}{0.5pt}}
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=0.5pt,
+    dp=0pt,
+    leftskip=0.055\paperwidth
+  ]{normal text}
+    {\color{PhysicsLine}\rule{0.89\paperwidth}{0.5pt}}
+  \end{beamercolorbox}
+  \hbox{%
+    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.7ex,dp=1.15ex,leftskip=0.055\paperwidth]{author in head/foot}%
+      \color{PhysicsMuted}\scriptsize\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.7ex,dp=1.15ex,rightskip=0.055\paperwidth plus1fil]{date in head/foot}%
+      \color{PhysicsBlue}\bfseries\scriptsize\insertframenumber
+      \color{PhysicsMuted}\,/\,\inserttotalframenumber
+    \end{beamercolorbox}%
+  }
+}
+
+\newcommand{\keyformula}[1]{%
+  \begin{beamercolorbox}[rounded=true,sep=0.9em,wd=\linewidth]{formula}
+    \centering\large#1
+  \end{beamercolorbox}
+}
+
+\newcommand{\slidetag}[1]{%
+  \tikz[baseline=(tag.base)]\node[
+    rounded corners=1.5pt,
+    fill=PhysicsCyan!24,
+    text=PhysicsBlue,
+    inner xsep=5pt,
+    inner ysep=2.2pt,
+    font=\scriptsize\bfseries\sffamily
+  ] (tag) {#1};%
+}
+
+\newcommand{\resultcard}[2]{%
+  \begin{beamercolorbox}[rounded=true,sep=0.75em,wd=\linewidth]{block body}
+    {\color{PhysicsMuted}\scriptsize\bfseries\MakeUppercase{#1}\par}
+    \vspace{0.25em}{\color{PhysicsNavy}\normalsize\bfseries #2\par}
+  \end{beamercolorbox}
+}
+
+\mode<all>

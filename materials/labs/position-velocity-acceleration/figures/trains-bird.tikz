@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  black mp/.style={circle,fill=PhysicsInk,draw=PhysicsInk,minimum size=5.5pt,
+    inner sep=0pt},
+  white mp/.style={circle,fill=white,draw=PhysicsInk,line width=0.8pt,
+    minimum size=5.5pt,inner sep=0pt},
+  motion/.style={-{Latex[length=2.2mm]},PhysicsInk,line width=0.9pt},
+  track/.style={PhysicsInk,line width=0.9pt}
+]
+  % Legend: the names used in the professor's material-point model.
+  \node[black mp] at (4.05,5.05) {};
+  \node[anchor=west,font=\scriptsize\sffamily] at (4.18,5.05)
+    {black MP (train)};
+  \node[white mp] at (7.0,5.05) {};
+  \node[anchor=west,font=\scriptsize\sffamily] at (7.13,5.05)
+    {white MP (bird)};
+
+  % Time runs downward, as in the source schematic.
+  \draw[-{Latex[length=2.8mm]},PhysicsInk,line width=1pt]
+    (0.45,4.65) -- (0.45,0.15);
+  \node[rotate=90,font=\small\sffamily] at (0.12,2.4)
+    {Evolution of the system, time};
+
+  % Initial state.
+  \draw[track] (1.15,4.25) -- (10.75,4.25);
+  \node[black mp] at (2.05,4.25) {};
+  \node[white mp] at (2.30,4.25) {};
+  \node[black mp] at (9.85,4.25) {};
+  \draw[physics dimension] (2.05,3.88) --
+    node[below,font=\scriptsize\sffamily] {$S=\SI{60}{\kilo\metre}$}
+    (9.85,3.88);
+  \node[anchor=west,font=\scriptsize\sffamily] at (10.9,4.25)
+    {initial position};
+
+  % First flight of the white material point.
+  \draw[track] (1.15,2.95) -- (10.75,2.95);
+  \node[black mp] at (2.95,2.95) {};
+  \node[white mp] at (5.2,2.95) {};
+  \node[black mp] at (9.0,2.95) {};
+  \draw[motion] (3.05,3.15) -- node[above,font=\scriptsize\sffamily] {$V_b$}
+    (3.75,3.15);
+  \draw[motion] (5.3,3.15) -- node[above,font=\scriptsize\sffamily] {$V_w$}
+    (6.2,3.15);
+  \draw[motion] (8.9,3.15) -- node[above,font=\scriptsize\sffamily] {$-V_b$}
+    (8.2,3.15);
+
+  % Return flight after the trains have moved closer.
+  \draw[track] (1.15,1.72) -- (10.75,1.72);
+  \node[black mp] at (3.55,1.72) {};
+  \node[white mp] at (6.7,1.72) {};
+  \node[black mp] at (8.35,1.72) {};
+  \draw[motion] (3.65,1.92) -- node[above,font=\scriptsize\sffamily] {$V_b$}
+    (4.35,1.92);
+  \draw[motion] (6.6,1.92) -- node[above,font=\scriptsize\sffamily] {$-V_w$}
+    (5.7,1.92);
+  \draw[motion] (8.25,1.92) -- node[above,font=\scriptsize\sffamily] {$-V_b$}
+    (7.55,1.92);
+
+  % Final state.
+  \draw[track] (1.15,0.55) -- (10.75,0.55);
+  \node[black mp] at (5.82,0.55) {};
+  \node[white mp] at (6.02,0.55) {};
+  \node[black mp] at (6.22,0.55) {};
+  \node[below=3pt,font=\scriptsize\sffamily] at (6.02,0.55) {collision};
+  \node[anchor=west,font=\scriptsize\sffamily] at (10.9,0.55)
+    {final position};
+\end{tikzpicture}
