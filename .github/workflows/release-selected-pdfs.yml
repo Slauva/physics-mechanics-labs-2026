@@ -1,0 +1,135 @@
+name: Release selected PDFs
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, for example mechanics-2026-09-03"
+        required: true
+        type: string
+      release_name:
+        description: "Optional release title; the tag is used when empty"
+        required: false
+        type: string
+      entrypoints:
+        description: "LaTeX entry points to build, one per line or comma-separated"
+        required: true
+        type: string
+        default: |
+          materials/labs/position-velocity-acceleration/main.tex
+          materials/labs/position-velocity-acceleration/solution.tex
+      prerelease:
+        description: "Mark a newly created release as a prerelease"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  packages: read
+
+concurrency:
+  group: release-selected-pdfs-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    name: Build and publish selected PDFs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ inputs.tag }}
+      RELEASE_NAME: ${{ inputs.release_name }}
+      SELECTED_ENTRYPOINTS: ${{ inputs.entrypoints }}
+      PRERELEASE: ${{ inputs.prerelease }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate release tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^[A-Za-z0-9][A-Za-z0-9._/-]*$ ]]; then
+            echo "Invalid release tag: $RELEASE_TAG" >&2
+            exit 2
+          fi
+
+      - name: Log in to GitHub Container Registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io \
+            --username "${{ github.actor }}" \
+            --password-stdin
+
+      - name: Build selected entry points
+        shell: bash
+        run: |
+          set -euo pipefail
+          entrypoints=()
+
+          while IFS= read -r candidate || [[ -n "$candidate" ]]; do
+            candidate="${candidate//$'\r'/}"
+            candidate="${candidate#"${candidate%%[![:space:]]*}"}"
+            candidate="${candidate%"${candidate##*[![:space:]]}"}"
+            [[ -z "$candidate" ]] && continue
+            entrypoints+=("$candidate")
+          done < <(printf '%s\n' "$SELECTED_ENTRYPOINTS" | tr ',' '\n')
+
+          if (( ${#entrypoints[@]} == 0 )); then
+            echo "No entry points were supplied." >&2
+            exit 2
+          fi
+
+          ./scripts/build-release-entrypoints.sh "${entrypoints[@]}"
+
+      - name: Create or update GitHub Release
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t assets < output/release-assets/manifest.txt
+
+          if (( ${#assets[@]} == 0 )); then
+            echo "The release manifest is empty." >&2
+            exit 1
+          fi
+
+          for asset in "${assets[@]}"; do
+            [[ -f "$asset" ]] || {
+              echo "Release asset is missing: $asset" >&2
+              exit 1
+            }
+          done
+
+          title="$RELEASE_NAME"
+          [[ -n "$title" ]] || title="$RELEASE_TAG"
+
+          notes_file="output/release-assets/release-notes.md"
+          {
+            printf 'PDF materials generated from commit `%s`.\n\n' "$GITHUB_SHA"
+            printf 'Included assets:\n'
+            for asset in "${assets[@]}"; do
+              printf -- '- `%s`\n' "$(basename "$asset")"
+            done
+          } > "$notes_file"
+
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
+          else
+            create_args=(
+              release create "$RELEASE_TAG"
+              "${assets[@]}"
+              --target "$GITHUB_SHA"
+              --title "$title"
+              --notes-file "$notes_file"
+            )
+            if [[ "$PRERELEASE" == "true" ]]; then
+              create_args+=(--prerelease)
+            fi
+            gh "${create_args[@]}"
+          fi
+
+          gh release view "$RELEASE_TAG" --json url --jq .url

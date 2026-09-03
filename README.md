@@ -35,6 +35,46 @@ make lint        # проверить структуру и English-only исх�
 make clean       # удалить только генерируемый output/
 ```
 
+## Публикация выбранных PDF в GitHub Release
+
+Workflow `Release selected PDFs` запускается вручную во вкладке **Actions**.
+При запуске указываются:
+
+- `tag` — тег создаваемого или уже существующего релиза;
+- `release_name` — необязательное название нового релиза;
+- `entrypoints` — только нужные точки входа, по одной на строку или через
+  запятую;
+- `prerelease` — признак предварительного релиза.
+
+Например, чтобы выпустить только студенческую презентацию и версию с решениями
+для первой лабораторной:
+
+```text
+materials/labs/position-velocity-acceleration/main.tex
+materials/labs/position-velocity-acceleration/solution.tex
+```
+
+Workflow вызывает `make build FILE=...` отдельно для каждого указанного файла,
+поэтому остальные материалы не собираются. Для `main.tex` создаётся файл с
+суффиксом `student`, для `solution.tex` — с суффиксом `solution`. Например:
+
+```text
+labs-position-velocity-acceleration-student.pdf
+labs-position-velocity-acceleration-solution.pdf
+```
+
+Если релиз с таким тегом уже существует, выбранные PDF загружаются повторно с
+заменой одноимённых файлов. Локально тот же набор можно подготовить командой:
+
+```bash
+./scripts/build-release-entrypoints.sh \
+  materials/labs/position-velocity-acceleration/main.tex \
+  materials/labs/position-velocity-acceleration/solution.tex
+```
+
+Подготовленные файлы и точный список вложений появляются в
+`output/release-assets/`.
+
 Рабочий процесс с обязательными ручными контрольными точками описан в [docs/WORKFLOW.md](docs/WORKFLOW.md). Правила дизайна — в [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Структура
