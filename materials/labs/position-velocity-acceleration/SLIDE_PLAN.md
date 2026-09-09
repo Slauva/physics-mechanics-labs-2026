@@ -6,8 +6,9 @@ Direct user feedback on 2026-09-03 supersedes the editorial expansion in the
 approved Stage 2 proposal retained below. The current draft now mirrors the
 professor's material rather than extending it.
 
-- Deliverables: an 11-slide 16:9 student presentation and a 30-slide 16:9
-  presentation with solutions, matching the source deck lengths.
+- Deliverables: an 11-slide 16:9 student presentation and a 31-slide 16:9
+  presentation with solutions. One solution-only slide beyond the source deck
+  is retained to explain distance versus displacement in Problem 6.
 - Visible language: English only.
 - The title slide uses the campus photograph and Innopolis University logo
   derived from page 1 of the professor's PDF; the title remains on one line.
@@ -23,7 +24,8 @@ professor's material rather than extending it.
   PDF and preserves the original visual arrangement.
 - Problem 6 follows the professor's cabin, cable, dimension, acceleration
   arrow, and shaft-axis schematic; no bolt trajectory or extra vectors appear
-  on the prompt slide.
+  on the prompt slide. Its solution uses a separate vertical-path schematic
+  with release, turning, and impact states.
 - The base style uses an 11 pt Beamer body, white canvas, near-black text, teal
   primary accents, and limited coral/gold secondary accents.
 - Worked calculations establish the governing equation before evaluating it.
@@ -32,7 +34,7 @@ professor's material rather than extending it.
   source coefficients 12 and 2 throughout instead of introducing auxiliary
   symbols for them.
 - Solution-only material remains interleaved immediately after each problem:
-  19 solution frames and 30 frames in total.
+  20 solution frames and 31 frames in total.
 
 ## Archived Stage 2 proposal
 

@@ -442,6 +442,8 @@
         \item the time $t_0$ when the instantaneous velocity equals the mean
           velocity over the first $t_0$ seconds.
       \end{enumerate}
+      \vspace{0.25em}
+      Read all values to the precision of the graph grid.
     \end{column}
   \end{columns}
 \end{frame}
@@ -457,13 +459,16 @@
     \end{column}
     \begin{column}{0.40\textwidth}
       \footnotesize
-      Let $T$ be the time at which the motion shown on the graph ends. For
-      one-directional motion,
+      \textbf{1. Read the endpoints.} The curve starts at
+      $O=(\SI{0}{\second},\SI{0}{\metre})$ and first becomes horizontal at
+      $F=(\SI{20}{\second},\SI{2.0}{\metre})$.
+
+      \textbf{2. Find the secant slope.} For one-directional motion, the
+      full-motion average velocity is
       \[
-        \bar v=\frac{S(T)-S(0)}{T-0}.
+        \bar v=\frac{\Delta S}{\Delta t}
+        =\frac{S_F-S_O}{t_F-t_O}.
       \]
-      The secant drawn from the initial to the final point represents this
-      ratio.
       \answer{\(\displaystyle
         \bar v=\frac{\SI{2.0}{\metre}-0}{\SI{20}{\second}-0}
         =\SI{0.10}{\metre\per\second}
@@ -483,13 +488,15 @@
     \end{column}
     \begin{column}{0.40\textwidth}
       \footnotesize
-      Instantaneous velocity is the tangent slope:
-      \[
-        v(t)=\frac{\mathrm{d}S}{\mathrm{d}t}.
-      \]
-      The maximum velocity is obtained where this tangent is steepest. Use two
-      convenient grid points on the drawn tangent to evaluate its rise over
-      run.
+      \textbf{1. Locate the greatest slope.} Instantaneous velocity is the
+      tangent slope, $v(t)=\mathrm{d}S/\mathrm{d}t$. The curve is steepest
+      along its central, nearly straight section.
+
+      \textbf{2. Read two points on that tangent.} The steepest tangent $AC$
+      crosses the grid at $A=(\SI{10}{\second},\SI{0.50}{\metre})$ and
+      $C=(\SI{14}{\second},\SI{1.50}{\metre})$. The marked slope triangle
+      therefore gives $\Delta t=\SI{4}{\second}$ and
+      $\Delta S=\SI{1.0}{\metre}$.
       \answer{\(\displaystyle
         v_{\max}\approx\frac{\Delta S}{\Delta t}
         =\frac{\SI{1.0}{\metre}}{\SI{4}{\second}}
@@ -509,13 +516,17 @@
     \end{column}
     \begin{column}{0.40\textwidth}
       \footnotesize
-      The required equality is
+      \textbf{1. Compare two slopes.} Since $O=(0,0)$, secant $OD$ has slope
       \[
-        \left.\frac{\mathrm{d}S}{\mathrm{d}t}\right|_{t_0}
-        =\frac{S(t_0)-S(0)}{t_0}.
+        \bar v_{0\to t_0}=\frac{S(t_0)}{t_0}.
       \]
-      Thus the line from the origin to $(t_0,S(t_0))$ must also be tangent to
-      the curve.
+
+      At $D$, the instantaneous velocity is the tangent slope
+      $\left.\mathrm{d}S/\mathrm{d}t\right|_{t_0}$. The velocities are equal
+      when the same line $OD$ is also tangent at $D$.
+
+      \textbf{2. Read the time.} Rotate a line about $O$ until it just touches
+      the curve; then project $D$ onto the time axis.
       \answer{$t_0\approx\SI{16}{\second}$}
     \end{column}
   \end{columns}
@@ -547,22 +558,32 @@
   \end{columns}
 \end{frame}
 
-\begin{solutionframe}[Solution 6(a) — Free-Fall Time]
+\begin{solutionframe}[Solution 6(a) — Closing the Gap]
   \footnotesize
-  Let $h$ be the cabin height and $a_e$ the upward cabin acceleration. In the
-  elevator frame, the bolt starts from rest. Taking upward as positive, its
-  relative acceleration is
+  \textbf{1. Set the clock and direction.} Let $\tau=0$ at release and take
+  upward as positive. The fall time $t_f$ is measured from release to impact.
+  At release, the bolt and floor have the same velocity, so their initial
+  relative velocity is zero.
+
+  \textbf{2. Find the relative acceleration.} In the shaft frame,
   \[
-    a_{\mathrm{rel}}=-(g+a_e).
+    a_{\mathrm{bolt}}=-g,
+    \qquad
+    a_{\mathrm{floor}}=+a_e,
+    \qquad
+    a_{\mathrm{rel}}=a_{\mathrm{bolt}}-a_{\mathrm{floor}}
+      =-(g+a_e).
   \]
-  Its relative displacement to the floor is $-h$, so
+
+  \textbf{3. Close the gap.} For the relative coordinate
+  $r=y_{\mathrm{bolt}}-y_{\mathrm{floor}}$, we have
+  $r(0)=h$ and $r(t_f)=0$. Therefore
   \[
-    -h=0\cdot t_f-\frac12(g+a_e)t_f^2.
-  \]
-  Solving for the positive time gives
-  \[
+    0=h+0\cdot t_f-\frac12(g+a_e)t_f^2,
+    \qquad
     t_f=\sqrt{\frac{2h}{g+a_e}}.
   \]
+  Using $g=\SI{9.8}{\metre\per\second\squared}$,
   \answer{\(\displaystyle
     t_f=\sqrt{\frac{2(\SI{2.7}{\metre})}
       {\SI{9.8}{\metre\per\second\squared}
@@ -570,50 +591,66 @@
     =\SI{0.70}{\second}\)}
 \end{solutionframe}
 
-\begin{solutionframe}[Solution 6(b) — Shaft Reference Frame]
+\begin{solutionframe}[Solution 6(b) — Shaft-Frame Displacement]
   \footnotesize
   \setlength{\abovedisplayskip}{3pt}
   \setlength{\belowdisplayskip}{3pt}
+  \textbf{1. Find the velocity at release.} The source treats ``starts
+  ascending'' as starting from rest. At release time
+  $t_r=\SI{2.0}{\second}$, the bolt shares the cabin's upward velocity:
+  \[
+    v_0=a_et_r
+      =(\SI{1.2}{\metre\per\second\squared})(\SI{2.0}{\second})
+      =\SI{2.4}{\metre\per\second}.
+  \]
+
+  \textbf{2. Follow the bolt after release.} Free fall means that gravity is
+  the only force on the bolt; it does not mean that the bolt must initially
+  move downward. In the shaft frame,
+  \[
+    a_y=-g,
+    \qquad
+    \Delta y=v_0t_f-\frac12gt_f^2.
+  \]
+  \answer{\(\displaystyle
+    \Delta y=(\SI{2.4}{\metre\per\second})(\SI{0.70}{\second})
+      -\tfrac12(\SI{9.8}{\metre\per\second\squared})
+      (\SI{0.70}{\second})^2
+      \approx-\SI{0.72}{\metre}\)}
+  The negative sign means that the impact point is approximately
+  \SI{0.72}{\metre} below the release point in the shaft frame.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6(b) — Distance Covered]
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-      Let $t_r$ be the release time. At release, the bolt shares the cabin's
-      upward speed:
-      \[
-        v_0=a_et_r.
-      \]
-      In the shaft frame, the bolt then has acceleration $-g$. Its displacement
-      by the impact time is
-      \[
-        \Delta y=v_0t_f-\frac12gt_f^2.
-      \]
-      \answer{\scriptsize\(\begin{aligned}
-        v_0&=(\SI{1.2}{\metre\per\second\squared})
-          (\SI{2.0}{\second})=\SI{2.4}{\metre\per\second},\\
-        \Delta y&=(\SI{2.4}{\metre\per\second})(\SI{0.70}{\second})
-          -\tfrac12(\SI{9.8}{\metre\per\second\squared})
-          (\SI{0.70}{\second})^2\\
-          &=\SI{1.68}{\metre}-\SI{2.40}{\metre}
-          \approx-\SI{0.72}{\metre}.
-      \end{aligned}\)}
+    \begin{column}{0.54\textwidth}
+      \centering
+      \resizebox{0.94\textwidth}{!}{\input{figures/bolt-shaft-trajectory.tikz}}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      The bolt first moves upward until $v=0$:
+    \begin{column}{0.42\textwidth}
+      \footnotesize
+      \setlength{\abovedisplayskip}{3pt}
+      \setlength{\belowdisplayskip}{3pt}
+      \setlength{\jot}{1pt}
+      \textbf{1. Check for a turning point.} The bolt stops moving upward when
+      $v_y=v_0-g\tau=0$. Hence
       \[
-        0=v_0-gt_{\uparrow},
-        \qquad
-        d_{\uparrow}=\frac{v_0^2}{2g}.
+        \begin{aligned}
+          \tau_{\uparrow}&=\frac{v_0}{g}
+            \approx\SI{0.245}{\second}<t_f,\\
+          d_{\uparrow}&=\frac{v_0^2}{2g}
+            \approx\SI{0.294}{\metre}.
+        \end{aligned}
       \]
-      The downward part is $d_{\uparrow}+|\Delta y|$, hence
+      \textbf{2. Add both path segments.} It rises by $d_{\uparrow}$ and then
+      falls by $d_{\uparrow}+|\Delta y|$:
       \[
-        S=2d_{\uparrow}+|\Delta y|.
+        S=d_{\uparrow}+(d_{\uparrow}+|\Delta y|)
+          =2d_{\uparrow}+|\Delta y|.
       \]
-      \answer{\scriptsize\(\begin{aligned}
-        d_{\uparrow}&=\frac{(\SI{2.4}{\metre\per\second})^2}
-          {2(\SI{9.8}{\metre\per\second\squared})}
-          =\SI{0.294}{\metre},\\
-        S&=2(\SI{0.294}{\metre})+\SI{0.72}{\metre}
-          =\SI{1.308}{\metre}\approx\SI{1.31}{\metre}.
-      \end{aligned}\)}
+      \answer{\(\displaystyle
+        S\approx2(\SI{0.294}{\metre})+\SI{0.72}{\metre}
+          \approx\SI{1.31}{\metre}\)}
     \end{column}
   \end{columns}
 \end{solutionframe}

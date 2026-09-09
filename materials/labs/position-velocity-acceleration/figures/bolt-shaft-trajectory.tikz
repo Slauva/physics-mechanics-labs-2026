@@ -1,0 +1,55 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \coordinate (impact) at (3.10,0.75);
+  \coordinate (release) at (3.10,3.05);
+  \coordinate (highest) at (3.10,4.35);
+
+  % Shaft-fixed coordinate direction; this is an axis, not a force.
+  \draw[-{Latex[length=2.5mm]},PhysicsInk,line width=0.9pt]
+    (0.35,0.45) -- (0.35,5.15);
+  \node[above,font=\small\sffamily] at (0.35,5.15) {$+y$};
+
+  % Construction levels for the three physically relevant states.
+  \draw[PhysicsMuted,densely dashed,line width=0.55pt]
+    (0.55,0.75) -- (5.85,0.75);
+  \draw[PhysicsMuted,densely dashed,line width=0.55pt]
+    (0.55,3.05) -- (5.85,3.05);
+  \draw[PhysicsMuted,densely dashed,line width=0.55pt]
+    (0.55,4.35) -- (5.85,4.35);
+
+  % Motion direction is encoded by arrowheads and line style as well as color.
+  \draw[-{Latex[length=2.5mm]},PhysicsBlue,line width=1.55pt]
+    ([xshift=-2.5pt]release) -- ([xshift=-2.5pt]highest)
+    node[midway,left=5pt,font=\scriptsize\sffamily,text=PhysicsBlue,
+      fill=white,inner sep=1pt] {rises $d_{\uparrow}$};
+  \draw[-{Latex[length=2.5mm]},PhysicsRed,line width=1.55pt]
+    ([xshift=2.5pt]highest) -- ([xshift=2.5pt]impact)
+    node[pos=0.72,right=5pt,font=\scriptsize\sffamily,text=PhysicsRed,
+      fill=white,inner sep=1pt] {falls $d_{\uparrow}+|\Delta y|$};
+
+  \fill[PhysicsBlue] (release) circle[radius=2.2pt];
+  \fill[PhysicsGold!80!black] (highest) circle[radius=2.2pt];
+  \fill[PhysicsInk] (impact) circle[radius=2.2pt];
+
+  \node[physics label,anchor=south] at ([yshift=5pt]highest)
+    {$H$: highest point};
+  \node[physics label,anchor=west] at ([xshift=7pt]release)
+    {$R$: release};
+  \node[physics label,anchor=west] at ([xshift=7pt]impact)
+    {$I$: impact};
+  \node[physics label,anchor=east] at ([xshift=-8pt,yshift=-7pt]highest)
+    {$\tau_{\uparrow}\approx\SI{0.245}{\second}$};
+
+  \draw[-{Latex[length=2.3mm]},PhysicsBlue,line width=1.05pt]
+    (5.15,3.10) -- ++(0,0.78)
+    node[midway,right=3pt,physics label] {$v_0=\SI{2.4}{\metre\per\second}$};
+  \draw[-{Latex[length=2.3mm]},PhysicsRed,line width=1.05pt]
+    (5.15,2.98) -- ++(0,-0.78)
+    node[midway,right=3pt,physics label] {$a_y=-g$};
+
+  \draw[physics dimension]
+    (0.92,3.05) -- node[left=3pt,physics label]
+    {$\Delta y\approx-\SI{0.72}{\metre}$} (0.92,0.75);
+
+  \node[anchor=south east,font=\tiny\itshape\sffamily,text=PhysicsMuted]
+    at (6.35,0.28) {not to scale};
+\end{tikzpicture}

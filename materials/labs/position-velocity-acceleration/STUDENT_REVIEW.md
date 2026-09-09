@@ -32,8 +32,8 @@ invented numerical range remains in the presentation.
 | Problem 2(b) | The 20 s condition and unknown head start are shown separately from part (a). | Clear |
 | Problem 3 | The source photographs and labels make the delayed motorcycle start easier to picture; the requested speed and two curves are explicit. | Clear |
 | Problem 4 | The source's interval, acceleration law, initial velocity, and two requested expressions are preserved without extra assumptions on the prompt. | Mathematically demanding but clear |
-| Problem 5 | Both axes include symbols and units; the three questions sit next to an uncluttered reconstruction of the source graph. | Clear; answers are approximate graph readings |
-| Problem 6 | The source-like cabin diagram distinguishes cabin height, upward acceleration, and the shaft-fixed y direction without adding a trajectory. | Clear statement; reference-frame reasoning needs the solution/instructor |
+| Problem 5 | Both axes include symbols, units, and a fine reading grid. The solution overlays identify the full-motion endpoints, give two labeled points and a rise/run triangle for the steepest tangent, and project the origin-based tangent point onto the time axis. | Clear; every numerical answer can be traced to explicitly marked graph readings |
+| Problem 6 | The prompt preserves the source-like cabin diagram and uses the same acceleration symbol as the solution. The worked slides define the release-time clock, derive relative acceleration from two shaft-frame accelerations, distinguish initial shaft-frame and elevator-frame velocities, and use a labeled turning-point schematic to separate displacement from distance. | Clear after an introductory constant-acceleration lesson |
 | Problem 7 | The position function, units, evaluation time, and all nine requests are grouped by quantity. | Clear but dense, as in the source |
 
 ## Source limitations retained for review

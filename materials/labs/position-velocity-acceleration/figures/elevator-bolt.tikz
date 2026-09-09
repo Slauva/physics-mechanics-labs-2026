@@ -14,7 +14,7 @@
   \draw[-{Latex[length=2.5mm]},PhysicsInk,line width=1pt]
     (0.72,1.9) -- (0.72,3.25);
   \node[anchor=east,font=\small\sffamily] at (1.78,1.55)
-    {$w=\SI{1.2}{\metre\per\second\squared}$};
+    {$a_e=\SI{1.2}{\metre\per\second\squared}$};
 
   \draw[{Latex[length=2mm]}-{Latex[length=2mm]},PhysicsInk,line width=0.85pt]
     (4.80,0.55) -- node[right=4pt,font=\small\sffamily]
