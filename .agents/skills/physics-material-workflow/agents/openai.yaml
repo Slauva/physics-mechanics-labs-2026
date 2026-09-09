@@ -1,0 +1,4 @@
+interface:
+  display_name: "Physics Material Workflow"
+  short_description: "Plan mechanics materials with clear approval stages"
+  default_prompt: "Use $physics-material-workflow to continue the material from its recorded stage and existing approvals."

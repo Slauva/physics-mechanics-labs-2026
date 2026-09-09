@@ -1,6 +1,6 @@
 # Контрольные точки
 
-Use these stages in order. Adapt deliverables and criteria to the material, but do not remove an approval gate.
+Use these stages in order. Adapt deliverables and criteria to the material, but do not remove an approval gate. Explicit approval already present in the conversation is valid: record it without asking again. An unambiguous instruction to start the next stage is sufficient; a numbered approval phrase is not mandatory. Technical checks may run within any authorized stage without changing stage status.
 
 ## 0 — Приёмка
 

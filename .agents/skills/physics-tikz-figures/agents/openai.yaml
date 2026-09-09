@@ -1,0 +1,4 @@
+interface:
+  display_name: "Physics TikZ Figures"
+  short_description: "Create and review precise mechanics diagrams"
+  default_prompt: "Use $physics-tikz-figures to implement the requested mechanics diagram and verify it at final size."

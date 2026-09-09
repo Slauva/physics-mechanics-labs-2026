@@ -77,6 +77,8 @@ labs-position-velocity-acceleration-solution.pdf
 
 Рабочий процесс с обязательными ручными контрольными точками описан в [docs/WORKFLOW.md](docs/WORKFLOW.md). Правила дизайна — в [docs/DESIGN.md](docs/DESIGN.md).
 
+Настройка Codex, роли помощников и примеры запросов — в [docs/CODEX.md](docs/CODEX.md).
+
 ## Структура
 
 ```text

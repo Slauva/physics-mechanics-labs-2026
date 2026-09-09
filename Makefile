@@ -6,7 +6,7 @@ UID_ := $(shell id -u)
 GID_ := $(shell id -g)
 LATEXMK_FLAGS := -xelatex -cd -interaction=nonstopmode -file-line-error -halt-on-error -synctex=1
 
-MATERIAL_SOURCES := $(shell find materials -type f \( -name main.tex -o -name solution.tex \) 2>/dev/null | sort)
+MATERIAL_SOURCES := $(shell find materials -type d -name source -prune -o -type f \( -name main.tex -o -name solution.tex \) -print 2>/dev/null | sort)
 MATERIAL_PDFS := $(patsubst %.tex,output/%.pdf,$(MATERIAL_SOURCES))
 DEMO_SOURCES := examples/oscillator-lab/main.tex examples/oscillator-lab/solution.tex examples/oscillator-slides/main.tex
 DEMO_PDFS := $(patsubst %.tex,output/%.pdf,$(DEMO_SOURCES))

@@ -7,7 +7,9 @@
 | Lab (Beamer 16:9, `physicslabslides.cls`) | `main.tex` | `solution.tex` | `content.tex` |
 | Test | `main.tex` | `solution.tex` | `content.tex` |
 | Problem set | `main.tex` | `solution.tex` | `content.tex` |
-| Presentation | `main.tex` | — | `main.tex` |
+| Presentation without questions requiring answers | `main.tex` | — | `main.tex` |
+
+If a presentation includes questions with answers, add `solution.tex` and shared `content.tex` as required by the project instructions.
 
 For lab decks, use `solutionframe` for a complete worked-answer slide, `solution` for a conditional block inside an existing slide, `\answer{...}` for a concise final answer, and `\teacheronly{...}` for teaching notes. Conditional solution content disappears from a `nosolutions` build.
 
@@ -28,10 +30,10 @@ make build FILE=materials/labs/example/main.tex
 make build FILE=materials/labs/example/solution.tex
 ```
 
-For shared-style smoke tests:
+For shared classes or theme changes, validate templates and demos, then build the affected real materials. `make check` does not build `materials/`:
 
 ```bash
-make demo
+make check
 ```
 
 Read `output/<source-path>/<entrypoint>.log` from the first error onward. Later errors are often cascades.
@@ -44,11 +46,11 @@ Read `output/<source-path>/<entrypoint>.log` from the first error onward. Later 
 4. Overfull/underfull boxes and slide overflow.
 5. Cosmetic warnings.
 
-Do not hide a real error by removing `-halt-on-error` or changing the pinned image. If a package is unavailable, first prefer an equivalent already provided by the image and shared style.
+Do not hide a real error by removing `-halt-on-error` or switching the configured Docker image. The current `latest` tag is not a digest pin; see `docs/CODEX.md` for this known build limitation. If a package is unavailable, first prefer an equivalent already provided by the image and shared style.
 
 ## Visual review
 
-Render representative pages to images when a PDF viewer is unavailable. Inspect at least:
+Render pages under `output/` when a PDF viewer is unavailable, for example with `pdftoppm -png -r 120 <pdf> <output-prefix>`. Read page dimensions with `pdfinfo`; inspect both versions when shared content changes. For an isolated layout fix, inspect all changed pages and any pages affected by reflow. For a full stage handoff, inspect every slide; use detailed views of at least:
 
 - title page or title slide;
 - the densest page/slide;

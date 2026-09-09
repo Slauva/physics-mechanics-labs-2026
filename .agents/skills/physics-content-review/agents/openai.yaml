@@ -1,0 +1,4 @@
+interface:
+  display_name: "Physics Content Review"
+  short_description: "Check mechanics derivations, units, and solutions"
+  default_prompt: "Use $physics-content-review to audit the specified task against its source and report supported findings without editing files."

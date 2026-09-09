@@ -1,0 +1,4 @@
+interface:
+  display_name: "Physics LaTeX Authoring"
+  short_description: "Build and repair mechanics PDFs with Docker"
+  default_prompt: "Use $physics-latex-authoring to fix the requested LaTeX issue, build affected variants, and inspect the PDFs."

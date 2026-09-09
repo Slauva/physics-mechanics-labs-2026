@@ -31,7 +31,7 @@ while IFS= read -r -d '' entrypoint; do
       done
       ;;
   esac
-done < <(find "$materials_root" -type f -name main.tex -print0 | sort -z)
+done < <(find "$materials_root" -type d -name source -prune -o -type f -name main.tex -print0 | sort -z)
 
 while IFS= read -r -d '' source_file; do
   if grep -Pq '[\x{0400}-\x{04FF}]' "$source_file"; then
@@ -47,6 +47,7 @@ done < <(
     "$repo_root/templates" \
     "$repo_root/examples" \
     "$repo_root/tex" \
+    -type d -name source -path "$materials_root/*" -prune -o \
     -type f \( -name '*.tex' -o -name '*.tikz' -o -name '*.cls' -o -name '*.sty' \) \
     -print0 | sort -z
 )
