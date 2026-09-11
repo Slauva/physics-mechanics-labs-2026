@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    width=6.7cm,height=5.2cm,
+    xmin=0,xmax=20,ymin=-25,ymax=40,
+    axis lines=left,
+    axis line style={PhysicsNavy,-{Latex[length=2mm]}},
+    xtick={0,5,10,15,20},ytick={-20,0,20,40},
+    minor x tick num=4,minor y tick num=3,
+    xlabel={$t$ (\si{\second})},ylabel={$\theta$ (deg)},
+    tick label style={font=\small\sffamily},
+    label style={font=\small\sffamily},
+    grid=both,
+    major grid style={PhysicsMuted!50,line width=0.5pt},
+    minor grid style={PhysicsLine,line width=0.4pt},
+    clip=false
+  ]
+    % PGF trigonometric functions return degrees. Rounded c1 and c2 are used.
+    \addplot[PhysicsBlue,line width=1.5pt,domain=0.001:20,samples=100]
+      {atan((3.5-0.25*x)/5)};
+    \draw[PhysicsMuted,line width=0.7pt] (axis cs:0,0) -- (axis cs:20,0);
+    \draw[PhysicsBlue,fill=white,line width=1.0pt]
+      (axis cs:0,{atan(0.7)}) circle[radius=2.6pt];
+    \fill[PhysicsBlue] (axis cs:14,0) circle[radius=2.3pt];
+    \draw[PhysicsBlue,densely dashed,line width=0.8pt]
+      (axis cs:14,-25) -- (axis cs:14,0);
+    \node[anchor=south west,physics label,text=PhysicsBlue]
+      at (axis cs:0.8,34) {$\theta\approx35^\circ$ initially};
+    \node[anchor=north east,physics label,text=PhysicsBlue]
+      at (axis cs:13.6,-2) {$\approx\SI{14}{\second}$};
+    \node[anchor=south east,font=\small\sffamily,text=PhysicsMuted]
+      at (axis description cs:1,1.025) {Calculated check};
+  \end{axis}
+\end{tikzpicture}

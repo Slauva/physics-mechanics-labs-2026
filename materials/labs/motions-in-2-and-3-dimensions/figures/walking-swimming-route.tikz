@@ -1,0 +1,35 @@
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk},
+  route/.style={-{Latex[length=3mm]},line width=1.5pt}
+]
+  % G12: one uniform scale, H=5.2 and L=1.17 represent 200 m and 45 m.
+  % B=3.4 is an illustrative unknown location, not the optimal s.
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (3.4,0);
+  \coordinate (C) at (5.2,1.17);
+  \fill[PhysicsBlue!9] (-0.25,0) rectangle (5.55,1.17);
+  \fill[PhysicsPaper] (-0.25,-0.24) rectangle (5.55,0);
+  \fill[PhysicsPaper] (-0.25,1.17) rectangle (5.55,1.41);
+  \draw[physics line] (-0.25,0) -- (5.55,0);
+  \draw[physics line] (-0.25,1.17) -- (5.55,1.17);
+  \node[text=PhysicsMuted] at (0.9,0.84) {water};
+  \draw[route,PhysicsNavy] (A) -- (B) node[midway,above=4pt] {$v_g$};
+  \draw[route,PhysicsBlue] (B) -- (C) node[midway,above left=2pt] {$v_w$};
+  \draw[PhysicsMuted,dashed,line width=0.8pt] (5.2,0) -- (C);
+  \foreach \p in {A,B,C} {\fill[PhysicsNavy] (\p) circle[radius=2.6pt];}
+  \node[below left=3pt] at (A) {$A$};
+  \node[below=3pt] at (B) {$B$};
+  \node[above left=3pt] at (C) {$C$};
+  \draw[PhysicsMuted,thin] (0,1.48) -- (0,1.96);
+  \draw[PhysicsMuted,thin] (5.2,1.48) -- (5.2,1.96);
+  \draw[physics dimension,line width=0.8pt] (0,1.78) --
+    node[above=4pt] {$H=\SI{200}{\metre}$} (5.2,1.78);
+  \draw[PhysicsMuted,thin] (5.67,0) -- (6.1,0);
+  \draw[PhysicsMuted,thin] (5.67,1.17) -- (6.1,1.17);
+  \draw[physics dimension,line width=0.8pt] (5.92,0) --
+    node[right=4pt] {$L$} (5.92,1.17);
+  \draw[physics dimension,line width=0.8pt] (0,-0.65) --
+    node[below=4pt] {$s=AB$} (3.4,-0.65);
+  \node[anchor=north,text=PhysicsMuted] at (2.6,-1.11) {$B$ is a variable point};
+\end{tikzpicture}

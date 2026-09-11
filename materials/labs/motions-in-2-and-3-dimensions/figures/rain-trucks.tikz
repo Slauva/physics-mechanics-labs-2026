@@ -1,0 +1,30 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  every node/.style={font=\small\sffamily}]
+  % Identical open bodies; the dotted segment marks each horizontal aperture.
+  \foreach \shift/\title in {0/At rest,5.5/Moving}{
+    \begin{scope}[xshift=\shift cm]
+      \node[font=\small\sffamily\bfseries] at (1.7,3.2) {\title};
+      \foreach \x in {0.3,0.75,...,3.5}{
+        \draw[PhysicsBlue,-{Latex[length=1.6mm]},line width=0.85pt]
+          (\x,2.75) -- (\x,2.23);
+      }
+      \draw[physics line,fill=PhysicsPaper]
+        (0.15,1.8) -- (0.3,0.95) -- (2.2,0.95) -- (2.3,1.8);
+      \draw[PhysicsMuted,densely dotted,line width=0.9pt]
+        (0.15,1.8) -- (2.3,1.8);
+      \draw[physics line,fill=PhysicsPaper]
+        (2.5,0.7) -- (2.5,1.62) -- (3.1,1.62) -- (3.58,1.1)
+        -- (3.68,0.7) -- cycle;
+      \draw[physics line] (2.63,1.5) -- (3.02,1.5) -- (3.33,1.14)
+        -- (2.63,1.14) -- cycle;
+      \draw[physics line] (0.2,0.7) -- (3.7,0.7);
+      \foreach \x in {0.75,1.85,3.14}{
+        \draw[physics line,fill=white] (\x,0.55) circle[radius=0.24];
+      }
+      \draw[PhysicsLine,line width=1.0pt] (-0.1,0.29) -- (4.2,0.29);
+    \end{scope}
+  }
+  \node at (1.8,-0.12) {$V=0$};
+  \draw[physics force,PhysicsBlue] (6.2,-0.1) -- (8.3,-0.1)
+    node[midway,below=2pt] {$V=\mathrm{const}$};
+\end{tikzpicture}

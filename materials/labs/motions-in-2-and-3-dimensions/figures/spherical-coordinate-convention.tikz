@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  x={(-0.85cm,-0.45cm)},y={(1cm,0cm)},z={(0cm,1cm)},
+  every node/.style={font=\small\sffamily},
+  axis/.style={physics line,-{Latex[length=2mm]}},
+  guide/.style={PhysicsMuted,densely dashed,line width=0.8pt}
+]
+  % A right-handed Cartesian frame viewed from the positive octant.
+  % The point is generic: r=2.6, theta=48 deg, phi=60 deg for drawing only.
+  \coordinate (O) at (0,0,0);
+  \coordinate (P) at ({2.6*sin(48)*cos(60)},
+    {2.6*sin(48)*sin(60)},{2.6*cos(48)});
+  \coordinate (Q) at ({2.6*sin(48)*cos(60)},
+    {2.6*sin(48)*sin(60)},0);
+  \draw[axis] (O) -- (1.9,0,0) node[below left] {$x$};
+  \draw[axis] (O) -- (0,2.0,0) node[right] {$y$};
+  \draw[axis] (O) -- (0,0,2.5) node[above] {$z$};
+  \draw[guide] (O) -- (Q) -- (P);
+  \draw[physics force,PhysicsBlue] (O) -- (P)
+    node[pos=0.72,above left,physics label] {$r$};
+  \draw[physics accent] plot[variable=\a,domain=0:48,samples=25]
+    ({0.88*sin(\a)*cos(60)},{0.88*sin(\a)*sin(60)},
+      {0.88*cos(\a)});
+  \node[physics label] at (0.08,0.22,0.91) {$\theta$};
+  \draw[physics accent] plot[variable=\a,domain=0:60,samples=25]
+    ({0.73*cos(\a)},{0.73*sin(\a)},0);
+  \node[physics label] at (0.93,0.70,-0.23) {$\phi$};
+  \fill[PhysicsInk] (P) circle[radius=1.7pt];
+  \node[above right] at (P) {$P$};
+  \node[above left,xshift=-3pt,yshift=1pt] at (O) {$O$};
+  \node[below right,physics label] at (Q) {$P_{xy}$};
+\end{tikzpicture}

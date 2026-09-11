@@ -1,0 +1,25 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  every node/.style={font=\small\sffamily}]
+  % Generic vector; theta is measured from +x, not from +y.
+  \coordinate (O) at (0,0);
+  \coordinate (P) at (3.5,2.45);
+  \draw[physics line,-{Latex[length=2mm]}] (-0.2,0) -- (4.2,0)
+    node[right] {$x$};
+  \draw[physics line,-{Latex[length=2mm]}] (0,-0.2) -- (0,3.15)
+    node[above] {$y$};
+  \draw[PhysicsMuted,densely dashed,line width=0.8pt]
+    (0,2.45) -- (P) -- (3.5,0);
+  \draw[physics force,PhysicsBlue] (O) -- (P)
+    node[pos=0.68,above left,physics label] {$\vec r(t)$};
+  \draw[physics accent] (0.9,0)
+    arc[start angle=0,end angle={atan(2.45/3.5)},radius=0.9];
+  \node[physics label] at (1.28,0.38) {$\theta$};
+  \draw[physics force,PhysicsNavy] (O) -- (0.75,0)
+    node[midway,below=3pt] {$\hat{\imath}$};
+  \draw[physics force,PhysicsNavy] (O) -- (0,0.75)
+    node[midway,left=3pt] {$\hat{\jmath}$};
+  \node[below=3pt] at (3.5,0) {$x(t)$};
+  \node[left=3pt] at (0,2.45) {$y(t)$};
+  \node[below left=3pt] at (O) {$O$};
+  \fill[PhysicsInk] (P) circle[radius=1.7pt];
+\end{tikzpicture}

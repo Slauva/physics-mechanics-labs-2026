@@ -1,0 +1,622 @@
+\title[Lab 2: Motions in 2 and 3 Dimensions]{Motions in 2 and 3 Dimensions}
+\subtitle{Mechanics Practice Session · \labversionlabel}
+\author{}
+\institute{}
+\date{Lab 2}
+
+\begin{document}
+
+% C01 — title treatment and unchanged assets from the current Lab 1.
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at (current page.north west) {
+      \includegraphics[width=\paperwidth,height=0.58\paperheight]{assets/innopolis-campus.jpg}};
+    \fill[white] (current page.south west) rectangle
+      ([yshift=-0.58\paperheight]current page.north east);
+    \fill[PhysicsBlue] (current page.south west) rectangle
+      ([xshift=0.012\paperwidth,yshift=-0.58\paperheight]current page.north west);
+    \node[anchor=north west,text width=0.86\paperwidth,align=left]
+      at ([xshift=0.055\paperwidth,yshift=-0.64\paperheight]current page.north west) {
+      {\color{PhysicsBlue}\small\bfseries MECHANICS PRACTICE SESSION\par}
+      \vspace{0.45em}
+      {\color{PhysicsInk}\fontsize{17}{20}\selectfont\bfseries Motions in 2 and 3 Dimensions\par}
+      \vspace{0.55em}
+      {\color{PhysicsMuted}\small Lab 2 · \labversionlabel\par}};
+    \node[anchor=east,inner sep=0pt]
+      at ([xshift=-0.055\paperwidth,yshift=0.16\paperheight]current page.south east) {
+      \includegraphics[width=0.20\paperwidth]{assets/innopolis-university-logo.png}};
+  \end{tikzpicture}
+\end{frame}
+
+% C02 — F1, with a quadrant-aware inverse and explicit angle convention.
+\begin{frame}{Cartesian and Spherical Coordinates}
+  \slidetag{COORDINATE REFERENCE}
+  \small
+  $\theta$ is measured from $+z$; $\phi$ is measured from $+x$ in the $xy$ plane.
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.34\textwidth}
+      \begin{block}{Spherical to Cartesian}
+        \[
+          \begin{aligned}
+            x&=r\sin\theta\cos\phi,\\
+            y&=r\sin\theta\sin\phi,\\
+            z&=r\cos\theta.
+          \end{aligned}
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.27\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/spherical-coordinate-convention.tikz}}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \begin{block}{Cartesian to Spherical}
+        \[
+          \begin{aligned}
+            r&=\sqrt{x^2+y^2+z^2},\\
+            \theta&=\arccos(z/r),\\
+            \phi&=\operatorname{atan2}(y,x).
+          \end{aligned}
+        \]
+      \end{block}
+    \end{column}
+  \end{columns}
+  \footnotesize
+  \textbf{What is $\operatorname{atan2}(y,x)$?}
+  It is the two-argument arctangent: it uses the signs of both $x$ and $y$
+  to choose the correct quadrant, including when $x=0$ and $y\ne0$.
+  For example, $\operatorname{atan2}(1,-1)=135^\circ$.
+
+  Choose $0\le\theta\le\pi$ and wrap $\phi$ into $[0,2\pi)$.
+  The azimuth is undefined on the $z$ axis; both angles are undefined at $r=0$.
+\end{frame}
+
+% C03 — explicit quadrant-aware calculation requested in the draft revision.
+\begin{frame}{Calculating the Two-Argument Arctangent}
+  \slidetag{COORDINATE REFERENCE}
+  \small
+  The signs of $x$ and $y$ determine the quadrant. For $-\pi<\alpha\le\pi$,
+  \[
+    \alpha=\operatorname{atan2}(y,x)=
+    \begin{cases}
+      \arctan(y/x),      & x>0,\\
+      \arctan(y/x)+\pi,  & x<0,\ y\ge0,\\
+      \arctan(y/x)-\pi,  & x<0,\ y<0,\\
+      \pi/2,            & x=0,\ y>0,\\
+      -\pi/2,           & x=0,\ y<0.
+    \end{cases}
+  \]
+  Here $\arctan$ returns angles in $(-\pi/2,\pi/2)$;
+  $\operatorname{atan2}(0,0)$ is undefined.
+  \begin{block}{Use the spherical-coordinate range $0\le\phi<2\pi$}
+    Set $\phi=\alpha$ if $\alpha\ge0$; otherwise set $\phi=\alpha+2\pi$.
+  \end{block}
+\end{frame}
+
+% P01 — F2--F4 / S1. No length unit was specified in the source.
+\begin{frame}{Problem 1 — Distance Between Two Points}
+  \slidetag{PROBLEM 1}
+  Two points are described using different coordinate systems:
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Point A: spherical coordinates}
+        \[
+          \theta=\frac{\pi}{2},\qquad \phi=\frac{\pi}{3},\qquad r=6.
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Point B: Cartesian coordinates}
+        \[
+          x=5,\qquad y=5\sqrt{3},\qquad z=0.
+        \]
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{block}{Find}
+    Determine the distance $AB$ between the two points.
+  \end{block}
+  \small
+  Use the angle convention from the coordinate reference slide.
+  All lengths use the same unspecified length unit.
+\end{frame}
+
+\begin{solutionframe}[Solution 1 — Convert the Coordinates]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \textbf{Cartesian components.}
+      Convert $A$ before subtracting the coordinates:
+      \[
+        \begin{aligned}
+          x_A&=r\sin\theta\cos\phi\\
+             &=6\sin\frac{\pi}{2}\cos\frac{\pi}{3}=3,\\[0.3em]
+          y_A&=r\sin\theta\sin\phi\\
+             &=6\sin\frac{\pi}{2}\sin\frac{\pi}{3}=3\sqrt3,\\[0.3em]
+          z_A&=r\cos\theta=6\cos\frac{\pi}{2}=0.
+        \end{aligned}
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.44\paperheight}{\input{figures/collinear-points.tikz}}
+      \answer{\(A=(3,3\sqrt3,0).\)}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 1 — Use the Displacement Vector]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Subtract the position of $A$ from the position of $B$:
+      \[
+        \begin{aligned}
+          \overrightarrow{AB}&=\mathbf r_B-\mathbf r_A\\
+            &=(5-3,\,5\sqrt3-3\sqrt3,\,0)\\
+            &=(2,2\sqrt3,0).
+        \end{aligned}
+      \]
+      The distance is the magnitude of the displacement:
+      \[
+        AB=\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}.
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.44\paperheight}{\input{figures/collinear-points.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{\(AB=\sqrt{2^2+(2\sqrt3)^2}=\sqrt{16}=4\) length units.}
+\end{solutionframe}
+
+% P02 — F5--F6 / S2. Ideal vertical, spatially uniform rain.
+\begin{frame}{Problem 2 — Rain and Moving Trucks}
+  \slidetag{PROBLEM 2}
+  \small
+  Two identical open dump trucks are in the rain. One is at rest; the other
+  moves horizontally at constant speed $V$.
+  \begin{center}
+    \resizebox{0.58\textwidth}{!}{\input{figures/rain-trucks.tikz}}
+  \end{center}
+  \begin{block}{Find}
+    Which truck collects more rainwater through its open top per minute?
+  \end{block}
+  \footnotesize
+  Model: uniform vertical rain and equal horizontal openings.
+  Neglect airflow disturbances, splashing, and water entering through the sides.
+\end{frame}
+
+\begin{solutionframe}[Solution 2 — Compare Collected Volumes]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \textbf{Equal collection volumes.}
+      Let $S$ be the opening area and $v_r$ the downward rain speed.
+
+      Over a time $T$, the collected drops initially occupy a prism
+      of vertical height $v_rT$.
+
+      Motion shears this prism horizontally by $VT$; its base area
+      and vertical height stay the same. Therefore,
+      \[
+        \mathcal V_{\rm rest}=\mathcal V_{\rm moving}=S v_rT.
+      \]
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/rain-collection-volumes.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{Equal collection volumes contain equal water amounts:
+    both trucks collect the same amount per minute.}
+\end{solutionframe}
+
+% P03 — F7--F8 / S3. Source vector arrangement and Pythagorean solution.
+\begin{frame}{Problem 3 — Flying North in a Wind}
+  \slidetag{PROBLEM 3}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \small
+      A plane has an airspeed of $v_{PA}=\SI{120}{\kilo\metre\per\hour}$.
+      The wind blows from the northeast at
+      $v_{AE}=\SI{40}{\kilo\metre\per\hour}$, toward the southwest
+      at $\ang{45}$ to the east--west line.
+      The pilot wants to travel due north relative to the ground.
+      \begin{block}{Find}
+        \begin{enumerate}
+          \item The heading angle $\theta$, measured east of north.
+          \item The ground speed $v_{PE}$.
+        \end{enumerate}
+      \end{block}
+      \footnotesize
+      $P$: plane, $A$: air, $E$: Earth.
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.48\paperheight}{\input{figures/wind-velocity-triangle.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 3 — Use the Velocity Triangle]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.58\textwidth}
+      The velocities satisfy
+      \[
+        \vec v_{PE}=\vec v_{PA}+\vec v_{AE}.
+      \]
+      The right triangle has hypotenuse $v_{PA}$ and legs
+      $v_{AE}\sin\ang{45}$ and $v_{PE}+v_{AE}\cos\ang{45}$.
+      By Pythagoras,
+      \[
+        \begin{aligned}
+          &(v_{PE}+v_{AE}\cos\ang{45})^2\\
+          &\qquad +(v_{AE}\sin\ang{45})^2=v_{PA}^2.
+        \end{aligned}
+      \]
+      Hence, with speeds in \si{\kilo\metre\per\hour},
+      \[
+        v_{PE}=\sqrt{120^2-(40\sin\ang{45})^2}-40\cos\ang{45}.
+      \]
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \centering
+      \resizebox{!}{0.46\paperheight}{\input{figures/wind-velocity-triangle.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{The ground speed is $v_{PE}\approx\SI{88.3}{\kilo\metre\per\hour}$.}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 3 — Find the Heading Angle]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      From the same right triangle,
+      \[
+        \sin\theta=\frac{v_{AE}\sin\ang{45}}{v_{PA}}.
+      \]
+      Substitute the two given speeds:
+      \[
+        \theta=\arcsin\!\left(\frac{40\sin\ang{45}}{120}\right)
+          \approx\ang{13.6}.
+      \]
+      The pilot must head east of north to compensate for the westward wind.
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.44\paperheight}{\input{figures/wind-velocity-triangle.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{Heading: $\theta\approx\ang{13.6}$ east of north.\\
+    Ground speed: $v_{PE}\approx\SI{88.3}{\kilo\metre\per\hour}$.}
+\end{solutionframe}
+
+% P04 — F9--F11 / S4. Both graphs belong to the shared problem statement.
+\begin{frame}{Problem 4 — Read the Direction Graph}
+  \slidetag{PROBLEM 4}
+  \small
+  A particle's position is
+  \[
+    \vec r(t)=5t\,\hat{\imath}+(c_1t+c_2t^2)\,\hat{\jmath},
+    \qquad \vec r\text{ in metres},\quad t\text{ in seconds}.
+  \]
+  The unit vectors $\hat{\imath}$ and $\hat{\jmath}$ point along $+x$ and $+y$.
+  The angle $\theta$ is measured from $+x$ to $\vec r$.
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.45\textwidth}
+      \centering
+      \resizebox{!}{0.36\paperheight}{\input{figures/position-vector-angle.tikz}}
+      \begin{block}{Find}
+        Determine the constants $c_1$ and $c_2$.
+      \end{block}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \centering
+      \resizebox{!}{0.46\paperheight}{\input{figures/direction-angle-source.tikz}}
+      \par\footnotesize
+      Open endpoint: initial direction just after motion begins.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 4 — From the Vector to Coordinates]
+  Compare the position vector with its Cartesian form:
+  \[
+    \begin{aligned}
+      \vec r(t)&=x(t)\,\hat{\imath}+y(t)\,\hat{\jmath}\\
+         &=5t\,\hat{\imath}+(c_1t+c_2t^2)\,\hat{\jmath}.
+    \end{aligned}
+  \]
+  The coefficients of the unit vectors give
+  \[
+    x(t)=5t,\qquad y(t)=c_1t+c_2t^2.
+  \]
+  From the right triangle in the problem statement, for $t>0$,
+  \[
+    \tan\theta=\frac{y(t)}{x(t)}
+      =\frac{c_1t+c_2t^2}{5t}=\frac{c_1+c_2t}{5}.
+  \]
+  \footnotesize
+  Use metres and seconds throughout, as in the given position formula.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 4 — Read Two Points from the Graph]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Extrapolate the initial angle from the graph:
+      \[
+        \tan\ang{35}\approx\frac{c_1}{5}
+        \quad\Rightarrow\quad c_1\approx5\tan\ang{35}\approx3.5.
+      \]
+      At $t=\SI{14}{\second}$, the angle is zero:
+      \[
+        0=\frac{c_1+14c_2}{5}
+        \quad\Rightarrow\quad c_2\approx-\frac{3.5}{14}=-0.25.
+      \]
+      \footnotesize
+      The initial angle describes the start of the curve; at exactly $t=0$
+      the position vector is zero and has no direction.
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/direction-angle-check.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{$c_1\approx\SI{3.5}{\metre\per\second}$,
+    \qquad $c_2\approx-\SI{0.25}{\metre\per\second\squared}$.}
+\end{solutionframe}
+
+% P05 — F12--F14 / S5. g=9.8 is the same explicit convention as in Lab 1.
+\begin{frame}{Problem 5 — Can the Ball Escape the Pit?}
+  \slidetag{PROBLEM 5}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      \small
+      A ball is thrown from the bottom of a rectangular pit with initial speed
+      $v_0=\SI{20}{\metre\per\second}$ at $\alpha=\ang{60}$ above the horizontal.
+      The pit is $h=\SI{10}{\metre}$ deep. The wall in the direction of the throw
+      is $L=\SI{10}{\metre}$ away.
+      \begin{block}{Find}
+        Will the ball escape the pit?
+      \end{block}
+      \footnotesize
+      Model the ball as a particle, neglect air resistance, and use
+      $g=\SI{9.8}{\metre\per\second\squared}$.
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/pit-geometry.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 5 — Reach the Wall]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Choose the origin at release and $+y$ upward.
+      Resolve the initial velocity:
+      \[
+        v_{0x}=v_0\cos\alpha,\qquad v_{0y}=v_0\sin\alpha.
+      \]
+      Horizontal motion is uniform. Setting $x=L$ gives the time at the wall:
+      \[
+        x(t)=v_0\cos\alpha\,t,
+        \qquad t_L=\frac{L}{v_0\cos\alpha}.
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/pit-geometry.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle
+    t_L=\frac{\SI{10}{\metre}}
+      {(\SI{20}{\metre\per\second})\cos\ang{60}}
+      =\SI{1.0}{\second}.\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5 — Check the Clearance]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Evaluate the vertical position when the ball reaches the wall:
+      \[
+        y(t)=v_0\sin\alpha\,t-\frac12gt^2.
+      \]
+      Substituting $t_L=L/(v_0\cos\alpha)$ gives
+      \[
+        y_L=L\tan\alpha-\frac{gL^2}{2v_0^2\cos^2\alpha}.
+      \]
+      With $t_L=\SI{1.0}{\second}$,
+      \[
+        y_L=\bigl(20\sin\ang{60}-4.9\bigr)\,\si{\metre}
+          \approx\SI{12.4}{\metre}.
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{\linewidth}{!}{\input{figures/projectile-wall-clearance.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{\(y_L\approx\SI{12.4}{\metre}>h=\SI{10}{\metre}.\)
+    Yes, the ball clears the edge and escapes the pit.}
+\end{solutionframe}
+
+% P06 — shared problem statement; F15–F16 / S6.
+\begin{frame}{Problem 6 — Motion Along a Parabola}
+  \slidetag{PROBLEM 6}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      \small
+      A material point moves with constant speed $v_0$ along
+      \[
+        y(x)=cx^2,\qquad c>0.
+      \]
+      At the vertex $x=0$, use
+      \[
+        \begin{aligned}
+          \dot x(t)&=v_0, & \ddot x(t)&=0,\\
+          \dot y(t)&=0,   & \ddot y(t)&=a.
+        \end{aligned}
+      \]
+      These values apply at the vertex, where the point moves to the right.
+      \begin{block}{Find}
+        The acceleration $a$ and radius of curvature $R$ at $x=0$.
+      \end{block}
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \resizebox{!}{0.46\paperheight}{\input{figures/parabola-motion.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% S06A — one source-based derivation, evaluated locally at the vertex.
+\begin{solutionframe}[Solution 6 — Acceleration and Radius]
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Differentiate $y(t)=c[x(t)]^2$ twice:
+      \[
+        \begin{aligned}
+          \dot y&=2cx\dot x,\\
+          \ddot y&=2c\bigl(\dot x^2+x\ddot x\bigr).
+        \end{aligned}
+      \]
+      At $x=0$, substitute $\dot x=v_0$ and $\ddot y=a$ to obtain
+      $a=2cv_0^2$.
+
+      Constant speed means normal acceleration:
+      \[
+        a=\frac{v_0^2}{R}
+        \quad\Longrightarrow\quad R=\frac{1}{2c}.
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.40\paperheight}{\input{figures/parabola-curvature.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle a=2cv_0^2\ \text{(upward)},\qquad R=\frac{1}{2c}.\)}
+\end{solutionframe}
+
+% P07 — shared problem statement; F18 / S7. The water is still.
+\begin{frame}{Problem 7 — Walking and Swimming}
+  \slidetag{PROBLEM 7}\par
+  \small
+  A traveler walks along the bank from $A$ to $B$ at
+  $v_g=\SI{7}{\kilo\metre\per\hour}$, then swims directly to $C$
+  at $v_w=\SI{2}{\kilo\metre\per\hour}$. The water is still.
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      The distances shown are
+      \[
+        H=\SI{200}{\metre},\qquad L=\SI{45}{\metre}.
+      \]
+      \begin{block}{Find}
+        What distance $AB$ gives the shortest travel time from $A$ to $C$?
+      \end{block}
+      \footnotesize
+      $H$ is measured along the bank; $L$ is the perpendicular distance
+      from the bank to $C$.
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \centering
+      \resizebox{!}{0.38\paperheight}{\input{figures/walking-swimming-route.tikz}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% S07A — first source method: stationary travel time, in consistent units.
+\begin{solutionframe}[Solution 7 — Minimize the Travel Time]
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      Set $s=AB$, with $0\le s\le H$.
+      \[
+        \begin{aligned}
+          BC&=\sqrt{(H-s)^2+L^2},\\
+          T(s)&=\frac{s}{v_g}
+            +\frac{\sqrt{(H-s)^2+L^2}}{v_w}.
+        \end{aligned}
+      \]
+      Differentiate with respect to $s$:
+      \[
+        T'(s)=\frac{1}{v_g}
+          -\frac{H-s}{v_w\sqrt{(H-s)^2+L^2}}.
+      \]
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \resizebox{!}{0.33\paperheight}{\input{figures/walking-swimming-route.tikz}}\par Use consistent units.
+    \end{column}
+  \end{columns}
+  \begin{block}{Condition for an interior optimum}
+    \centering\(\displaystyle
+      T'(s)=0
+      \quad\to\quad
+      \frac{H-s}{\sqrt{(H-s)^2+L^2}}=\frac{v_w}{v_g}.
+    \)
+  \end{block}
+\end{solutionframe}
+
+% S07B — express AB directly and insert the source numbers.
+\begin{solutionframe}[Solution 7 — Find the Distance AB]
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      Square the condition from the previous slide:
+      \[
+        v_g^2(H-s)^2=v_w^2\bigl((H-s)^2+L^2\bigr).
+      \]
+      Collect the terms containing $H-s$:
+      \[
+        (v_g^2-v_w^2)(H-s)^2=v_w^2L^2.
+      \]
+      Take the positive root and use $s=AB$:
+      \[
+        AB=H-\frac{Lv_w}{\sqrt{v_g^2-v_w^2}}.
+      \]
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \centering
+      \resizebox{!}{0.33\paperheight}{\input{figures/walking-swimming-route.tikz}}
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle
+    AB=\SI{200}{\metre}
+      -(\SI{45}{\metre})\frac{2}{\sqrt{7^2-2^2}}
+      \approx\SI{187}{\metre}.
+  \)}
+\end{solutionframe}
+
+% S07C — second source method: compare the rate of shortening with swim speed.
+\begin{solutionframe}[Solution 7 — When to Start Swimming]
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      While the traveler walks, the remaining swim distance $BC$
+      becomes shorter at the rate
+      \[
+        v_{BC}=v_g\cos\alpha.
+      \]
+      The angle $\alpha$ lies between the bank and $BC$.
+      Multiplying by $\cos\alpha$ gives the component of the walking
+      velocity directed toward $C$.
+
+      Keep walking while $v_{BC}>v_w$; start swimming when
+      \[
+        v_g\cos\alpha=v_w.
+      \]
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \resizebox{!}{0.32\paperheight}{\input{figures/route-shortening.tikz}}
+      \[
+        \cos\alpha=\frac{H-AB}{\sqrt{(H-AB)^2+L^2}}.
+      \]
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle
+    AB=H-\frac{Lv_w}{\sqrt{v_g^2-v_w^2}}
+      \approx\SI{187}{\metre}.
+  \)}
+\end{solutionframe}
+
+\end{document}

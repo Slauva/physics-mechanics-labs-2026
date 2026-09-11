@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk},
+  axis/.style={-{Latex[length=2.5mm]},PhysicsMuted,line width=0.8pt}
+]
+  % G11: cplot=0.7, Rplot=1/(2*cplot). Both axes use the same scale.
+  \pgfmathsetmacro{\radiusplot}{1/(2*0.7)}
+  \coordinate (O) at (0,0);
+  \coordinate (K) at (0,\radiusplot);
+  \draw[axis] (-2.1,0) -- (2.3,0) node[right] {$x$};
+  \draw[axis] (0,-0.2) -- (0,2.85) node[above] {$y$};
+  \draw[PhysicsMuted,dashed,line width=1pt] (K) circle[radius=\radiusplot];
+  \draw[physics accent,line width=1.6pt,domain=-1.85:1.85,samples=80]
+    plot (\x,{0.7*\x*\x});
+  \draw[physics force] (O) -- (0,1.85) node[above left=2pt] {$\vec a$};
+  \draw[-{Latex[length=3mm]},PhysicsNavy,line width=1.4pt]
+    (O) -- (1.45,0) node[below=5pt] {$v_0$};
+  \draw[physics dimension,line width=0.9pt] (K) --
+    node[above=3pt] {$R$} (\radiusplot,\radiusplot);
+  \fill[PhysicsNavy] (K) circle[radius=2.5pt];
+  \node[above left=4pt] at (K) {$K$};
+  \fill[PhysicsNavy] (O) circle[radius=2.5pt];
+  \node[below left=3pt] at (O) {$O$};
+  \node[anchor=north,align=center] at (0,-0.57)
+    {Schematic; $c>0$ shown\\$K$: center of curvature};
+\end{tikzpicture}

@@ -1,0 +1,36 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  every node/.style={font=\small\sffamily}]
+  % Ground-frame collection volumes at the start of the interval T.
+  % A drop at height v_r*t enters the aperture displaced by V*t.
+  % Both prisms have an identical base area S and transverse depth.
+  \foreach \shift/\shear/\title in {0/0/At rest,3.3/0.8/Moving}{
+    \begin{scope}[xshift=\shift cm]
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (1.3,0);
+      \coordinate (c) at (1.65,0.28);
+      \coordinate (d) at (0.35,0.28);
+      \coordinate (aa) at (\shear,2.05);
+      \coordinate (bb) at ({1.3+\shear},2.05);
+      \coordinate (cc) at ({1.65+\shear},2.33);
+      \coordinate (dd) at ({0.35+\shear},2.33);
+      \fill[PhysicsCyan!24] (a) -- (b) -- (bb) -- (aa) -- cycle;
+      \fill[PhysicsCyan!40] (b) -- (c) -- (cc) -- (bb) -- cycle;
+      \fill[PhysicsCyan!20] (aa) -- (bb) -- (cc) -- (dd) -- cycle;
+      \draw[physics accent] (a) -- (b) -- (c) -- (cc) -- (dd)
+        -- (aa) -- (a) (aa) -- (bb) -- (cc) (b) -- (bb);
+      \draw[PhysicsMuted,densely dashed,line width=0.8pt]
+        (a) -- (d) -- (c) (d) -- (dd);
+      \node[physics label] at (0.8,-0.25) {$S$};
+      \node[font=\small\sffamily\bfseries] at (0.9,-0.72) {\title};
+    \end{scope}
+  }
+  \draw[physics dimension] (-0.45,0) -- (-0.45,2.05)
+    node[midway,left,physics label] {$v_rT$};
+  \draw[physics dimension] (6.05,0) -- (6.05,2.05)
+    node[midway,right,physics label] {$v_rT$};
+  \draw[PhysicsMuted,densely dashed,line width=0.7pt]
+    (3.3,0) -- (3.3,2.76) (4.1,2.05) -- (4.1,2.76);
+  \draw[physics dimension] (3.3,2.65) -- (4.1,2.65)
+    node[midway,above,physics label] {$VT$};
+  \node[text=PhysicsMuted] at (2.9,-1.2) {Same transverse width; schematic};
+\end{tikzpicture}

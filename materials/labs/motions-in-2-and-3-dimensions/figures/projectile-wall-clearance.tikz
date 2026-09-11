@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+  x=0.29cm,y=0.29cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk},
+  axis/.style={-{Latex[length=2.5mm]},PhysicsMuted,line width=0.8pt}
+]
+  % G09: physical coordinates in metres; v0=20 m/s, alpha=60 deg, g=9.8 m/s^2.
+  % y(x)=sqrt(3)*x-0.049*x^2. Uniform x/y scale is deliberate.
+  \pgfmathsetmacro{\wallheight}{sqrt(3)*10-0.049*100}
+  \coordinate (O) at (0,0);
+  \coordinate (P) at (10,\wallheight);
+  \fill[PhysicsPaper] (-0.35,10) -- (-0.35,-0.35) --
+    (10.35,-0.35) -- (10.35,10) -- (10,10) -- (10,0) --
+    (O) -- (0,10) -- cycle;
+  \draw[physics line,line width=1.4pt] (0,10) -- (O) -- (10,0) -- (10,10);
+  \draw[axis] (O) -- (15.4,0) node[right] {$x$};
+  \draw[axis] (O) -- (0,16.1) node[above] {$y$};
+  \draw[PhysicsMuted,dashed,line width=0.8pt] (0,10) -- (12.5,10);
+  \node[left=3pt] at (0,10) {$h$};
+  \draw[PhysicsMuted,dashed,line width=0.8pt] (0,\wallheight) -- (P);
+  \node[left=3pt] at (0,\wallheight) {$y(L)$};
+  \draw[physics accent,line width=1.6pt,domain=0:14.7,samples=90]
+    plot (\x,{sqrt(3)*\x-0.049*\x*\x});
+  \fill[PhysicsBlue] (P) circle[radius=3pt];
+  \draw[PhysicsBlue,line width=1pt] (10.8,10) -- (11.65,10);
+  \draw[PhysicsBlue,line width=1pt] (10.8,\wallheight) -- (11.65,\wallheight);
+  \draw[physics dimension,PhysicsBlue,line width=1pt] (11.25,10) -- (11.25,\wallheight);
+  \node[right=4pt] at (11.7,11.25) {clearance};
+  \draw[-{Latex[length=2.8mm]},PhysicsBlue,line width=1.2pt]
+    (O) -- (3.4,{sqrt(3)*3.4}) node[above left] {$v_0$};
+  \fill[PhysicsNavy] (O) circle[radius=2.5pt];
+  \node[below left=2pt] at (O) {$O$};
+  \node[below=4pt] at (10,0) {$L$};
+\end{tikzpicture}

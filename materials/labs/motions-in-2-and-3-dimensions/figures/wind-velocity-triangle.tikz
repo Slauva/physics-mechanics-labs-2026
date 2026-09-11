@@ -1,0 +1,24 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  every node/.style={font=\small\sffamily}]
+  % F7 arrangement, with equal x/y scaling and the correct wind arrow.
+  % Wind W->O, airspeed O->P, ground velocity W->P.
+  \coordinate (O) at (0,0);
+  \coordinate (W) at (1,1);
+  \coordinate (P) at (1,{sqrt(17)});
+  \draw[PhysicsMuted,densely dashed,line width=0.8pt,-{Latex[length=2mm]}]
+    (0,0) -- (0,4.65) node[above] {North};
+  \draw[PhysicsMuted,densely dashed,line width=0.8pt,-{Latex[length=2mm]}]
+    (0,0) -- (2.3,0) node[right] {East};
+  \draw[physics force,PhysicsBlue,line width=1.6pt] (O) -- (P)
+    node[pos=0.74,left=5pt,physics label] {$\vec v_{PA}$};
+  \draw[physics force,PhysicsNavy] (W) -- (O)
+    node[pos=0.35,above left=1pt,physics label] {$\vec v_{AE}$};
+  \draw[physics force,dashed,line width=1.4pt] (W) -- (P)
+    node[pos=0.47,right=5pt,physics label] {$\vec v_{PE}$};
+  \draw[physics accent] (0,1.9)
+    arc[start angle=90,end angle={atan(sqrt(17))},radius=1.9];
+  \node[physics label] at (0.23,2.2) {$\theta$};
+  \draw[physics accent] (0.62,0) arc[start angle=0,end angle=45,radius=0.62];
+  \node[physics label] at (0.88,0.25) {$45^\circ$};
+  \fill[PhysicsInk] (O) circle[radius=1.7pt];
+\end{tikzpicture}

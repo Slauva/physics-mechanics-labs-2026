@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk},
+  velocity/.style={-{Latex[length=3mm]},PhysicsBlue,line width=1.5pt}
+]
+  % G08: equal physical lengths h and L have equal drawing lengths.
+  % No trajectory is shown on the problem slide.
+  \coordinate (O) at (0,0);
+  \coordinate (W) at (3.2,3.2);
+  \fill[PhysicsPaper] (-0.14,3.2) -- (-0.14,-0.14) --
+    (3.34,-0.14) -- (3.34,3.2) -- (W) -- (3.2,0) --
+    (O) -- (0,3.2) -- cycle;
+  \draw[physics line,line width=1.5pt] (0,3.2) -- (O) -- (3.2,0) -- (W);
+  \fill[PhysicsNavy] (O) circle[radius=2.5pt];
+  \draw[velocity] (O) -- (60:2.25) node[above right] {$v_0$};
+  \draw[PhysicsMuted,line width=0.8pt] (0.8,0) arc[start angle=0,end angle=60,radius=0.8];
+  \node at (1.15,0.38) {$60^\circ$};
+  \draw[PhysicsMuted,thin] (0,-0.2) -- (0,-0.68);
+  \draw[PhysicsMuted,thin] (3.2,-0.2) -- (3.2,-0.68);
+  \draw[physics dimension,line width=0.8pt] (0,-0.51) --
+    node[below=4pt] {$L=\SI{10}{\metre}$} (3.2,-0.51);
+  \draw[PhysicsMuted,thin] (3.42,0) -- (3.86,0);
+  \draw[PhysicsMuted,thin] (3.42,3.2) -- (3.86,3.2);
+  \draw[physics dimension,line width=0.8pt] (3.69,0) --
+    node[right=4pt] {$h=\SI{10}{\metre}$} (3.69,3.2);
+\end{tikzpicture}

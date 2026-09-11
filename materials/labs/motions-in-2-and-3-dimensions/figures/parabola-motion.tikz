@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  x=1cm,y=1cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk},
+  axis/.style={-{Latex[length=2.5mm]},PhysicsMuted,line width=0.8pt}
+]
+  % G10: cplot=0.7 is a drawing parameter, never a numerical condition.
+  % At x=-1.2 the tangent has slope 2*cplot*x=-1.68.
+  \draw[axis] (-2.25,0) -- (2.3,0) node[right] {$x$};
+  \draw[axis] (0,-0.25) -- (0,2.95) node[above] {$y$};
+  \draw[physics accent,line width=1.6pt,domain=-1.95:1.95,samples=80]
+    plot (\x,{0.7*\x*\x});
+  \node[right=4pt] at (1.18,1.05) {$y=cx^2$};
+  \coordinate (P) at (-1.2,1.008);
+  \fill[PhysicsNavy] (P) circle[radius=3pt];
+  \draw[-{Latex[length=3mm]},PhysicsNavy,line width=1.4pt]
+    (P) -- (-0.7,0.168);
+  \node[left=4pt] at (-0.92,0.58) {$v_0$};
+  \node[below left=2pt] at (0,0) {$O$};
+  \node[anchor=north] at (0,-0.6) {Schematic; $c>0$ shown};
+\end{tikzpicture}

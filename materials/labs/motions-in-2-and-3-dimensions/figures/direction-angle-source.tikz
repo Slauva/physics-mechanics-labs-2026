@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    width=6.7cm,height=5.2cm,
+    xmin=0,xmax=20,ymin=-25,ymax=40,
+    axis lines=left,
+    axis line style={PhysicsNavy,-{Latex[length=2mm]}},
+    xtick={0,5,10,15,20},ytick={-20,0,20,40},
+    minor x tick num=4,minor y tick num=3,
+    xlabel={$t$ (\si{\second})},ylabel={$\theta$ (deg)},
+    tick label style={font=\small\sffamily},
+    label style={font=\small\sffamily},
+    grid=both,
+    major grid style={PhysicsMuted!50,line width=0.5pt},
+    minor grid style={PhysicsLine,line width=0.4pt},
+    clip=false
+  ]
+    % Visual reconstruction of F9: the drawn shape is not new exact data.
+    \draw[physics line,line width=1.5pt]
+      (axis cs:0,35)
+      .. controls (axis cs:4,27.5) and (axis cs:8,17.2) .. (axis cs:10,11.4)
+      .. controls (axis cs:12,5.8) and (axis cs:13,2.9) .. (axis cs:14,0)
+      .. controls (axis cs:16,-5.7) and (axis cs:18,-11.6) .. (axis cs:20,-17.3);
+    \draw[PhysicsMuted,line width=0.7pt] (axis cs:0,0) -- (axis cs:20,0);
+    \draw[PhysicsNavy,fill=white,line width=1.0pt]
+      (axis cs:0,35) circle[radius=2.6pt];
+    \node[anchor=south east,font=\small\sffamily,text=PhysicsMuted]
+      at (axis description cs:1,1.025) {Source graph (redrawn)};
+  \end{axis}
+\end{tikzpicture}

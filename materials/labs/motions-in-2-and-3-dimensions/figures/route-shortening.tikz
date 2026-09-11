@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  x=1.7cm,y=1.7cm,font=\normalsize\sffamily,
+  every node/.style={text=PhysicsInk}
+]
+  % G13: schematic projection of walking velocity onto the line BC.
+  % B is on the bank; alpha is between the walking direction and BC.
+  \pgfmathsetmacro{\routeangle}{atan(1.17/1.8)}
+  \pgfmathsetmacro{\projectionx}{1.5*cos(\routeangle)^2}
+  \pgfmathsetmacro{\projectiony}{1.5*cos(\routeangle)*sin(\routeangle)}
+  \coordinate (B) at (0,0);
+  \coordinate (C) at (1.8,1.17);
+  \coordinate (V) at (1.5,0);
+  \coordinate (Q) at (\projectionx,\projectiony);
+  \fill[PhysicsBlue!9] (-0.25,0) rectangle (2.3,1.17);
+  \fill[PhysicsPaper] (-0.25,-0.17) rectangle (2.3,0);
+  \draw[physics line] (-0.25,0) -- (2.3,0);
+  \draw[physics line] (-0.25,1.17) -- (2.3,1.17);
+  \draw[PhysicsMuted,dashed,line width=0.9pt] (B) -- (C);
+  \draw[PhysicsMuted,dashed,line width=0.9pt] (V) -- (Q);
+  \draw[-{Latex[length=3mm]},PhysicsNavy,line width=1.6pt]
+    (B) -- (V) node[below=6pt] {$v_g$};
+  \draw[-{Latex[length=3mm]},PhysicsBlue,line width=1.7pt]
+    (B) -- (Q) node[above left=3pt] {$v_{BC}$};
+  \draw[PhysicsNavy,line width=0.9pt] (0.56,0)
+    arc[start angle=0,end angle=\routeangle,radius=0.56];
+  \node at ({0.77*cos(\routeangle/2)},{0.77*sin(\routeangle/2)}) {$\alpha$};
+  \foreach \p in {B,C} {\fill[PhysicsNavy] (\p) circle[radius=2.5pt];}
+  \node[below left=4pt] at (B) {$B$};
+  \node[above=4pt] at (C) {$C$};
+  \node[anchor=north,text=PhysicsMuted] at (1.03,-0.46) {Schematic};
+\end{tikzpicture}

@@ -1,0 +1,22 @@
+\begin{tikzpicture}[x=0.40cm,y=0.40cm,
+  every node/.style={font=\small\sffamily}]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,{3*sqrt(3)});
+  \coordinate (B) at (5,{5*sqrt(3)});
+  \draw[physics line,-{Latex[length=2mm]}] (-0.5,0) -- (7.3,0)
+    node[right] {$x$};
+  \draw[physics line,-{Latex[length=2mm]}] (0,-0.5) -- (0,9.8)
+    node[above] {$y$};
+  \draw[physics force,PhysicsBlue] (O) -- (B);
+  \draw[PhysicsMuted,densely dashed,line width=0.8pt]
+    (3,0) -- (A) (5,0) -- (B);
+  \foreach \p in {O,A,B}{\fill[PhysicsInk] (\p) circle[radius=2pt];}
+  \node[below left] at (O) {$O$};
+  \node[above left,physics label] at (A) {$A$};
+  \node[above right,physics label] at (B) {$B$};
+  \draw[physics dimension] (1.1,-0.6) -- (4.1,{3*sqrt(3)-0.6})
+    node[midway,right=2pt,physics label] {$OA=6$};
+  \draw[physics dimension] (-1.0,0.6) -- (4.0,{5*sqrt(3)+0.6})
+    node[pos=0.78,above left,physics label] {$OB=10$};
+  \node[physics label] at (4.7,1.0) {$z=0$};
+\end{tikzpicture}
