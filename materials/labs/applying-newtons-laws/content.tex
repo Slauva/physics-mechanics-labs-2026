@@ -1,0 +1,531 @@
+\title[Applying Newton's Laws]{Applying Newton's Laws}
+\subtitle{Mechanics Practice Session · \labversionlabel}
+\author{}
+\institute{}
+\date{}
+\newif\iflabforces
+\labforcesfalse
+\newcommand{\labfigure}[2][]{%
+  \begingroup#1\centering
+  \resizebox{\linewidth}{!}{\input{figures/#2.tikz}}\par
+  \endgroup}
+\newcommand{\modelnote}[1]{\par\smallskip{\footnotesize\textbf{Model:} #1}\par}
+
+\begin{document}
+% The title uses the same unchanged campus and logo assets as the earlier labs.
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at (current page.north west) {
+      \includegraphics[width=\paperwidth,height=0.58\paperheight]
+        {assets/innopolis-campus.jpg}};
+    \fill[white] (current page.south west) rectangle
+      ([yshift=-0.58\paperheight]current page.north east);
+    \fill[PhysicsBlue] (current page.south west) rectangle
+      ([xshift=0.012\paperwidth,yshift=-0.58\paperheight]current page.north west);
+    \node[anchor=north west,text width=0.86\paperwidth,align=left]
+      at ([xshift=0.055\paperwidth,yshift=-0.64\paperheight]current page.north west) {
+      {\color{PhysicsBlue}\small\bfseries MECHANICS PRACTICE SESSION\par}
+      \vspace{0.45em}
+      {\color{PhysicsInk}\fontsize{17}{20}\selectfont\bfseries Applying Newton's Laws\par}
+      \vspace{0.55em}
+      {\color{PhysicsMuted}\small\labversionlabel\par}};
+    \node[anchor=east,inner sep=0pt]
+      at ([xshift=-0.055\paperwidth,yshift=0.16\paperheight]current page.south east) {
+      \includegraphics[width=0.20\paperwidth]{assets/innopolis-university-logo.png}};
+  \end{tikzpicture}
+\end{frame}
+
+% P01: F1, S1. Approved modeling clarification M01.
+\begin{frame}{Problem 1 — Two Rough Surfaces}
+  \slidetag{PROBLEM 1}\par
+  \small
+  An object of mass \(\SI{4.0}{\kilogram}\), starting from rest,
+  slides down an incline and then along a rough horizontal surface.
+  \medskip
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.53\textwidth}
+      \begin{itemize}
+        \item Incline length: \(L_1=\SI{3.0}{\metre}\).
+        \item Angle: \(\theta=\ang{30}\).
+        \item Kinetic friction on the incline: \(\mu_1=0.2\).
+        \item Kinetic friction on the horizontal: \(\mu_2=0.3\).
+      \end{itemize}
+      \begin{block}{Find}
+        The horizontal distance \(L_2\) before it stops.
+      \end{block}
+    \end{column}
+    \begin{column}{.43\textwidth}
+      \labfigure{two-rough-surfaces}
+    \end{column}
+  \end{columns}
+  \modelnote{Sliding begins as stated. The transition to the horizontal
+    introduces no additional loss of speed.}
+\end{frame}
+
+\begin{solutionframe}[Solution 1 — Motion Down the Incline]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.56\textwidth}
+      Take \(+x\) down the incline and \(+y\) normal to it.
+      There is no normal acceleration:
+      \[
+        N=mg\cos\theta,\qquad f_k=\mu_1N.
+      \]
+      Newton's second law along the incline gives
+      \[
+        ma_1=mg\sin\theta-\mu_1mg\cos\theta,
+      \]
+      \[
+        a_1=g(\sin\theta-\mu_1\cos\theta).
+      \]
+      Starting from rest, \(v^2=2a_1L_1\), so
+      \answer{\(\displaystyle v^2=2gL_1(\sin\theta-\mu_1\cos\theta).\)}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \labfigure[\labforcestrue]{two-rough-surfaces}
+      \medskip
+      Friction opposes sliding. The blue acceleration arrow is not a force.
+
+      \medskip
+      \textbf{Check:} \(\tan\ang{30}>\mu_1\), so the downslope acceleration is positive.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 1 — Stopping on the Horizontal]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.58\textwidth}
+      With \(+x\) to the right, \(N=mg\) and
+      \(a_x=-\mu_2g\). Define the positive deceleration \(b=\mu_2g\).
+      \[
+        0=v^2-2bL_2
+        \quad\Longrightarrow\quad
+        L_2=\frac{v^2}{2\mu_2g}.
+      \]
+      Substituting the symbolic result from the incline,
+      \[
+        L_2=\frac{L_1}{\mu_2}
+          (\sin\theta-\mu_1\cos\theta).
+      \]
+      Only now insert the data:
+      \[
+        L_2=\frac{\SI{3.0}{\metre}}{0.3}
+          (\sin\ang{30}-0.2\cos\ang{30}).
+      \]
+    \end{column}
+    \begin{column}{.38\textwidth}
+      \labfigure{horizontal-stopping}
+      \answer{\(\displaystyle L_2\approx\SI{3.27}{\metre}.\)}
+      \medskip
+      \textbf{Check:} mass and \(g\) cancel; the result has units of length.
+      Greater horizontal friction shortens the stopping distance.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+% P02: F4, S2. M02--M03 fix the model and reference frame explicitly.
+\begin{frame}{Problem 2 — A Wedge and a Bar}
+  \slidetag{PROBLEM 2}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.53\textwidth}
+      A bar of mass \(m\) slides down the vertical face of a wedge of mass
+      \(M\). The kinetic friction coefficient is \(k\).
+
+      \medskip
+      The rope follows the two pulleys as shown.
+      \begin{block}{Find}
+        The bar's acceleration relative to the ground.
+      \end{block}
+
+      \modelnote{The ground is smooth. The taut rope is massless and
+      inextensible; the pulleys are ideal and attached to the wedge.
+      The right end is fixed to the ground. The bar remains in contact.}
+    \end{column}
+    \begin{column}{.43\textwidth}
+      \labfigure{moving-wedge-pulleys}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 2 — The Rope Constraint]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.42\textwidth}
+      \labfigure[\labforcestrue]{moving-wedge-pulleys}
+    \end{column}
+    \begin{column}{.54\textwidth}
+      Let \(X\) be the wedge position and \(y\) the bar height,
+      measured in the ground frame. Use \(+x\) right and \(+y\) up.
+      \[
+        h=h_0-y,\qquad s=s_0-X,
+      \]
+      \[
+        h+s+\text{constant}=\ell
+        \quad\Rightarrow\quad \ddot y=-\ddot X.
+      \]
+      The other rope sections move with the wedge and keep their lengths.
+
+      \medskip
+      Set \(A=\ddot X>0\). The bar stays against the face:
+      \[
+        a_x=A,\qquad a_y=-A.
+      \]
+      Thus \(N=mA\); kinetic friction on the bar is \(kN\) upward.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 2 — Acceleration in the Ground Frame]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.58\textwidth}
+      For the whole system, the only external horizontal force is the
+      fixed-end rope tension:
+      \[
+        T=(M+m)A,\qquad N=mA.
+      \]
+      For the bar, with \(+y\) upward,
+      \[
+        \begin{gathered}
+          T+kN-mg=-mA,\\[.4em]
+          [M+(2+k)m]A=mg,\qquad
+          A=\frac{mg}{M+(2+k)m}.
+        \end{gathered}
+      \]
+    \end{column}
+    \begin{column}{.38\textwidth}
+      \labfigure{wedge-bar-freebody}
+      \medskip
+      Relative to the wedge,
+      \(\mathbf a_{\rm rel}=-A\hat{\mathbf j}\), with magnitude \(A\).
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle
+    \mathbf a=A\hat{\mathbf i}-A\hat{\mathbf j},\qquad
+    |\mathbf a|=\sqrt2 A=\frac{\sqrt2\,mg}{M+(2+k)m}.
+  \)}
+\end{solutionframe}
+
+% P03: F6, S3. M04: kinetic friction during steady sliding.
+\begin{frame}{Problem 3 — The Best Pulling Angle}
+  \slidetag{PROBLEM 3}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.54\textwidth}
+      A packing crate of unknown mass is pulled across the floor at
+      constant velocity by a cable.
+
+      \medskip
+      The angle \(\theta_0\) corresponds to the minimum pulling force.
+
+      \medskip
+      \begin{block}{Find}
+        The friction coefficient between the crate and the floor.
+      \end{block}
+
+      \modelnote{The crate is already sliding, with kinetic friction,
+      and remains in contact with the floor.}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \labfigure{crate-pulling}
+      \medskip
+      \(\theta\) is a variable pulling angle; \(\theta_0\) is its optimum.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 3 — Force as a Function of Angle]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.56\textwidth}
+      Constant velocity means zero acceleration, so
+      \[
+        F\cos\theta=\mu N,\qquad
+        N+F\sin\theta=mg.
+      \]
+      The upward component of the pull reduces the normal reaction:
+      \[
+        F\cos\theta=\mu(mg-F\sin\theta).
+      \]
+      Therefore
+      \answer{\(\displaystyle F(\theta)=
+        \frac{\mu mg}{\cos\theta+\mu\sin\theta}.\)}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \labfigure[\labforcestrue]{crate-pulling}
+      \medskip
+      For \(0\le\theta<\pi/2\), the denominator is positive.
+      With \(\mu>0\), minimizing \(F\) means maximizing this denominator.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 3 — Finding the Optimum]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.53\textwidth}
+      Write \(S(\theta)=\cos\theta+\mu\sin\theta\).
+      \[
+        S'(\theta_0)=-\sin\theta_0+\mu\cos\theta_0=0.
+      \]
+      Thus
+      \answer{\(\mu=\tan\theta_0.\)}
+      Since \(S''=-S<0\), this is a maximum of the denominator,
+      hence a minimum of the required force.
+
+      \medskip
+      At the optimum, \(N=mg/(1+\mu^2)>0\), so contact is maintained.
+    \end{column}
+    \begin{column}{.43\textwidth}
+      \labfigure{pulling-force-optimum}
+      \medskip
+      The mass cancels; the graph specifies no numerical \(\mu\).
+
+      \medskip
+      \textbf{Degenerate case:} if \(\mu=0\), no force is needed
+      at any angle. There is no unique optimal angle.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+% P04: F8, S4. M05 is the idealization used by the source solution.
+\begin{frame}{Problem 4 — Maximum Height Uphill}
+  \slidetag{PROBLEM 4}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.54\textwidth}
+      A man rides a skateboard. His initial speed at the foot of a hill
+      is \(v_0\), directed up the slope.
+
+      \medskip
+      The hill makes an angle \(\alpha\) with the horizontal,
+      and the friction coefficient is \(\mu\).
+
+      \medskip
+      \begin{block}{Find}
+        What maximum vertical height \(H\) will he reach?
+      \end{block}
+
+      \modelnote{Treat rider and board as one translating body, with
+      resistance \(\mu N\). Neglect wheel rotational energy.
+      Assume \(0<\alpha<\pi/2\).}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \labfigure{uphill-motion}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 4 — From Stopping Distance to Height]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.60\textwidth}
+      With \(+x\) uphill, \(N=mg\cos\alpha\) and
+      \[
+        ma_x=-mg\sin\alpha-\mu N.
+      \]
+      Set \(b=-a_x=g(\sin\alpha+\mu\cos\alpha)>0\).
+      \[
+        t_{\rm stop}=\frac{v_0}{b},\qquad
+        S=v_0t_{\rm stop}-\frac12bt_{\rm stop}^2
+          =\frac{v_0^2}{2b}.
+      \]
+      The requested height is \(H=S\sin\alpha\):
+    \end{column}
+    \begin{column}{.36\textwidth}
+      \labfigure[\labforcestrue]{uphill-motion}
+      \medskip
+      \textbf{Checks:} \(\mu=0\) gives \(H=v_0^2/(2g)\).
+      The shortcut \(S=bt^2/2\) holds here only after using \(v_0=bt_{\rm stop}\).
+    \end{column}
+  \end{columns}
+  \answer{\(\displaystyle H=\frac{v_0^2\sin\alpha}
+    {2g(\sin\alpha+\mu\cos\alpha)}
+    =\frac{v_0^2}{2g(1+\mu\cot\alpha)}.\)}
+\end{solutionframe}
+
+% P05: F10, S5. M06 clarifies the first stop and static retention.
+\begin{frame}{Problem 5 — Position-Dependent Friction}
+  \slidetag{PROBLEM 5}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.54\textwidth}
+      A bar starts from rest and slides down a plane inclined at
+      angle \(\alpha\). Its kinetic friction coefficient varies as
+      \[
+        k(x)=fx,\qquad f>0,
+      \]
+      where \(x\) is distance along the slope from the start.
+
+      \begin{block}{Find}
+        (a) The total distance travelled.\\
+        (b) The maximum speed.
+      \end{block}
+
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \labfigure{variable-friction-incline}
+      \medskip
+      Since \(k\) is dimensionless, \(f\) has units
+      \(\si{\per\metre}\).
+    \end{column}
+  \end{columns}
+  \modelnote{The slope is long enough and \(0<\alpha<\pi/2\).
+    At the first stop, the static friction coefficient is at least
+    the local kinetic coefficient, so the bar can remain at rest.}
+\end{frame}
+
+\begin{solutionframe}[Solution 5 — Speed and the First Stop]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.59\textwidth}
+      With \(+x\) downslope,
+      \[
+        N=mg\cos\alpha,\quad
+        a=g(\sin\alpha-fx\cos\alpha).
+      \]
+      Use \(a=v\,dv/dx\) on the sliding branch:
+      \[
+        \begin{gathered}
+          \int_0^{v(x)}v\,dv
+          =g\int_0^x(\sin\alpha-f\xi\cos\alpha)\,d\xi,\\
+          v^2(x)=g(2x\sin\alpha-fx^2\cos\alpha).
+        \end{gathered}
+      \]
+      The first stop satisfies \(v(D)=0\):
+      \answer{\(\displaystyle D=\frac{2\tan\alpha}{f}.\)}
+    \end{column}
+    \begin{column}{.37\textwidth}
+      \labfigure[\labforcestrue]{variable-friction-incline}
+      \medskip
+      The positive square root describes downslope motion for \(0<x<D\);
+      the other zero, \(x=0\), is the initial state.
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5 — Where Speed Is Greatest]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.53\textwidth}
+      Since \(v>0\), its maximum occurs where \(a(x_*)=0\):
+      \[
+        x_*=\frac{\tan\alpha}{f}=\frac D2.
+      \]
+      Substitution into \(v^2(x)\) gives
+      \answer{\(\displaystyle v_{\max}=\sin\alpha
+          \sqrt{\frac{g}{f\cos\alpha}}.\)}
+      For \(u=x/D\),
+      \[
+        \frac{v}{v_{\max}}=2\sqrt{u(1-u)}.
+      \]
+    \end{column}
+    \begin{column}{.43\textwidth}
+      \labfigure{variable-friction-speed}
+      \medskip
+      Acceleration changes from positive to negative at \(x_*\).
+    \end{column}
+  \end{columns}
+  \textbf{After the stop:} \(k(D)=2\tan\alpha\).
+  The stated \(\mu_s(D)\ge k(D)\) exceeds the required
+  \(\tan\alpha\); static friction can hold the bar at \(D\).
+\end{solutionframe}
+
+% P06: F13, S6. M07 makes the source's two-regime model explicit.
+\begin{frame}{Problem 6 — A Plank and a Bar}
+  \slidetag{PROBLEM 6}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.54\textwidth}
+      A plank of mass \(m_1\) lies on a smooth horizontal plane.
+      A bar of mass \(m_2\) rests on it.
+
+      \medskip
+      A horizontal force \(F=pt\), with constant \(p>0\), acts on the
+      \emph{bar}. The friction coefficient between the bodies is \(k\).
+
+      \medskip
+      \begin{block}{Find}
+        The accelerations \(a_1(t)\) and \(a_2(t)\).
+      \end{block}
+
+      \modelnote{There is initially no relative sliding. Use the same
+      \(k\) for limiting static and kinetic friction. Take \(t\ge0\);
+      the results apply while the bar remains on the plank.}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \labfigure{plank-bar-forces}
+      \medskip
+      \(p\) has units \(\si{\newton\per\second}\).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{solutionframe}[Solution 6 — Moving Together]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.57\textwidth}
+      Before slipping, \(a_1=a_2=a\). Treat both bodies as one system; internal friction cancels:
+      \[
+        (m_1+m_2)a=pt,\qquad
+        a(t)=\frac{pt}{m_1+m_2}.
+      \]
+      Friction accelerates the plank:
+      \[
+        f_r(t)=m_1a(t)=\frac{m_1pt}{m_1+m_2}.
+      \]
+      This is possible while
+      \[
+        f_r(t)\le kN=km_2g.
+      \]
+      Static friction adjusts; it reaches its limit only at the threshold.
+    \end{column}
+    \begin{column}{.39\textwidth}
+      \labfigure[\labforcestrue]{plank-bar-forces}
+    \end{column}
+  \end{columns}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6 — The Onset of Sliding]
+  \par
+  The threshold is set by equality with limiting static friction:
+  \[
+    \frac{m_1pt_*}{m_1+m_2}=km_2g
+  \]
+  \answer{\(\displaystyle t_*=\frac{km_2g(m_1+m_2)}{pm_1}.\)}
+  For \(t>t_*\), kinetic friction is \(km_2g\).
+  Its direction is right on the plank and left on the bar:
+  \[
+    \begin{aligned}
+      m_1a_1&=km_2g
+      &\quad\Rightarrow\quad a_1&=\frac{km_2g}{m_1},\\[.4em]
+      m_2a_2&=pt-km_2g
+      &\quad\Rightarrow\quad a_2(t)&=\frac{pt}{m_2}-kg.
+    \end{aligned}
+  \]
+  \textbf{Consistency:}
+  \(a_2-a_1=p(t-t_*)/m_2>0\) after the threshold,
+  so the bar starts sliding forward relative to the plank.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6 — The Complete Time Dependence]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.55\textwidth}
+      \answer{\(\displaystyle\begin{aligned}
+        a_1(t)&=
+          \begin{cases}
+            \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[4pt]
+            \dfrac{km_2g}{m_1},&t>t_*,
+          \end{cases}\\[0.7em]
+        a_2(t)&=
+          \begin{cases}
+            \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[4pt]
+            \dfrac{pt}{m_2}-kg,&t>t_*.
+          \end{cases}
+      \end{aligned}\)}
+      \medskip
+      Here \(t_*=km_2g(m_1+m_2)/(pm_1)\).
+    \end{column}
+    \begin{column}{.41\textwidth}
+      \labfigure{plank-bar-accelerations}
+    \end{column}
+  \end{columns}
+  \medskip
+  \textbf{Checks:} \(a_1(0)=a_2(0)=0\); both branches meet at
+  \(a_*=km_2g/m_1\). The bar's slope increases from
+  \(p/(m_1+m_2)\) to \(p/m_2\).
+  The formulas stop applying if contact with the plank ends.
+\end{solutionframe}
+\end{document}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+\begin{axis}[width=10cm,height=2cm,scale only axis,
+ at={(0,0)},anchor=south west,axis lines=middle,
+ xmin=0,xmax=15,ymin=-0.6,ymax=3,
+ xlabel={$t$ (\unit{s})},ylabel={$v$ (\unit{\metre\per\second})},
+ xtick={0,2,4,6,8,10,12,14},ytick={0},
+ tick label style={font=\large},label style={font=\large},
+ ylabel style={at={(axis description cs:0,1)},anchor=south west,
+ rotate=0,yshift=3pt},clip=false]
+\addplot[only marks,mark=*,mark size=1.5pt] coordinates {(0,0)};
+\end{axis}
+% Identical horizontal extent and plot width to acceleration-v1.tikz.
+\pgfresetboundingbox
+\path[use as bounding box] (-.8,-.45) rectangle (11.35,3.35);
+\end{tikzpicture}

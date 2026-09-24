@@ -1,0 +1,50 @@
+\institution{}
+\documenttype{Quiz}
+\materialtitle{Quiz 1 -- Kinematics}
+\materialsubtitle{[2026] Physics 1. Mechanics}
+\materialdate{}
+\sisetup{per-mode=symbol}
+
+\newcommand{\quiztitle}{%
+  \thispagestyle{empty}
+  \noindent{\sffamily\LARGE\bfseries\color{PhysicsNavy}\physicstitle\par}
+  \noindent{\sffamily\color{PhysicsMuted}\physicssubtitle\par}
+  \smallskip\noindent{\color{PhysicsLine}\rule{\linewidth}{0.7pt}}\par}
+\newcounter{quizvariant}
+\providecommand{\theHproblem}{\arabic{problem}}
+\renewcommand{\theHproblem}{\arabic{quizvariant}.\arabic{problem}}
+\newcommand{\quizheader}{}
+\fancyhead[L]{\small\sffamily\color{PhysicsMuted}Quiz\enspace---\enspace\quizheader}
+\newcommand{\quizvariant}[1]{%
+  \setcounter{quizvariant}{#1}\gdef\quizheader{Variant #1}
+  \section*{Variant #1}\setcounter{problem}{0}}
+\newcommand{\quiznextproblem}{\ifphysicsshowsolutions\clearpage\else\par\bigskip\fi}
+\newcommand{\quizpairbreak}{\clearpage}
+\RenewDocumentEnvironment{problem}{O{25 pts}}{%
+  \refstepcounter{problem}\par\medskip\noindent
+  {\sffamily\bfseries\color{PhysicsNavy}Problem~\theproblem\ (#1)}
+  \par\smallskip}{\par\medskip}
+\RenewDocumentEnvironment{solution}{+b}{%
+  \ifphysicsshowsolutions\par\smallskip #1\par\fi}{}
+\newcommand{\qstep}[2]{\par\smallskip\noindent\textbf{#1. #2}\par
+  \nobreak\smallskip\nobreak}
+\newcommand{\sourcefig}[2]{\begin{center}
+  \resizebox{#1}{!}{\input{figures/#2.tikz}}\end{center}}
+\newcommand{\statementfigure}[2]{%
+  \noindent\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\raggedright
+  #1\end{minipage}
+  \hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering
+  #2\par\smallskip{\small Figure for Problem \theproblem}
+  \end{minipage}\par}
+
+\begin{document}
+\quiztitle
+\quizvariant{1}
+\input{variants/variant-1.tex}
+\clearpage
+\quizvariant{2}
+\input{variants/variant-2.tex}
+\clearpage
+\quizvariant{3}
+\input{variants/variant-3.tex}
+\end{document}

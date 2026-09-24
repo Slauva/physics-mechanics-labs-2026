@@ -1,0 +1,227 @@
+\begin{problem}[25 pts]
+\statementfigure{%
+It is one-dimensional motion along x-axis. Figure on the right shows
+change in an acceleration with time. Find the mean velocity averaged
+over time interval $[\qty{2}{\second},\qty{10}{\second}]$, if the initial
+velocity equals to $\qty{-8}{\metre\per\second}$?
+}{\resizebox{\linewidth}{!}{\input{figures/acceleration-v23.tikz}}}
+\end{problem}
+\begin{solution}
+\qstep{1}{Name the intervals and accelerations.}
+The intervals 2--4, 4--8 and 8--10 s have durations
+$\Delta t,2\Delta t,\Delta t$.
+Let $a_1$ be the acceleration on 2--4 s and $a_{\rm f}$ the acceleration at the end of the ramp.
+Before 2 s, acceleration is zero, so the velocity is still its initial value $v_0$.
+After the first interval it is
+$v_1=v_0+a_1\Delta t$. It then stays constant until 8 s.
+\qstep{2}{Find the displacement in each interval.}
+During 8--10 s, let $t'$ be time since 8 s, with $0\leq t'\leq\Delta t$.
+Acceleration rises linearly from zero:
+\[
+a(t')=a_{\rm f}\frac{t'}{\Delta t},\qquad
+v(t')=v_1+\frac{a_{\rm f}(t')^2}{2\Delta t}.
+\]
+Integrating velocity gives the three signed displacements:
+\[
+\begin{aligned}
+\Delta x_1&=\frac{v_0+v_1}{2}\Delta t,\qquad
+\Delta x_2=2v_1\Delta t,\\
+\Delta x_3&=\int_0^{\Delta t}v(t')\,dt'
+=v_1\Delta t+\frac{a_{\rm f}(\Delta t)^2}{6}.
+\end{aligned}
+\]
+\qstep{3}{Divide total displacement by total time.}
+\[
+\bar v=\frac{\Delta x_1+\Delta x_2+\Delta x_3}{4\Delta t}
+=\frac{\frac{v_0+v_1}{2}\Delta t+3v_1\Delta t+
+\frac{a_{\rm f}(\Delta t)^2}{6}}{4\Delta t}.
+\]
+\qstep{4}{Calculate and check the signed areas.}
+Use $\Delta t=2$, $v_0=-8$, $a_1=4$ and $a_{\rm f}=8$ in SI units.
+Then $v_1=-8+4(2)=0$, giving displacements
+$-8$, $0$ and $\frac{8(2)^2}{6}=\frac{16}{3}\,\unit{\metre}$.
+\[
+\bar v=\frac{-8+0+\frac{16}{3}}{8}\,\unit{\metre\per\second}
+=-\frac{1}{3}\,\unit{\metre\per\second}
+\approx-\qty{0.333}{\metre\per\second}.
+\]
+\sourcefig{0.59\linewidth}{velocity-v3}
+The final branch is curved, so a trapezoid would give the wrong area.
+Signed displacements partly cancel; mean speed is a different quantity.
+\end{solution}
+
+\ifphysicsshowsolutions\clearpage\fi
+\begin{solution}
+\subsection*{Problem 1: alternative using the original time}
+\qstep{1}{Write the acceleration on 8--10 s.}
+The straight line joins $(8,0)$ and $(10,8)$ on the acceleration graph.
+Using $t$ in seconds and numerical values in SI units,
+\[
+a(t)=\frac{8-0}{10-8}(t-8)=4(t-8),\qquad 8\leq t\leq10.
+\]
+The coefficient $4$ has units \unit{\metre\per\second\cubed},
+so $a$ is in \unit{\metre\per\second\squared}.
+\qstep{2}{Integrate acceleration to find velocity.}
+On 2--4 s, velocity rises from $-\qty{8}{\metre\per\second}$ to
+$-8+4(4-2)=0$; it then stays zero until 8 s. Thus $v(8)=0$ and
+\[
+\begin{aligned}
+v(t)&=v(8)+\int_8^t a(t')\,dt'\\
+    &=\int_8^t4(t'-8)\,dt'=2(t-8)^2,\qquad 8\leq t\leq10.
+\end{aligned}
+\]
+Here $t'$ is the integration variable; $v$ is in \unit{\metre\per\second}.
+\qstep{3}{Integrate velocity to find displacement.}
+\[
+\Delta x_{8\text{--}10}=\int_8^{10}v(t)\,dt
+=\left[\frac{2(t-8)^3}{3}\right]_8^{10}
+=\frac{16}{3}\,\unit{\metre}.
+\]
+\qstep{4}{Include the earlier intervals and find the mean.}
+The signed area on 2--4 s is
+$\Delta x_{2\text{--}4}=\frac{-8+0}{2}(4-2)=-\qty{8}{\metre}$.
+On 4--8 s, $\Delta x_{4\text{--}8}=0$ because the object is at rest.
+Therefore,
+\[
+\bar v=\frac{\Delta x_{2\text{--}4}+\Delta x_{4\text{--}8}
++\Delta x_{8\text{--}10}}{10-2}
+=\frac{-8+0+\frac{16}{3}}{8}\,\unit{\metre\per\second}
+=-\frac{1}{3}\,\unit{\metre\per\second}.
+\]
+\textbf{Answer:} $\bar v\approx-\qty{0.333}{\metre\per\second}$,
+the same as in the preceding method.
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+The tram starts moving with the constant acceleration of
+\qty{0.3}{\metre\per\second\squared}. Find the minimum passenger's velocity,
+when the passenger could wait for \qty{8}{\second} and then catch up the
+tram by running after.
+\end{problem}
+\begin{solution}
+\qstep{1}{Choose the model and sketch the minimum-speed case.}
+Assume a common starting position, a tram starting from rest, and a
+passenger who waits there for time $t_{\rm w}$ and then runs at constant speed $v_{\rm P}$.
+The source does not explicitly specify constant running speed.
+\sourcefig{0.48\linewidth}{tram-limit}
+At the minimum speed the passenger's position line touches the tram's parabola.
+\qstep{2}{Write the meeting equation.}
+For $t>t_{\rm w}>0$,
+\[
+x_T=\frac{at^2}{2},\qquad x_P=v_{\rm P}(t-t_{\rm w}),\qquad
+at^2-2v_{\rm P}t+2v_{\rm P}t_{\rm w}=0.
+\]
+\qstep{3}{Require a real meeting after the wait.}
+The discriminant is nonnegative when $v_{\rm P}(v_{\rm P}-2at_{\rm w})\geq0$.
+For positive running speed this gives
+\[
+v_{\rm P,min}=2at_{\rm w},\qquad v_{\rm P}\geq2at_{\rm w}.
+\]
+The formal boundary $v_{\rm P}=0$ is invalid: its only meeting time is $t=0<t_{\rm w}$.
+At the valid boundary the double root is $t_*=\frac{v_{\rm P}}{a}=2t_{\rm w}$.
+\qstep{4}{Calculate the speed.}
+\[
+v_{\rm P,min}=2(\qty{0.3}{\metre\per\second\squared})(\qty{8}{\second})
+=\qty{4.80}{\metre\per\second}.
+\]
+The meeting occurs after 16 s in total, including 8 s of running.
+This is the running speed, not an average including the wait.
+
+\textit{Alternative:} minimize
+$v_{\rm P}(t)=\frac{at^2}{2(t-t_{\rm w})}$ for $t>t_{\rm w}$.
+Since $v_{\rm P}'(t)=\frac{at(t-2t_{\rm w})}{2(t-t_{\rm w})^2}$, the minimum is at
+$t=2t_{\rm w}$, again giving $v_{\rm P,min}=2at_{\rm w}$.
+\end{solution}
+
+\quizpairbreak
+\begin{problem}[25 pts]
+\statementfigure{%
+Two balls were thrown from the ground at angles of \ang{30} and
+\ang{45} to the horizon. The ranges $R$ of the balls were the same.
+Find the ratio of their maximum heights during the flights.
+Neglect air resistance.
+}{\resizebox{\linewidth}{!}{\input{figures/projectile-source.tikz}}}
+\end{problem}
+\begin{solution}
+\qstep{1}{Identify the common range and the two heights.}
+Use the equal launch and landing levels shown, with uniform downward
+gravity. The initial speeds may differ.
+\sourcefig{0.49\linewidth}{projectile-heights}
+\qstep{2}{Write the height and range relations.}
+At maximum height the vertical velocity is zero, so
+\[
+H_\theta=\frac{v_\theta^2\sin^2\theta}{2g},
+\qquad R=\frac{v_\theta^2\sin(2\theta)}{g}.
+\]
+\qstep{3}{Eliminate the unknown launch speeds.}
+Divide the relations:
+\[
+\frac{H_\theta}{R}
+=\frac{\sin^2\theta}{2\sin(2\theta)}
+=\frac{\tan\theta}{4}.
+\]
+Since both ranges are equal, the symbolic height ratio is
+\[
+\frac{H_A}{H_B}=\frac{\tan\theta_A}{\tan\theta_B}.
+\]
+\qstep{4}{Label the order and insert the angles.}
+\[
+\frac{H_{30}}{H_{45}}
+=\frac{\tan30^\circ}{\tan45^\circ}
+=\frac{1}{\sqrt3}\approx0.577.
+\]
+The labeled reverse ratio is equally valid:
+$\frac{H_{45}}{H_{30}}=\sqrt3\approx1.73$.
+Both are dimensionless; the \ang{45} trajectory is higher.
+
+\textit{Alternative:} a parabola with roots $0,R$ and launch slope
+$\tan\theta$ has equation
+$y=\frac{\tan\theta}{R}x(R-x)$.
+Its vertex at $x=\frac{R}{2}$ gives
+$H_\theta=\frac{R\tan\theta}{4}$ and the same ratio.
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+A particle moves in uniform circular motion over a horizontal $xy$ plane.
+At one instant, it moves through the point with coordinates
+$[\qty{-10}{\metre},\qty{10}{\metre}]$ with velocity of
+$(-20\hat{\mathbf i}+0\hat{\mathbf j})\,\unit{\metre\per\second}$
+and acceleration of
+$(0\hat{\mathbf i}+25\hat{\mathbf j})\,\unit{\metre\per\second\squared}$.
+Find the position of the particle at moment, when its velocity equals to
+$(20\hat{\mathbf i}+0\hat{\mathbf j})\,\unit{\metre\per\second}$.
+\end{problem}
+\begin{solution}
+\qstep{1}{Locate the point with opposite velocity.}
+\sourcefig{0.40\linewidth}{circle-v3}
+Centripetal acceleration points upward toward the center.
+The required velocity is opposite to the initial one, so the required
+point is diametrically opposite. The motion is clockwise.
+\qstep{2}{Find the radius from centripetal acceleration.}
+Let $v_0=|\mathbf v_0|$ and $a_c=|\mathbf a_0|$.
+For uniform circular motion,
+\[
+a_c=\frac{v_0^2}{R}\quad\Longrightarrow\quad R=\frac{v_0^2}{a_c}.
+\]
+\qstep{3}{Move upward by one diameter.}
+The opposite point has the same $x$ coordinate and is $2R$ higher:
+write the given initial coordinates as $(x_0,y_0)$. Then
+\[
+x_1=x_0,\qquad y_1=y_0+2R=y_0+\frac{2v_0^2}{a_c}.
+\]
+\qstep{4}{Calculate the radius and position.}
+\[
+R=\frac{20^2}{25}\,\unit{\metre}=\qty{16}{\metre},\qquad
+x_1=-\qty{10}{\metre},\qquad
+y_1=10+2(16)=\qty{42}{\metre}.
+\]
+\textbf{Answer:} $(x_1,y_1)=(-10,42)\,\unit{\metre}$.
+Repeated revolutions give this same position, not additional coordinates.
+
+\textit{Vector alternative:} the center is
+$\mathbf r_C=\mathbf r_0+\frac{v_0^2}{a_c^2}\mathbf a_0$.
+Opposite-point symmetry gives $\mathbf r_1=2\mathbf r_C-\mathbf r_0$,
+which produces the same coordinates.
+\end{solution}

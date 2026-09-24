@@ -1,0 +1,169 @@
+\begin{problem}[25 pts]
+\statementfigure{%
+Plot the velocity of the object, whose acceleration is shown in Figure
+on the right. The velocity is zero at the moment $t=\qty{0}{\second}$.
+Find the mean velocity averaged over the time interval
+$[6,\qty{14}{\second}]$.
+}{%
+\resizebox{\linewidth}{!}{\input{figures/acceleration-v1.tikz}}
+\ifphysicsshowsolutions\else
+\par\smallskip
+\resizebox{\linewidth}{!}{\input{figures/velocity-blank.tikz}}
+\fi}
+\end{problem}
+\begin{solution}
+\qstep{1}{Use acceleration to find the velocity changes.}
+Use $v_{\rm end}=v_{\rm start}+a\,\Delta t$ on each constant-acceleration
+interval. The velocity graph is horizontal where $a=0$ and has slope $a$
+elsewhere.
+\qstep{2}{Write the area formula before using numbers.}
+For endpoint velocities $v_i,v_{i+1}$ and durations $\Delta t_i$,
+add the signed trapezoid areas, then divide by the total time:
+\[
+\bar v=
+\frac{\sum_i(v_i+v_{i+1})\,\Delta t_i}
+{2\sum_i\Delta t_i}.
+\]
+\qstep{3}{Calculate the velocities and draw the graph.}
+Starting from zero, the two positive pulses each add
+$2(2)=\qty{4}{\metre\per\second}$; the last pulse adds
+$-4(2)=-\qty{8}{\metre\per\second}$.
+\sourcefig{0.65\linewidth}{velocity-v1}
+\qstep{4}{Add the areas over 6--14 s and divide by the time.}
+The velocity at 6 s is also $\qty{4}{\metre\per\second}$.
+The four areas give
+\[
+\Delta x=(8+12+16+8)\,\unit{\metre}=\qty{44}{\metre},\qquad
+\bar v=\frac{\qty{44}{\metre}}{\qty{8}{\second}}
+=\qty{5.50}{\metre\per\second}.
+\]
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+The tram starts moving with a constant acceleration of
+\qty{0.4}{\metre\per\second\squared}. How long can a passenger stay after
+the beginning of the tram movement, then catch up to him, running at a
+constant speed of \qty{10}{\metre\per\second}?
+\end{problem}
+\begin{solution}
+\qstep{1}{Choose the model and sketch the limiting meeting.}
+Assume a shared starting position, a tram starting from rest, and a
+passenger who waits there for time $t_{\rm w}$ before instantly reaching running
+speed $v_{\rm P}$. Interpret the question as the longest possible wait.
+\sourcefig{0.48\linewidth}{tram-limit}
+At the limit, equal positions and speeds make the two curves tangent.
+\qstep{2}{Write the position equations.}
+With $+x$ along the motion and $t\geq t_{\rm w}$,
+\[
+x_T=\frac{at^2}{2},\qquad x_P=v_{\rm P}(t-t_{\rm w}).
+\]
+Before $t_{\rm w}$, the passenger stays at $x=0$.
+\qstep{3}{Require a physically possible meeting.}
+Equating positions gives $at^2-2v_{\rm P}t+2v_{\rm P}t_{\rm w}=0$, hence
+\[
+t_\pm=\frac{v_{\rm P}\pm\sqrt{v_{\rm P}^2-2av_{\rm P}t_{\rm w}}}{a}.
+\]
+For $a,v_{\rm P}>0$ and a positive wait, a meeting after the wait exists when
+$v_{\rm P}^2-2av_{\rm P}t_{\rm w}\geq0$. Therefore
+\[
+t_{\rm w,max}=\frac{v_{\rm P}}{2a},\qquad 0\leq t_{\rm w}\leq\frac{v_{\rm P}}{2a}.
+\]
+\qstep{4}{Calculate and interpret the answer.}
+\[
+t_{\rm w,max}=\frac{\qty{10}{\metre\per\second}}
+{2(\qty{0.4}{\metre\per\second\squared})}=\qty{12.5}{\second}.
+\]
+At the limit $t_*=\frac{v_{\rm P}}{a}=\qty{25.0}{\second}$.
+For a smaller positive delay, $t_-$ is the first meeting; $t_+$ is a
+later tram recatch if both continue. Zero delay means initial coincidence,
+not a chase after waiting.
+
+\textit{Alternative:} minimize the separation
+$d(t)=\frac{at^2}{2}-v_{\rm P}(t-t_{\rm w})$.
+Its minimum at $t=\frac{v_{\rm P}}{a}$ is $v_{\rm P}t_{\rm w}-\frac{v_{\rm P}^2}{2a}$;
+requiring this to be nonpositive gives the same bound.
+\end{solution}
+
+\quizpairbreak
+\begin{problem}[25 pts]
+\statementfigure{%
+A drop of rain falls at an angle of $\alpha_1=\ang{30}$ to the vertical
+axis when the wind speed is $u_1=\qty{10}{\metre\per\second}$.
+What is the angle $\alpha_2$ at which the drop falls after the wind has
+been increased to $u_2=\qty{20}{\metre\per\second}$?
+Assume that the velocity of the raindrops with respect to the air is constant.
+}{\resizebox{0.65\linewidth}{!}{\input{figures/rain-source.tikz}}}
+\end{problem}
+\begin{solution}
+\qstep{1}{Draw the velocities and state the working assumption.}
+Assume vertical downward motion relative to the air and horizontal wind
+in the same direction in both states. Measure the observed angle in the
+ground frame. Take $+y$ downward; $v_y$ is the unchanged vertical velocity component.
+\sourcefig{0.49\linewidth}{rain-vectors}
+The horizontal leg changes; the vertical leg does not.
+\qstep{2}{Relate each angle to the components.}
+Velocity addition gives horizontal component $u_i$ and vertical component $v_y$.
+Because the angle is measured from the vertical,
+\[
+\tan\alpha_1=\frac{u_1}{v_y},\qquad
+\tan\alpha_2=\frac{u_2}{v_y}.
+\]
+\qstep{3}{Eliminate the unknown vertical speed.}
+Using $v_y=\frac{u_1}{\tan\alpha_1}$ gives
+\[
+\alpha_2=\arctan\!\left(\frac{u_2}{u_1}\tan\alpha_1\right).
+\]
+The downward-drift solution is the acute angle.
+\qstep{4}{Evaluate the angle.}
+\[
+\alpha_2=\arctan\!\left(2\tan30^\circ\right)
+=\arctan\!\left(\frac{2}{\sqrt3}\right)\approx\ang{49.1}.
+\]
+The same relation follows from two right velocity triangles with a
+common vertical leg. Without the vertical air-relative-motion assumption,
+the source wording does not fix a unique numerical angle.
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+A particle moves in uniform circular motion over a horizontal $xy$ plane.
+It takes \qty{20}{\second} to make a full circle. At one instant, it moves
+through the point with coordinates $[\qty{4}{\metre},\qty{4}{\metre}]$
+with the acceleration of
+$(0\hat{\mathbf i}+8\hat{\mathbf j})\,\unit{\metre\per\second\squared}$.
+Find the $x$ and $y$ coordinates of the center of the circular path.
+\end{problem}
+\begin{solution}
+\qstep{1}{Use the direction of centripetal acceleration.}
+\sourcefig{0.37\linewidth}{circle-v1}
+Centripetal acceleration points toward the center.
+Here it is vertically upward, so $x_C=x$ and $y_C=y+R$.
+\qstep{2}{Find the radius from centripetal acceleration.}
+Let $a_c=|\mathbf a|$ be its magnitude and $v$ the constant speed.
+One revolution covers $2\pi R$ in time $T$, so
+\[
+a_c=\frac{v^2}{R},\qquad v=\frac{2\pi R}{T}
+\quad\Longrightarrow\quad a_c=\frac{4\pi^2R}{T^2}.
+\]
+\qstep{3}{Write the symbolic answer.}
+\[
+R=\frac{a_cT^2}{4\pi^2},\qquad
+x_C=x,\qquad y_C=y+\frac{a_cT^2}{4\pi^2}.
+\]
+\qstep{4}{Calculate the radius and coordinates.}
+\[
+R=\frac{8(20)^2}{4\pi^2}\,\unit{\metre}
+=\frac{800}{\pi^2}\,\unit{\metre}.
+\]
+\[
+x_C=\qty{4}{\metre},\qquad
+y_C=\left(4+\frac{800}{\pi^2}\right)\unit{\metre}.
+\]
+\textbf{Answer:} $(x_C,y_C)\approx(4,85.1)\,\unit{\metre}$.
+The radius is added to the point's height; it is not the center's height itself.
+
+\textit{Vector alternative:} with $\omega=\frac{2\pi}{T}$,
+$\mathbf a=\omega^2(\mathbf r_C-\mathbf r)$ gives
+$\mathbf r_C=\mathbf r+\frac{T^2}{4\pi^2}\mathbf a$, the same result.
+\end{solution}

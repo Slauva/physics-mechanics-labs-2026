@@ -1,0 +1,19 @@
+\begin{tikzpicture}[font=\small]
+\draw[physics line,-{Latex}] (-.15,0)--(5.7,0) node[right] {$x$};
+\draw[physics line,-{Latex}] (0,0)--(0,1.9) node[above] {$y$};
+\draw[physics line,domain=0:5,samples=40]
+ plot (\x,{\x*(1-\x/5)});
+\draw[physics accent,dashed,domain=0:5,samples=40]
+ plot (\x,{tan(30)*\x*(1-\x/5)});
+\draw[dotted] (2.5,{1.25*tan(30)})--(1.95,{1.25*tan(30)});
+\draw[dotted] (2.5,1.25)--(3.05,1.25);
+\draw[physics dimension] (1.95,0)--(1.95,{1.25*tan(30)})
+ node[midway,left,fill=white,inner sep=1pt] {$H_{30}$};
+\draw[physics dimension] (3.05,0)--(3.05,1.25)
+ node[midway,right,fill=white,inner sep=1pt] {$H_{45}$};
+\node[above] at (3.75,1) {$45^\circ$};
+\node at (3.8,.24) {$30^\circ$};
+\node[below] at (0,0) {$0$};
+\node[below] at (5,0) {$R$};
+\node at (2.8,-.7) {Schematic; height labels identify the ratio};
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}[font=\small]
+\draw[physics line,-{Latex}] (-.15,0)--(5.6,0);
+\draw[physics line,dashed,domain=0:5,samples=40]
+ plot (\x,{\x*(1-\x/5)});
+\draw[physics accent,dashed,domain=0:5,samples=40]
+ plot (\x,{tan(30)*\x*(1-\x/5)});
+\draw (0.65,0) arc[start angle=0,end angle=30,radius=.65];
+\draw (1.05,0) arc[start angle=0,end angle=45,radius=1.05];
+\node[fill=white,inner sep=1pt] at (.8,.18) {$30^\circ$};
+\node[fill=white,inner sep=1pt] at (.8,.62) {$45^\circ$};
+\node[below] at (0,0) {$0$};
+\node[below] at (5,0) {$R$};
+\node at (2.8,-.7) {Schematic, not to scale};
+\end{tikzpicture}

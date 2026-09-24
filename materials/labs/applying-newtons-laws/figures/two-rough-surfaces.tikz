@@ -1,0 +1,28 @@
+\begin{tikzpicture}[font=\small,>=Latex]
+  \draw[physics line] (0,2.31)--(4,0)--(6.7,0);
+  \draw[dashed,PhysicsMuted] (0,0)--(4,0);
+  \draw (3.25,0) arc[start angle=180,end angle=150,radius=.75];
+  \node at (3.15,.28) {$\theta$};
+  \begin{scope}[shift={(1.25,1.588)},rotate=-30]
+    \draw[physics line,fill=PhysicsCyan] (-.4,0) rectangle (.4,.48);
+    \coordinate (B) at (0,.24);
+    \node at (0,.24) {$m$};
+  \end{scope}
+  \draw[physics dimension] (-.3,3.11)--(3.7,.8)
+    node[midway,above,sloped] {$L_1$};
+  \draw[physics dimension] (4,-.5)--(6.6,-.5)
+    node[midway,below] {$L_2$};
+  \node at (2.4,.35) {$\mu_1$};
+  \node at (5.45,.3) {$\mu_2$};
+  \iflabforces
+    \draw[physics force] (B)--++(0,-1.2) node[below] {$mg$};
+    \draw[physics force] (B)--++(.62,1.07) node[above] {$N$};
+    \draw[physics force] (B)--++(-.95,.55) node[left] {$f_k$};
+    \draw[->,PhysicsBlue,thick] (2.5,2.4)--++(.95,-.55) node[right] {$a_1$};
+    \draw[->] (4.45,1.35)--++(.78,-.45) node[right] {$x$};
+    \draw[->] (4.45,1.35)--++(.45,.78) node[above] {$y$};
+  \else
+    \node[above left] at (.8,1.9) {$v_0=0$};
+  \fi
+  \node[PhysicsMuted] at (3.35,-1) {Schematic; not to scale};
+\end{tikzpicture}

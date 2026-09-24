@@ -1,0 +1,14 @@
+\begin{tikzpicture}[font=\small]
+\draw[physics line,-{Latex}] (-.15,0)--(5.7,0) node[right] {$x$};
+\draw[physics line,-{Latex}] (0,0)--(0,2) node[above] {$y$};
+\draw[physics line,dashed,domain=0:5,samples=40]
+ plot (\x,{\x*(1-\x/5)});
+\draw[physics accent,dashed,domain=0:5,samples=40]
+ plot (\x,{tan(30)*\x*(1-\x/5)});
+\draw[physics force] (0,0)--(1.06,1.06) node[above] {$\mathbf v_{45}$};
+\draw[physics force] (0,0)--(1.4,.81)
+ node[above right,yshift=14pt] {$\mathbf v_{30}$};
+\node[below] at (0,0) {$0$};
+\node[below] at (5,0) {$R$};
+\node at (2.8,-.65) {Same range; different speeds};
+\end{tikzpicture}

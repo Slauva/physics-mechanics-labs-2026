@@ -1,0 +1,28 @@
+\begin{tikzpicture}[font=\small,>=Latex]
+  \draw[physics line] (-.45,-.225)--(5,2.5);
+  \draw[dashed,PhysicsMuted] (0,0)--(5,0);
+  \draw (1,0) arc[start angle=0,end angle=26.565,radius=1];
+  \node at (1.35,.27) {$\alpha$};
+  \begin{scope}[shift={(0,0)},rotate=26.565]
+    \draw[physics line] (-.4,.2)--(.4,.2);
+    \draw[physics line] (-.24,.1) circle(.1);
+    \draw[physics line] (.24,.1) circle(.1);
+    \draw[physics line] (0,.25)--(0,.85)--(.2,1.05);
+    \draw[physics line] (0,.55)--(-.25,.85);
+    \draw[physics line] (.2,1.22) circle(.15);
+    \coordinate (B) at (0,.5);
+  \end{scope}
+  \draw[->,PhysicsBlue,thick] (.4,.55)--(1.3,1) node[above right] {$v_0$};
+  \fill (0,0) circle(1.5pt);
+  \node[right] at (.3,-.3) {Start};
+  \draw[physics dimension] (5.35,0)--(5.35,2.5) node[midway,right] {$H$};
+  \draw[dashed] (5,2.5)--(5.35,2.5);
+  \draw[->] (3.05,1.1)--(4.05,1.6) node[right] {$x$};
+  \draw[->] (3.05,1.1)--(2.6,2) node[above] {$y$};
+  \iflabforces
+    \draw[physics force] (B)--++(0,-1.4) node[below] {$mg$};
+    \draw[physics force] (B)--++(-.55,1.1) node[above] {$N$};
+    \draw[physics force] (B)--++(-1,-.5) node[left] {$\mu N$};
+  \fi
+  \node[PhysicsMuted] at (2.7,-.8) {Schematic; not to scale};
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{axis}[width=11cm,height=4.6cm,axis lines=middle,
+ xmin=0,xmax=15,ymin=-1,ymax=10,
+ xlabel={$t$ (\unit{s})},ylabel={$v$ (\unit{\metre\per\second})},
+ xtick={0,2,4,6,8,10,12,14},ytick={0,4,8},
+ xlabel style={at={(axis description cs:1,0)},anchor=north east,yshift=-15pt},
+ tick label style={font=\small},label style={font=\small},
+ grid=major,grid style={PhysicsLine},clip=false]
+\addplot[draw=none,fill=PhysicsCyan!55] coordinates
+ {(6,0)(6,4)(8,4)(10,8)(12,8)(14,0)} \closedcycle;
+\addplot[physics line,mark=*,mark size=1.5pt] coordinates
+ {(0,0)(2,0)(4,4)(6,4)(8,4)(10,8)(12,8)(14,0)};
+\draw[dashed] (axis cs:6,0)--(axis cs:6,4);
+\node[font=\small,fill=white,inner sep=1pt] at (axis cs:10,3) {$\Delta x=\qty{44}{m}$};
+\end{axis}
+\end{tikzpicture}

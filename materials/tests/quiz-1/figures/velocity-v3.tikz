@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\begin{axis}[width=11cm,height=4.8cm,axis lines=middle,axis on top,
+ xmin=0,xmax=11,ymin=-10,ymax=10,
+ xlabel={$t$ (\unit{s})},ylabel={$v$ (\unit{\metre\per\second})},
+ xtick={0,2,4,6,8,10},ytick={-8,0,8},
+ tick label style={font=\small},label style={font=\small},
+ grid=major,grid style={PhysicsLine},clip=false]
+\addplot[draw=none,fill=PhysicsCyan!55] coordinates
+ {(2,0)(2,-8)(4,0)} \closedcycle;
+\path[draw=none,fill=PhysicsGold!35] (axis cs:8,0)
+ plot[domain=8:10,samples=40] (axis cs:\x,{2*(\x-8)^2})
+ -- (axis cs:10,0) -- cycle;
+\addplot[physics line] coordinates {(0,-8)(2,-8)(4,0)(8,0)};
+\addplot[physics line,domain=8:10,samples=30] {2*(x-8)^2};
+\draw[dashed] (axis cs:10,0)--(axis cs:10,8);
+\node[font=\small] at (axis cs:2.8,-2) {$-$};
+\node[font=\small] at (axis cs:9.6,2) {$+$};
+\end{axis}
+\end{tikzpicture}

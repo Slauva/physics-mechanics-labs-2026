@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+\begin{axis}[width=10cm,height=5.3cm,axis lines=left,
+ xmin=0,xmax=3.1,ymin=0,ymax=5.2,
+ xlabel={$\displaystyle\frac{t}{t_{\rm w}}$},ylabel={$\displaystyle\frac{x}{at_{\rm w}^2}$},
+ xtick={0,1,2,3},ytick={0,2,4},
+ tick label style={font=\small},label style={font=\normalsize},
+ legend style={font=\small,at={(0.02,0.98)},anchor=north west,
+ draw=none,fill=white},clip=false]
+\addplot[physics line,domain=0:3,samples=60] {x^2/2};
+\addlegendentry{Tram}
+\addplot[physics accent,dashed] coordinates {(0,0)(1,0)(3,4)};
+\addlegendentry{Passenger}
+\addplot[only marks,mark=*,mark size=2pt] coordinates {(2,2)};
+\draw[dotted] (axis cs:2,0)--(axis cs:2,2);
+\node[font=\small,anchor=south east] at (axis cs:2,2.1) {Meeting};
+\node[font=\small,anchor=north] at (axis cs:1,0) {};
+\end{axis}
+\end{tikzpicture}

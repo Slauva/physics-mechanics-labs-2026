@@ -1,0 +1,11 @@
+\begin{tikzpicture}[font=\small,>=Latex,y=.65cm]
+  \draw[->] (0,0)--(5.4,0) node[right] {$\theta$};
+  \draw[->] (0,0)--(0,3.25) node[above] {$S(\theta)$};
+  \draw[physics accent] (.25,1.35)..controls(1.4,2.45)and(2.1,2.8)..(2.7,2.8)
+    ..controls(3.5,2.8)and(4.4,1.75)..(5,1.05);
+  \draw[dashed,PhysicsMuted] (2.7,0)--(2.7,2.8);
+  \fill[PhysicsBlue] (2.7,2.8) circle(2pt);
+  \node[below] at (2.7,0) {$\theta_0$};
+  \node[above] at (3.4,2.85) {maximum};
+  \node[PhysicsMuted] at (2.7,-.75) {Schematic; no numerical scale};
+\end{tikzpicture}

@@ -1,0 +1,178 @@
+\begin{problem}[25 pts]
+\statementfigure{%
+It is one-dimensional motion along the x-axis. The initial position of
+the object is $x(0)=\qty{15}{\metre}$. Figure on the right shows the
+change in the acceleration with time. What is the x-coordinate of the
+object at time $t=\qty{6}{\second}$, if the initial velocity equals to
+$\qty{-10}{\metre\per\second}$?
+}{\resizebox{\linewidth}{!}{\input{figures/acceleration-v23.tikz}}}
+\end{problem}
+\begin{solution}
+\qstep{1}{Split the motion into three equal time intervals.}
+Use 0--2, 2--4 and 4--6 s, each of duration $\Delta t$.
+The accelerations are $a_1=0$, $a_2$ and $a_3=0$; the index labels the interval.
+The ramp after 8 s cannot affect the position at 6 s.
+\qstep{2}{Write the displacement in each interval.}
+For constant acceleration,
+$\Delta x=v_{\rm start}\Delta t+\frac{a(\Delta t)^2}{2}$ and
+$v_{\rm end}=v_{\rm start}+a\Delta t$. Therefore
+\[
+\begin{aligned}
+\Delta x_1&=v_0\Delta t,\qquad
+\Delta x_2=v_0\Delta t+\frac{a_2(\Delta t)^2}{2},\\
+\Delta x_3&=(v_0+a_2\Delta t)\Delta t.
+\end{aligned}
+\]
+\qstep{3}{Add the displacements to the initial position.}
+Before substituting the data, combine the three terms:
+\[
+x=x_0+\Delta x_1+\Delta x_2+\Delta x_3
+=x_0+3v_0\Delta t+\frac{3a_2(\Delta t)^2}{2}.
+\]
+\qstep{4}{Calculate the coordinate and check the graph.}
+With $x_0=15$, $v_0=-10$, $\Delta t=2$ and $a_2=4$ in SI units,
+\[
+x=15+3(-10)(2)+\frac{3(4)(2)^2}{2}
+=15-60+24=-\qty{21}{\metre}.
+\]
+\sourcefig{0.60\linewidth}{velocity-v2}
+The areas are $-20$, $-12$ and $-\qty{4}{\metre}$, totaling
+$-\qty{36}{\metre}$. This is displacement; adding the initial
+\qty{15}{\metre} gives the coordinate $-\qty{21}{\metre}$.
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+The tram starts moving with the constant acceleration $a$.
+The passenger waits for \qty{10}{\second} and then catches up the tram
+by running after with the constant velocity of
+\qty{12}{\metre\per\second}. What is the maximum acceleration of the
+tram $a_{\max}$ to make this happen?
+\end{problem}
+\begin{solution}
+\qstep{1}{Choose the model and sketch the boundary.}
+Assume a shared starting position and a tram initially at rest.
+The passenger waits there for time $t_{\rm w}$ and then runs at constant speed $v_{\rm P}$.
+A limiting meeting counts as catching up.
+\sourcefig{0.48\linewidth}{tram-limit}
+The limiting line touches the tram's parabola.
+\qstep{2}{Write the meeting equation.}
+For $t\geq t_{\rm w}$,
+\[
+x_T=\frac{at^2}{2},\qquad x_P=v_{\rm P}(t-t_{\rm w}),\qquad
+at^2-2v_{\rm P}t+2v_{\rm P}t_{\rm w}=0.
+\]
+\qstep{3}{Find the largest allowed acceleration.}
+The meeting times are
+\[
+t_\pm=\frac{v_{\rm P}\pm\sqrt{v_{\rm P}^2-2av_{\rm P}t_{\rm w}}}{a}.
+\]
+For positive $a,v_{\rm P},t_{\rm w}$, real meetings after the wait require
+$v_{\rm P}^2-2av_{\rm P}t_{\rm w}\geq0$. Therefore
+\[
+a_{\max}=\frac{v_{\rm P}}{2t_{\rm w}},\qquad
+0<a\leq\frac{v_{\rm P}}{2t_{\rm w}}.
+\]
+At the boundary the roots merge and $t_*=2t_{\rm w}$.
+\qstep{4}{Calculate the maximum.}
+\[
+a_{\max}=
+\frac{\qty{12}{\metre\per\second}}{2(\qty{10}{\second})}
+=\qty{0.600}{\metre\per\second\squared}.
+\]
+The meeting is at 20 s. Below the threshold, the first meeting is $t_-$;
+a later meeting at $t_+$ occurs only if both continue.
+
+\textit{Alternative:} maximize
+$a(t)=\frac{2v_{\rm P}(t-t_{\rm w})}{t^2}$ for $t>t_{\rm w}$.
+Its derivative $\frac{2v_{\rm P}(2t_{\rm w}-t)}{t^3}$ changes from positive to
+negative at $t=2t_{\rm w}$, giving the same maximum.
+\end{solution}
+
+\quizpairbreak
+\begin{problem}[25 pts]
+\statementfigure{%
+Two balls were thrown from the ground at angles of \ang{30} and
+\ang{45} to the horizon. The ranges $R$ of the balls were the same.
+Find the ratio of the initial speeds the balls had at the beginning
+of their flights. Neglect air resistance.
+}{\resizebox{\linewidth}{!}{\input{figures/projectile-source.tikz}}}
+\end{problem}
+\begin{solution}
+\qstep{1}{Identify what is shared.}
+The diagram shows equal launch and landing levels and a common range.
+Use uniform downward gravity. The initial speeds are not assumed equal.
+\sourcefig{0.48\linewidth}{projectile-speeds}
+\qstep{2}{Relate speed to range.}
+The nonzero flight time follows from vertical motion:
+\[
+t_f=\frac{2v_\theta\sin\theta}{g},\qquad
+R=v_\theta\cos\theta\,t_f
+=\frac{v_\theta^2\sin(2\theta)}{g}.
+\]
+\qstep{3}{Eliminate the common range and gravity.}
+For two angles $\theta_A,\theta_B$,
+$v_A^2\sin(2\theta_A)=v_B^2\sin(2\theta_B)$.
+Taking the positive root because speeds are magnitudes,
+\[
+\frac{v_A}{v_B}
+=\sqrt{\frac{\sin(2\theta_B)}{\sin(2\theta_A)}}.
+\]
+\qstep{4}{State the order and evaluate.}
+Choosing the \ang{30} speed as the numerator gives
+\[
+\frac{v_{30}}{v_{45}}
+=\sqrt{\frac{\sin90^\circ}{\sin60^\circ}}
+=\sqrt{\frac{2}{\sqrt3}}\approx1.07.
+\]
+The reverse order is equally valid when labeled:
+$\frac{v_{45}}{v_{30}}=\sqrt{\frac{\sqrt3}{2}}\approx0.931$.
+Both are dimensionless. The \ang{30} launch needs the greater speed.
+
+\textit{Alternative:} eliminate the two flight times directly from
+$R=v_\theta\cos\theta\,t_f$ and
+$0=v_\theta\sin\theta\,t_f-\frac{gt_f^2}{2}$; the same ratio follows.
+\end{solution}
+
+\quiznextproblem
+\begin{problem}[25 pts]
+A particle moves in uniform circular motion over a horizontal $xy$ plane
+with the period of \qty{25}{\second}. At one instant, it moves through the
+point with coordinates $[\qty{-1}{\metre},\qty{3}{\metre}]$ with the
+velocity directed along $\hat{\mathbf i}$ and the acceleration of
+$(0\hat{\mathbf i}+6\hat{\mathbf j})\,\unit{\metre\per\second\squared}$.
+Find the $x$ and $y$ coordinates of the center of the circular path.
+\end{problem}
+\begin{solution}
+\qstep{1}{Use the direction of centripetal acceleration.}
+\sourcefig{0.37\linewidth}{circle-v2}
+Centripetal acceleration points toward the center.
+Here it is vertically upward, so $x_C=x$ and $y_C=y+R$.
+\qstep{2}{Find the radius from centripetal acceleration.}
+Let $a_c=|\mathbf a|$ be its magnitude and $v$ the constant speed.
+One revolution covers $2\pi R$ in time $T$, so
+\[
+a_c=\frac{v^2}{R},\qquad v=\frac{2\pi R}{T}
+\quad\Longrightarrow\quad a_c=\frac{4\pi^2R}{T^2}.
+\]
+\qstep{3}{Write the symbolic answer.}
+\[
+R=\frac{a_cT^2}{4\pi^2},\qquad
+x_C=x,\qquad y_C=y+\frac{a_cT^2}{4\pi^2}.
+\]
+\qstep{4}{Calculate the radius and coordinates.}
+\[
+R=\frac{6(25)^2}{4\pi^2}\,\unit{\metre}
+=\frac{1875}{2\pi^2}\,\unit{\metre}.
+\]
+\[
+x_C=\qty{-1}{\metre},\qquad
+y_C=\left(3+\frac{1875}{2\pi^2}\right)\unit{\metre}.
+\]
+\textbf{Answer:} $(x_C,y_C)\approx(-1,98.0)\,\unit{\metre}$.
+The radius is added to the point's height; it is not the center's height itself.
+
+\textit{Vector alternative:} with $\omega=\frac{2\pi}{T}$,
+$\mathbf a=\omega^2(\mathbf r_C-\mathbf r)$ gives
+$\mathbf r_C=\mathbf r+\frac{T^2}{4\pi^2}\mathbf a$, the same result.
+\end{solution}

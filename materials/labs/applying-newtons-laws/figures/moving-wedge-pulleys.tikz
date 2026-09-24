@@ -1,0 +1,26 @@
+\begin{tikzpicture}[font=\small,>=Latex]
+  \draw[physics line] (-.2,0)--(5.65,0);
+  \draw[physics line,fill=PhysicsPaper] (0,0)--(2.7,0)--(2.7,3.8)--cycle;
+  \node at (1.7,1.2) {$M$};
+  \draw[physics line,fill=PhysicsCyan] (2.7,1.6) rectangle (3.3,2.2);
+  \node at (3,1.9) {$m$};
+  \node[left] at (2.7,2.15) {$k$};
+  \draw[physics line] (2.7,3.5)--(3.15,4.1);
+  \draw[physics line] (2.7,.65)--(3.59,.75);
+  \draw[physics line,fill=white] (3.15,4.1) circle (.22);
+  \draw[physics line,fill=white] (3.59,.75) circle (.22);
+  \draw[physics accent] (2.93,2.2)--(2.93,4.1)
+    arc[start angle=180,end angle=0,radius=.22]--(3.37,.75)
+    arc[start angle=180,end angle=270,radius=.22]--(5.2,.53);
+  \draw[physics line] (5.2,.2)--(5.2,1);
+  \foreach \y in {.2,.4,.6,.8,1}
+    \draw[PhysicsMuted] (5.2,\y)--(5.42,{\y+.15});
+  \node[align=center] at (4.7,1.55) {Fixed to\\ground};
+  \draw[->] (.4,3.2)--(1.2,3.2) node[right] {$x$};
+  \draw[->] (.4,3.2)--(.4,4) node[above] {$y$};
+  \iflabforces
+    \draw[physics dimension] (3.8,2.2)--(3.8,4.1) node[midway,right] {$h$};
+    \draw[physics dimension] (3.59,-.35)--(5.2,-.35) node[midway,below] {$s$};
+  \fi
+  \node[PhysicsMuted] at (2.7,-.95) {Schematic; smooth ground};
+\end{tikzpicture}
