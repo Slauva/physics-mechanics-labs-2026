@@ -10,11 +10,11 @@
   \node[above left] at (0,2.5) {$x=0$};
   \draw[->,PhysicsBlue,thick] (2.9,1.9)--(4,1.35) node[right] {$x$};
   \draw[->] (2.9,1.9)--(3.35,2.8) node[above] {$y$};
-  \node at (1.1,3.4) {$k(x)=fx$};
+  \node at (1.1,3.4) {$\mu(x)=fx$};
   \iflabforces
     \draw[physics force] (B)--++(0,-1.4) node[below] {$mg$};
     \draw[physics force] (B)--++(.55,1.1) node[above] {$N$};
-    \draw[physics force] (B)--++(-1,.5) node[above right] {$k(x)N$};
+    \draw[physics force] (B)--++(-1,.5) node[above right] {$\vec{\mathrm{fr}}$};
   \else
     \node[above] at (1,.5) {$v(0)=0$};
   \fi

@@ -3,12 +3,12 @@
     \draw[physics line,fill=PhysicsCyan] (1.2,2.8) rectangle(2.6,3.45);
     \node at (1.9,3.1) {$m_2$};
     \draw[physics force] (2.6,3.1)--(4.5,3.1) node[right] {$F=pt$};
-    \draw[physics force] (1.2,3.1)--(-.25,3.1) node[left] {$f_r$};
+    \draw[physics force] (1.2,3.1)--(-.25,3.1) node[left] {$\vec{\mathrm{fr}}$};
     \draw[physics force] (1.9,3.45)--(1.9,4.25) node[above] {$N$};
     \draw[physics force] (1.9,2.8)--(1.9,1.8) node[below] {$m_2g$};
     \draw[physics line,fill=PhysicsPaper] (.2,-.35) rectangle(3.6,.25);
     \node at (1.9,-.05) {$m_1$};
-    \draw[physics force] (3.6,-.05)--(4.85,-.05) node[right] {$f_r$};
+    \draw[physics force] (3.6,-.05)--(4.85,-.05) node[right] {$\vec{\mathrm{fr}}$};
     \draw[physics force] (1.1,.25)--(1.1,1.3) node[above] {$N_g$};
     \draw[physics force] (1.1,-.35)--(1.1,-1.05) node[below] {$m_1g$};
     \draw[physics force] (2.65,-.35)--(2.65,-1.05) node[below] {$N$};
@@ -20,7 +20,7 @@
     \draw[physics line,fill=PhysicsCyan] (1.1,.55) rectangle(2.6,1.25);
     \node at (1.85,.9) {$m_2$};
     \draw[physics force] (2.6,.9)--(4.6,.9) node[right] {$F=pt$};
-    \node[above left] at (1.1,.65) {$k$};
+    \node[above left] at (1.1,.65) {$\mu$};
     \node[below] at (2.1,0) {Smooth ground};
     \draw[->] (4.1,-.9)--(5.25,-.9) node[right] {$x$};
   \fi

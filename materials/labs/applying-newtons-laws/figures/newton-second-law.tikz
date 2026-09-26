@@ -1,0 +1,17 @@
+\begin{tikzpicture}[font=\normalsize,>=Latex]
+  \coordinate (C) at (0,0);
+  \draw[physics line,dashed,PhysicsMuted] (-2,-.48)--(2,-.48);
+  \draw[physics line,fill=PhysicsCyan!45] (-.55,-.48) rectangle (.55,.48);
+  \fill[PhysicsInk] (C) circle (1.5pt);
+  \draw[physics force] (C)--(1.65,0) node[right] {$F$};
+  \draw[physics force] (C)--(-1.4,0) node[left] {$\vec{\mathrm{fr}}$};
+  \draw[physics force] (C)--(0,1.05) node[above] {$N$};
+  \draw[physics force] (C)--(0,-1.05) node[below] {$mg$};
+  \draw[->,PhysicsBlue,thick,dashed] (-1.7,1.35)--(-.6,1.35)
+    node[midway,above] {$v$};
+  \coordinate (O) at (2.35,.6);
+  \draw[->,PhysicsInk] (O)--++(.8,0) node[right] {$+x$};
+  \draw[->,PhysicsInk] (O)--++(0,.8) node[above] {$+y$};
+  \node[PhysicsMuted,align=center] at (.6,-1.85)
+    {Force diagram; not to scale};
+\end{tikzpicture}

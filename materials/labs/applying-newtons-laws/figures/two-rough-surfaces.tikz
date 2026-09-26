@@ -17,7 +17,7 @@
   \iflabforces
     \draw[physics force] (B)--++(0,-1.2) node[below] {$mg$};
     \draw[physics force] (B)--++(.62,1.07) node[above] {$N$};
-    \draw[physics force] (B)--++(-.95,.55) node[left] {$f_k$};
+    \draw[physics force] (B)--++(-.95,.55) node[left] {$\vec{\mathrm{fr}}$};
     \draw[->,PhysicsBlue,thick] (2.5,2.4)--++(.95,-.55) node[right] {$a_1$};
     \draw[->] (4.45,1.35)--++(.78,-.45) node[right] {$x$};
     \draw[->] (4.45,1.35)--++(.45,.78) node[above] {$y$};

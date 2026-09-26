@@ -3,7 +3,7 @@
   \node at (0,0) {$m$};
   \draw[physics force] (0,-.25)--(0,-1.5) node[below] {$mg$};
   \draw[physics force] (-.22,.25)--(-.22,1.45) node[above left] {$T$};
-  \draw[physics force] (.22,.25)--(.22,1.35) node[above right] {$kN$};
+  \draw[physics force] (.22,.25)--(.22,1.35) node[above right] {$\vec{\mathrm{fr}}$};
   \draw[physics force] (.3,0)--(1.6,0) node[right] {$N$};
   \draw[->,PhysicsBlue,thick] (-1.1,-.75)--(-.45,-1.4)
     node[left,pos=0] {$\mathbf a$};

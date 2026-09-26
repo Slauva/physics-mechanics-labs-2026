@@ -35,6 +35,110 @@
   \end{tikzpicture}
 \end{frame}
 
+% T01--T04: editorial theory requested by the user on 2026-09-26.
+\begin{frame}{Newton's Second Law}
+  \slidetag{THEORY}\par
+  For a body of constant mass in an inertial reference frame,
+  \begin{block}{Net force determines acceleration}
+    \[
+      \mathbf F_{\mathrm{net}}=\sum\mathbf F_{\mathrm{ext}}=m\mathbf a.
+    \]
+  \end{block}
+  \begin{itemize}
+    \item Add all external forces \textbf{as vectors}.
+    \item Acceleration points along the net force, not necessarily
+      along the velocity.
+    \item For the same net force, a larger mass gives a smaller acceleration.
+  \end{itemize}
+  \medskip
+  \textbf{Zero net force:} \(\mathbf a=\mathbf 0\), so velocity is constant;
+  the body may be at rest or moving.
+\end{frame}
+
+\begin{frame}{Applying the Second Law}
+  \slidetag{THEORY}\par
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.55\textwidth}
+      \begin{enumerate}
+        \item Choose the body and an inertial frame.
+        \item Draw only the forces \emph{on that body}.
+        \item Choose axes; resolve each force.
+        \item Write one equation per axis.
+      \end{enumerate}
+      \medskip
+      \textbf{Example:} a block slides right along a fixed level surface.
+      The pull \(F\) is horizontal.
+      \[
+        \begin{aligned}
+          F-\mathrm{fr}&=ma_x,\\
+          N-mg&=ma_y=0.
+        \end{aligned}
+      \]
+    \end{column}
+    \begin{column}{.41\textwidth}
+      \labfigure{newton-second-law}
+      \smallskip
+      \textbf{Here} \(N=mg\), because the vertical forces balance.
+      The sign of \(F-\mathrm{fr}\) determines whether the block speeds up
+      or slows down.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{What Is Friction?}
+  \slidetag{THEORY}\par
+  Friction \(\vec{\mathrm{fr}}\) acts \textbf{parallel to the surface};
+  the normal force \(N\) is perpendicular to it.
+  \begin{block}{Choose the direction from relative motion}
+    Friction opposes sliding, or the tendency to slide,
+    between the two surfaces in contact.
+  \end{block}
+  \begin{itemize}
+    \item Microscopic adhesion and deformation of surface irregularities
+      contribute to friction.
+    \item Static friction can accelerate a box along with an accelerating
+      belt, without slipping.
+    \item Find \(N\) from the force equations first; it is not always \(mg\).
+  \end{itemize}
+  \medskip
+  For sliding, the force magnitude is \(\mathrm{fr}=\mu N\).
+  The coefficient \(\mu\) is dimensionless and depends on the surfaces.
+\end{frame}
+
+\begin{frame}{Types of Friction}
+  \slidetag{THEORY}\par
+  \small
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabularx}{\textwidth}{@{}
+      >{\raggedright\arraybackslash}p{.19\textwidth}
+      >{\raggedright\arraybackslash}p{.30\textwidth}
+      >{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \textbf{Type} & \textbf{Contact condition} & \textbf{Force or mechanism} \\
+    \midrule
+    \textbf{Static}\newline (no slipping)
+      & No relative sliding at the contact.
+      & \(0\le \mathrm{fr}\le\mu_sN\). Adjusts as needed; equality only at the limit. \\
+    \addlinespace[.25em]
+    \textbf{Kinetic}\newline (sliding)
+      & Surfaces slide relative to each other.
+      & \(\mathrm{fr}=\mu_kN\), opposite relative sliding. \\
+    \addlinespace[.25em]
+    \textbf{Rolling}\newline resistance
+      & A wheel or ball rolls on a surface.
+      & Energy loss through deformation; not the sliding-friction law. \\
+    \bottomrule
+  \end{tabularx}
+  \medskip
+  Here \(\mathrm{fr}=|\vec{\mathrm{fr}}|\); \(s\) and \(k\) label static and kinetic
+  coefficients. Typically \(\mu_k\le\mu_s\); the model is approximate.
+
+  \medskip
+  \textbf{Rolling without slipping} can involve static friction.
+  This is distinct from rolling resistance.
+\end{frame}
+
 % P01: F1, S1. Approved modeling clarification M01.
 \begin{frame}{Problem 1 — Two Rough Surfaces}
   \slidetag{PROBLEM 1}\par
@@ -68,7 +172,7 @@
       Take \(+x\) down the incline and \(+y\) normal to it.
       There is no normal acceleration:
       \[
-        N=mg\cos\theta,\qquad f_k=\mu_1N.
+        N=mg\cos\theta,\qquad \mathrm{fr}=\mu_1N.
       \]
       Newton's second law along the incline gives
       \[
@@ -129,7 +233,7 @@
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.53\textwidth}
       A bar of mass \(m\) slides down the vertical face of a wedge of mass
-      \(M\). The kinetic friction coefficient is \(k\).
+      \(M\). The kinetic friction coefficient is \(\mu\).
 
       \medskip
       The rope follows the two pulleys as shown.
@@ -169,7 +273,8 @@
       \[
         a_x=A,\qquad a_y=-A.
       \]
-      Thus \(N=mA\); kinetic friction on the bar is \(kN\) upward.
+      Thus \(N=mA\); friction on the bar acts upward,
+      with magnitude \(\mathrm{fr}=\mu N\).
     \end{column}
   \end{columns}
 \end{solutionframe}
@@ -185,9 +290,9 @@
       For the bar, with \(+y\) upward,
       \[
         \begin{gathered}
-          T+kN-mg=-mA,\\[.4em]
-          [M+(2+k)m]A=mg,\qquad
-          A=\frac{mg}{M+(2+k)m}.
+          T+\mu N-mg=-mA,\\[.4em]
+          [M+(2+\mu)m]A=mg,\qquad
+          A=\frac{mg}{M+(2+\mu)m}.
         \end{gathered}
       \]
     \end{column}
@@ -200,7 +305,7 @@
   \end{columns}
   \answer{\(\displaystyle
     \mathbf a=A\hat{\mathbf i}-A\hat{\mathbf j},\qquad
-    |\mathbf a|=\sqrt2 A=\frac{\sqrt2\,mg}{M+(2+k)m}.
+    |\mathbf a|=\sqrt2 A=\frac{\sqrt2\,mg}{M+(2+\mu)m}.
   \)}
 \end{solutionframe}
 
@@ -237,7 +342,7 @@
     \begin{column}{.56\textwidth}
       Constant velocity means zero acceleration, so
       \[
-        F\cos\theta=\mu N,\qquad
+        F\cos\theta=\mathrm{fr}=\mu N,\qquad
         N+F\sin\theta=mg.
       \]
       The upward component of the pull reduces the normal reaction:
@@ -303,7 +408,7 @@
       \end{block}
 
       \modelnote{Treat rider and board as one translating body, with
-      resistance \(\mu N\). Neglect wheel rotational energy.
+      resistance \(\mathrm{fr}=\mu N\). Neglect wheel rotational energy.
       Assume \(0<\alpha<\pi/2\).}
     \end{column}
     \begin{column}{.42\textwidth}
@@ -317,7 +422,7 @@
     \begin{column}{.60\textwidth}
       With \(+x\) uphill, \(N=mg\cos\alpha\) and
       \[
-        ma_x=-mg\sin\alpha-\mu N.
+        ma_x=-mg\sin\alpha-\mathrm{fr},\qquad \mathrm{fr}=\mu N.
       \]
       Set \(b=-a_x=g(\sin\alpha+\mu\cos\alpha)>0\).
       \[
@@ -348,7 +453,7 @@
       A bar starts from rest and slides down a plane inclined at
       angle \(\alpha\). Its kinetic friction coefficient varies as
       \[
-        k(x)=fx,\qquad f>0,
+        \mu(x)=fx,\qquad f>0,
       \]
       where \(x\) is distance along the slope from the start.
 
@@ -361,8 +466,8 @@
     \begin{column}{.42\textwidth}
       \labfigure{variable-friction-incline}
       \medskip
-      Since \(k\) is dimensionless, \(f\) has units
-      \(\si{\per\metre}\).
+      Here \(f\) is the constant spatial gradient of \(\mu(x)\),
+      with units \(\si{\per\metre}\).
     \end{column}
   \end{columns}
   \modelnote{The slope is long enough and \(0<\alpha<\pi/2\).
@@ -370,58 +475,123 @@
     the local kinetic coefficient, so the bar can remain at rest.}
 \end{frame}
 
-\begin{solutionframe}[Solution 5 — Speed and the First Stop]
+\begin{solutionframe}[Solution 5 — From Time to Position]
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{.59\textwidth}
-      With \(+x\) downslope,
+    \begin{column}{.60\textwidth}
+      Take \(+x\) downslope. With \(N=mg\cos\alpha\) and
+      \(\mathrm{fr}=\mu(x)N\), Newton's law gives
       \[
-        N=mg\cos\alpha,\quad
         a=g(\sin\alpha-fx\cos\alpha).
       \]
-      Use \(a=v\,dv/dx\) on the sliding branch:
+      \textbf{Why is \(a=v\frac{dv}{dx}\)?}
+      Speed depends on position, and position depends on time:
+      \(v=v(x(t))\). Apply the chain rule:
       \[
-        \begin{gathered}
-          \int_0^{v(x)}v\,dv
-          =g\int_0^x(\sin\alpha-f\xi\cos\alpha)\,d\xi,\\
-          v^2(x)=g(2x\sin\alpha-fx^2\cos\alpha).
-        \end{gathered}
+        a=\frac{dv}{dt}
+        =\frac{dv}{dx}\frac{dx}{dt}
+        =v\frac{dv}{dx},
+        \qquad \frac{dx}{dt}=v.
       \]
-      The first stop satisfies \(v(D)=0\):
-      \answer{\(\displaystyle D=\frac{2\tan\alpha}{f}.\)}
+      \(\frac{dv}{dx}\) measures speed change per metre.
+      Multiplying by \(\frac{dx}{dt}=v\) gives speed change per second.
     \end{column}
-    \begin{column}{.37\textwidth}
+    \begin{column}{.36\textwidth}
       \labfigure[\labforcestrue]{variable-friction-incline}
       \medskip
-      The positive square root describes downslope motion for \(0<x<D\);
-      the other zero, \(x=0\), is the initial state.
+      Use this relation while the bar slides downslope, with \(v>0\).
+      The values at the start and the stop follow by continuity.
     \end{column}
   \end{columns}
 \end{solutionframe}
 
-\begin{solutionframe}[Solution 5 — Where Speed Is Greatest]
+\begin{solutionframe}[Solution 5 — Why the Speed Is Squared]
+  \par
+  Rearrange \(a=v\frac{dv}{dx}\) as \(v\,dv=a(x)\,dx\).
+  Starting at \(x=0\) with \(v=0\), integrate:
+  \[
+    \int_0^{v(x)}v\,dv
+      =g\int_0^x(\sin\alpha-f\xi\cos\alpha)\,d\xi.
+  \]
+  \textbf{The square comes from integrating \(v\,dv\):}
+  \(\frac{d}{dv}\left(\frac{v^2}{2}\right)=v\).
+  Evaluating both integrals gives
+  \[
+    \frac{v^2(x)-0^2}{2}
+      =g\left[\xi\sin\alpha-\frac{f\xi^2\cos\alpha}{2}\right]_0^x
+      =g\left(x\sin\alpha-\frac{fx^2\cos\alpha}{2}\right).
+  \]
+  Here \(\xi\) is a dummy position variable. Multiply both sides by two:
+  \answer{\(\displaystyle v^2(x)=g(2x\sin\alpha-fx^2\cos\alpha).\)}
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5 — Finding the Total Distance]
+  \par
+  At the first stop after release, \(x=D\) and \(v(D)=0\).
+  Substitute these values into the speed equation:
+  \[
+    0=g(2D\sin\alpha-fD^2\cos\alpha)
+      =gD(2\sin\alpha-fD\cos\alpha).
+  \]
+  One root is \(D=0\): the \emph{initial} position at rest.
+  For the later stop, \(D>0\), so divide by \(gD\):
+  \[
+    2\sin\alpha-fD\cos\alpha=0
+    \quad\Rightarrow\quad fD\cos\alpha=2\sin\alpha.
+  \]
+  \answer{\(\displaystyle D=\frac{2\sin\alpha}{f\cos\alpha}
+      =\frac{2\tan\alpha}{f}.\)}
+  \textbf{Why is this the total distance?}
+  The bar moves only downslope before stopping, so the distance equals \(D\).
+  At the stop, \(\mu(D)=fD=2\tan\alpha\).
+  The given \(\mu_s(D)\ge\mu(D)>\tan\alpha\) lets static friction hold it there.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5 — Where Does the Speed Peak?]
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{.53\textwidth}
-      Since \(v>0\), its maximum occurs where \(a(x_*)=0\):
+    \begin{column}{.59\textwidth}
+      \textbf{1. Friction grows along the slope.}
+      \(N=mg\cos\alpha\) is constant, so \(\mathrm{fr}=fxN\) grows
+      with \(x\), while \(mg\sin\alpha\) stays constant:
       \[
-        x_*=\frac{\tan\alpha}{f}=\frac D2.
+        a(x)=g(\sin\alpha-fx\cos\alpha).
       \]
-      Substitution into \(v^2(x)\) gives
-      \answer{\(\displaystyle v_{\max}=\sin\alpha
-          \sqrt{\frac{g}{f\cos\alpha}}.\)}
-      For \(u=x/D\),
+      \textbf{2. Locate the peak: set \(a(x_*)=0\).}
       \[
-        \frac{v}{v_{\max}}=2\sqrt{u(1-u)}.
+        \sin\alpha=fx_*\cos\alpha
+        \quad\Rightarrow\quad
+        x_*=\frac{\sin\alpha}{f\cos\alpha}=\frac D2.
       \]
+      On the downslope branch, \(v>0\):
+      \begin{itemize}
+        \item \(x<x_*\): \(a>0\), so speed increases.
+        \item \(x>x_*\): \(a<0\), so speed decreases.
+      \end{itemize}
     \end{column}
-    \begin{column}{.43\textwidth}
+    \begin{column}{.37\textwidth}
       \labfigure{variable-friction-speed}
       \medskip
-      Acceleration changes from positive to negative at \(x_*\).
+      \textbf{At \(x_*\): \(a=0\), but \(v>0\).}
+      Speed is greatest here, not zero.
     \end{column}
   \end{columns}
-  \textbf{After the stop:} \(k(D)=2\tan\alpha\).
-  The stated \(\mu_s(D)\ge k(D)\) exceeds the required
-  \(\tan\alpha\); static friction can hold the bar at \(D\).
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 5 — Calculating the Maximum Speed]
+  \par
+  \textbf{3. Substitute into} \(v^2(x)=g(2x\sin\alpha-fx^2\cos\alpha)\).
+  \[
+    \begin{aligned}
+      v_{\max}^2=v^2(x_*)
+        &=g\left[2\frac{\sin\alpha}{f\cos\alpha}\sin\alpha
+          -f\left(\frac{\sin\alpha}{f\cos\alpha}\right)^2\cos\alpha\right]\\[.4em]
+        &=g\left[\frac{2\sin^2\alpha}{f\cos\alpha}
+          -\frac{\sin^2\alpha}{f\cos\alpha}\right]
+          =\frac{g\sin^2\alpha}{f\cos\alpha}.
+    \end{aligned}
+  \]
+  Take the positive square root, using \(0<\alpha<\pi/2\):
+  \answer{\(\displaystyle v_{\max}=\sin\alpha
+      \sqrt{\frac{g}{f\cos\alpha}}.\)}
 \end{solutionframe}
 
 % P06: F13, S6. M07 makes the source's two-regime model explicit.
@@ -435,7 +605,7 @@
 
       \medskip
       A horizontal force \(F=pt\), with constant \(p>0\), acts on the
-      \emph{bar}. The friction coefficient between the bodies is \(k\).
+      \emph{bar}. The friction coefficient between the bodies is \(\mu\).
 
       \medskip
       \begin{block}{Find}
@@ -443,7 +613,7 @@
       \end{block}
 
       \modelnote{There is initially no relative sliding. Use the same
-      \(k\) for limiting static and kinetic friction. Take \(t\ge0\);
+      \(\mu\) for limiting static and kinetic friction. Take \(t\ge0\);
       the results apply while the bar remains on the plank.}
     \end{column}
     \begin{column}{.42\textwidth}
@@ -454,78 +624,179 @@
   \end{columns}
 \end{frame}
 
-\begin{solutionframe}[Solution 6 — Moving Together]
+\begin{solutionframe}[Solution 6 — Which Forces Act?]
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{.57\textwidth}
-      Before slipping, \(a_1=a_2=a\). Treat both bodies as one system; internal friction cancels:
+    \begin{column}{.60\textwidth}
+      In the ground frame, take \(+x\) to the right.
+
+      \medskip
+      \textbf{The force \(F=pt\) pulls only the bar.}
+      It tends to slide right relative to the plank, so:
+      \begin{itemize}
+        \item on the bar \(m_2\), friction acts left;
+        \item on the plank \(m_1\), friction acts right and makes it accelerate.
+      \end{itemize}
+      These friction forces have equal magnitudes \(\mathrm{fr}\)
+      and opposite directions (Newton's third law).
+
+      \medskip
+      The bar has no vertical acceleration:
       \[
-        (m_1+m_2)a=pt,\qquad
-        a(t)=\frac{pt}{m_1+m_2}.
+        N-m_2g=0\quad\Rightarrow\quad N=m_2g.
       \]
-      Friction accelerates the plank:
-      \[
-        f_r(t)=m_1a(t)=\frac{m_1pt}{m_1+m_2}.
-      \]
-      This is possible while
-      \[
-        f_r(t)\le kN=km_2g.
-      \]
-      Static friction adjusts; it reaches its limit only at the threshold.
+      Use this contact force in \(\mu N\).
     \end{column}
-    \begin{column}{.39\textwidth}
+    \begin{column}{.36\textwidth}
       \labfigure[\labforcestrue]{plank-bar-forces}
+      \medskip
+      Smooth ground: no horizontal friction.
+      Its vertical support force is \(N_g\).
     \end{column}
   \end{columns}
 \end{solutionframe}
 
-\begin{solutionframe}[Solution 6 — The Onset of Sliding]
+\begin{solutionframe}[Solution 6 — Before Sliding: One Acceleration]
   \par
-  The threshold is set by equality with limiting static friction:
-  \[
-    \frac{m_1pt_*}{m_1+m_2}=km_2g
-  \]
-  \answer{\(\displaystyle t_*=\frac{km_2g(m_1+m_2)}{pm_1}.\)}
-  For \(t>t_*\), kinetic friction is \(km_2g\).
-  Its direction is right on the plank and left on the bar:
+  \textbf{No relative sliding means the bodies move together:}
+  their velocities stay equal, so \(a_1=a_2=a\).
+  Static friction prevents sliding \emph{between the bodies};
+  both bodies can still move relative to the ground.
+
+  \medskip
+  Write Newton's second law for each body, taking right as positive:
   \[
     \begin{aligned}
-      m_1a_1&=km_2g
-      &\quad\Rightarrow\quad a_1&=\frac{km_2g}{m_1},\\[.4em]
-      m_2a_2&=pt-km_2g
-      &\quad\Rightarrow\quad a_2(t)&=\frac{pt}{m_2}-kg.
+      \text{Plank:}\qquad m_1a&=\mathrm{fr},\\[.3em]
+      \text{Bar:}\qquad m_2a&=pt-\mathrm{fr}.
     \end{aligned}
   \]
-  \textbf{Consistency:}
-  \(a_2-a_1=p(t-t_*)/m_2>0\) after the threshold,
-  so the bar starts sliding forward relative to the plank.
+  Add the equations. The two internal friction forces cancel:
+  \[
+    m_1a+m_2a=\mathrm{fr}+pt-\mathrm{fr}
+    \quad\Rightarrow\quad (m_1+m_2)a=pt.
+  \]
+  \answer{\(\displaystyle a_1(t)=a_2(t)=\frac{pt}{m_1+m_2}
+    \quad\text{while there is no relative sliding}.\)}
+  The applied force grows with time, so this common acceleration also grows.
 \end{solutionframe}
 
-\begin{solutionframe}[Solution 6 — The Complete Time Dependence]
+\begin{solutionframe}[Solution 6 — When Does Sliding Begin?]
+  \par
+  The plank needs friction \(\mathrm{fr}=m_1a\) to share the bar's acceleration.
+  Substitute \(a=pt/(m_1+m_2)\) and compare with the static-friction limit:
+  \[
+    \underbrace{\mathrm{fr}(t)=\frac{m_1pt}{m_1+m_2}}_{\text{required; grows with time}}
+    \ \le\ \underbrace{\mu N=\mu m_2g}_{\text{available limit; constant}}.
+  \]
+  \textbf{At \(t=t_*\), the required friction reaches the limit.}
+  Set the two sides equal:
+  \[
+    \frac{m_1pt_*}{m_1+m_2}=\mu m_2g
+    \quad\Rightarrow\quad m_1pt_*=\mu m_2g(m_1+m_2).
+  \]
+  Divide by \(pm_1\):
+  \answer{\(\displaystyle t_*=\frac{\mu m_2g(m_1+m_2)}{pm_1}.\)}
+  For \(t>t_*\), the required friction exceeds the limit, so the bar slides forward on the plank.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6 — During Sliding: Two Accelerations]
+  \par
+  For \(t>t_*\), use kinetic friction:
+  \(\mathrm{fr}=\mu N=\mu m_2g\), constant in this model.
+  Keep \(+x\) to the right, but now allow \(a_1\ne a_2\).
+
+  \medskip
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{.55\textwidth}
-      \answer{\(\displaystyle\begin{aligned}
-        a_1(t)&=
-          \begin{cases}
-            \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[4pt]
-            \dfrac{km_2g}{m_1},&t>t_*,
-          \end{cases}\\[0.7em]
-        a_2(t)&=
-          \begin{cases}
-            \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[4pt]
-            \dfrac{pt}{m_2}-kg,&t>t_*.
-          \end{cases}
-      \end{aligned}\)}
-      \medskip
-      Here \(t_*=km_2g(m_1+m_2)/(pm_1)\).
+    \begin{column}{.47\textwidth}
+      \textbf{Plank \(m_1\): friction pulls right.}
+      It is the only horizontal force:
+      \[
+        m_1a_1=\mathrm{fr}=\mu m_2g.
+      \]
+      Divide by the plank's mass \(m_1\):
+      \answer{\(\displaystyle a_1=\frac{\mu m_2g}{m_1}.\)}
+      Constant friction gives constant acceleration.
     \end{column}
-    \begin{column}{.41\textwidth}
-      \labfigure{plank-bar-accelerations}
+    \begin{column}{.49\textwidth}
+      \textbf{Bar \(m_2\): pull right, friction left.}
+      The resultant force is their difference:
+      \[
+        m_2a_2=pt-\mathrm{fr}=pt-\mu m_2g.
+      \]
+      Divide by the bar's mass \(m_2\):
+      \answer{\(\displaystyle a_2(t)=\frac{pt}{m_2}-\mu g.\)}
+      The pull keeps growing; friction stays fixed. The acceleration grows.
     \end{column}
   \end{columns}
   \medskip
-  \textbf{Checks:} \(a_1(0)=a_2(0)=0\); both branches meet at
-  \(a_*=km_2g/m_1\). The bar's slope increases from
-  \(p/(m_1+m_2)\) to \(p/m_2\).
-  The formulas stop applying if contact with the plank ends.
+  Velocities agree at \(t_*\). Since \(a_2-a_1=p(t-t_*)/m_2>0\), the bar pulls ahead.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6 — Choosing the Right Formula]
+  \par
+  Each body has one acceleration function with two time intervals:
+  use the common-motion formula up to \(t_*\), then the sliding formula.
+
+  \medskip
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.48\textwidth}
+      \textbf{Plank \(m_1\)}
+      \answer{\(\displaystyle
+        a_1(t)=
+        \begin{cases}
+          \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[.7em]
+          \dfrac{\mu m_2g}{m_1},&t>t_*.
+        \end{cases}
+      \)}
+    \end{column}
+    \begin{column}{.48\textwidth}
+      \textbf{Bar \(m_2\)}
+      \answer{\(\displaystyle
+        a_2(t)=
+        \begin{cases}
+          \dfrac{pt}{m_1+m_2},&0\le t\le t_*,\\[.7em]
+          \dfrac{pt}{m_2}-\mu g,&t>t_*.
+        \end{cases}
+      \)}
+    \end{column}
+  \end{columns}
+  \medskip
+  The switching time is
+  \(\displaystyle t_*=\frac{\mu m_2g(m_1+m_2)}{pm_1}.\)
+  \medskip
+
+  \textbf{Keep \(t\) and \(t_*\) distinct:}
+  \(t\) is the current time; \(t_*\) is a fixed threshold set by the data.
+  The formulas apply while the bar remains on the plank.
+\end{solutionframe}
+
+\begin{solutionframe}[Solution 6 — Reading the Acceleration Graph]
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.40\textwidth}
+      \labfigure{plank-bar-accelerations}
+      \[
+        a_1(t_*)=a_2(t_*)=\frac{\mu m_2g}{m_1}\equiv a_*.
+      \]
+    \end{column}
+    \begin{column}{.56\textwidth}
+      \textbf{Before \(t_*\):} one rising line for both bodies,
+      since \(a_1=a_2=pt/(m_1+m_2)\).
+
+      \medskip
+      \textbf{After \(t_*\), plank:} a horizontal line.
+      Its friction force and acceleration are constant.
+      Constant acceleration means a constant rate of change of velocity.
+
+      \medskip
+      \textbf{After \(t_*\), bar:} a steeper rising line.
+      Its slope is \(p/m_2\), greater than the earlier
+      \(p/(m_1+m_2)\).
+
+      \medskip
+      \textbf{The curves meet at \(a_*\).} There is no jump because the model
+      uses the same \(\mu\) for limiting static and kinetic friction.
+      At \(t=0\), both accelerations are zero.
+    \end{column}
+  \end{columns}
 \end{solutionframe}
 \end{document}

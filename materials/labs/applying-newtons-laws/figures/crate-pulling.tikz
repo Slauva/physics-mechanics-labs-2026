@@ -10,7 +10,7 @@
   \iflabforces
     \draw[physics force] (B)--++(0,-1.6) node[below] {$mg$};
     \draw[physics force] (B)--++(0,1.05) node[above] {$N$};
-    \draw[physics force] (B)--++(-1.8,0) node[left] {$f_k$};
+    \draw[physics force] (B)--++(-1.8,0) node[left] {$\vec{\mathrm{fr}}$};
     \draw[->] (4,-.5)--(5,-.5) node[right] {$x$};
     \draw[->] (4,-.5)--(4,.25) node[above] {$y$};
   \fi

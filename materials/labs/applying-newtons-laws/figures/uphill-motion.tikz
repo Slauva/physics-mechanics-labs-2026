@@ -22,7 +22,7 @@
   \iflabforces
     \draw[physics force] (B)--++(0,-1.4) node[below] {$mg$};
     \draw[physics force] (B)--++(-.55,1.1) node[above] {$N$};
-    \draw[physics force] (B)--++(-1,-.5) node[left] {$\mu N$};
+    \draw[physics force] (B)--++(-1,-.5) node[left] {$\vec{\mathrm{fr}}$};
   \fi
   \node[PhysicsMuted] at (2.7,-.8) {Schematic; not to scale};
 \end{tikzpicture}

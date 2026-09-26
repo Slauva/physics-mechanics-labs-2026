@@ -4,7 +4,7 @@
   \node at (1.7,1.2) {$M$};
   \draw[physics line,fill=PhysicsCyan] (2.7,1.6) rectangle (3.3,2.2);
   \node at (3,1.9) {$m$};
-  \node[left] at (2.7,2.15) {$k$};
+  \node[left] at (2.7,2.15) {$\mu$};
   \draw[physics line] (2.7,3.5)--(3.15,4.1);
   \draw[physics line] (2.7,.65)--(3.59,.75);
   \draw[physics line,fill=white] (3.15,4.1) circle (.22);
